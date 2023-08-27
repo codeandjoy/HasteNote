@@ -1,0 +1,6 @@
+.board-tags {
+  display: flex;
+}
+.board-tags > *:not(:last-child) {
+  margin-right: 10px;
+}/*# sourceMappingURL=Tags.css.map */

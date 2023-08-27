@@ -1,0 +1,9 @@
+.board-header {
+  display: flex;
+  justify-content: space-between;
+}
+.board-header .board-name {
+  font-family: Poppins, sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+}/*# sourceMappingURL=Header.css.map */

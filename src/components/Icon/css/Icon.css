@@ -1,0 +1,10 @@
+.icon {
+  width: inherit;
+  height: inherit;
+  background-position: center;
+  background-size: cover;
+}
+
+.icon-menu {
+  background-image: url("/public/icons/menu.svg");
+}/*# sourceMappingURL=Icon.css.map */

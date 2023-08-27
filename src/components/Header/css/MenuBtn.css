@@ -1,0 +1,11 @@
+.menubtn {
+  margin-top: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+}
+
+.menubtn:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=MenuBtn.css.map */

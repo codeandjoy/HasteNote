@@ -1,0 +1,10 @@
+.tag {
+  padding: 2px 11px;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-color: rgba(0, 0, 0, 0.3019607843);
+  border-radius: 10px;
+}/*# sourceMappingURL=Tag.css.map */
