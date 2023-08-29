@@ -1,4 +1,8 @@
-.notes {
+.notes-container {
+  flex: 1;
+  overflow: scroll;
+}
+.notes-container .notes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;

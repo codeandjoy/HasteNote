@@ -1,5 +1,11 @@
-.notes{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+.notes-container{
+    flex: 1;
+
+    overflow: scroll;
+
+    .notes{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
 }

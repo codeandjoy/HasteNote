@@ -4,6 +4,7 @@ import AppContainer from './components/AppContainer/AppContainer';
 import Notes from './components/Notes/Notes';
 
 import './App.css';
+import ActionsMenu from './components/ActionsMenu/ActionsMenu';
 
 const dummyNotes = [
   {
@@ -39,6 +40,7 @@ function App() {
       <AppContainer>
         <Header/>
         <Notes notes={ dummyNotes }/>
+        <ActionsMenu/>
       </AppContainer>
     </div>
   );
