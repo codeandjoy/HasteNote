@@ -1,6 +1,7 @@
 .board-header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 30px;
 }
 .board-header .board-name {
   font-family: Poppins, sans-serif;

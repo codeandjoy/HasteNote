@@ -1,4 +1,6 @@
 /* Fonts */
+
+/*Poppins*/
 @font-face {
     font-family: "Poppins";
     src: url("../public/fonts/Poppins-Regular.ttf");
@@ -7,5 +9,17 @@
 @font-face {
   font-family: "Poppins";
   src: url("../public/fonts/Poppins-Bold.ttf");
+  font-weight: bold;
+}
+
+/*Lato*/
+@font-face {
+  font-family: "Lato";
+  src: url("../public/fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../public/fonts/Lato-Bold.ttf");
   font-weight: bold;
 }
