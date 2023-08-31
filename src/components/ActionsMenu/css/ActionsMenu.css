@@ -1,5 +1,16 @@
 .actions-menu {
   display: flex;
   justify-content: flex-end;
-  border-style: dashed;
+}
+.actions-menu .action-buttons {
+  position: relative;
+}
+.actions-menu .action-buttons .brush-btn {
+  position: relative;
+  z-index: 2;
+}
+.actions-menu .action-buttons .markdown-note-btn,
+.actions-menu .action-buttons .quick-note-btn {
+  position: absolute;
+  top: 0;
 }/*# sourceMappingURL=ActionsMenu.css.map */

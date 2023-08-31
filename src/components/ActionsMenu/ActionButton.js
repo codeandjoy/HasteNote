@@ -1,9 +1,11 @@
 import './css/ActionButton.css';
 
 
-const ActionButton = ({ children }) => {
+const ActionButton = ({ children, color, onClick }) => {
+    const classNames = 'action-button action-button-'+ (color?color:"orange");
+
     return (
-        <button className='action-button'>
+        <button className={ classNames } onClick={onClick}>
             { children }
         </button>
     );

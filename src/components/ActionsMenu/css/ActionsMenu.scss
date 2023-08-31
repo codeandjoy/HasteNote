@@ -2,5 +2,18 @@
     display: flex;
     justify-content: flex-end;
 
-    border-style: dashed;
+    .action-buttons{
+        position: relative;
+
+        .brush-btn{
+            position: relative;
+            z-index: 2;
+        }
+
+        .markdown-note-btn,
+        .quick-note-btn{
+            position: absolute;
+            top: 0;
+        }
+    }
 }
