@@ -1,0 +1,15 @@
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #DD6E42;
+  border: none;
+  border-radius: 50%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+}
+.action-button .icon {
+  width: 32px;
+  height: 32px;
+}/*# sourceMappingURL=ActionButton.css.map */
