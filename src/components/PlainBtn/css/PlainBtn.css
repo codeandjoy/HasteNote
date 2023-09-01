@@ -1,11 +1,10 @@
-.menubtn {
-  margin-top: 20px;
+.plain-btn {
   width: 30px;
   height: 30px;
   background-color: transparent;
   border: none;
 }
 
-.menubtn:hover {
+.plain-btn:hover {
   cursor: pointer;
-}/*# sourceMappingURL=MenuBtn.css.map */
+}/*# sourceMappingURL=PlainBtn.css.map */

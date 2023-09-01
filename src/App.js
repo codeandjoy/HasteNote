@@ -1,10 +1,12 @@
-import React from 'react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import Header from './components/Header/Header';
-import AppContainer from './components/AppContainer/AppContainer';
 import Notes from './components/Notes/Notes';
+import ActionsMenu from './components/ActionsMenu/ActionsMenu';
+import BoardsMenu from './components/BoardsMenu/BoardsMenu';
 
 import './App.css';
-import ActionsMenu from './components/ActionsMenu/ActionsMenu';
+import PageFade from './components/PageFade/PageFade';
 
 const dummyNotes = [
   {
@@ -34,14 +36,37 @@ const dummyNotes = [
 ]
 
 
-function App() {
+const App = () => {
+  const [boardsMenuOpen, setBoardsMenuOpen] = useState(true);
+  const [actionsMenuOpen, setActionsMenuOpen] = useState(false);
+
   return (
     <div className="App">
-      <AppContainer>
-        <Header/>
-        <Notes notes={ dummyNotes }/>
-        <ActionsMenu/>
-      </AppContainer>
+      {/* desktop fade */}
+      <PageFade isActive={ boardsMenuOpen || actionsMenuOpen }/>
+
+      <div className='app-container'>
+        {/* app fade */}
+        <PageFade isActive={ boardsMenuOpen || actionsMenuOpen }/>
+        <motion.div
+          className='animated-container'
+
+          animate={
+            boardsMenuOpen ?
+            {marginLeft: "-380px", marginRight: "380px"}
+            :
+            {marginLeft: 0, marginRight: 0}
+          }
+        >
+          <Header boardsMenuOpen={ boardsMenuOpen } setBoardsMenuOpen={ setBoardsMenuOpen }/>
+          <Notes notes={ dummyNotes }/>
+          { ! boardsMenuOpen &&
+            <ActionsMenu actionsMenuOpen={ actionsMenuOpen } setActionsMenuOpen={ setActionsMenuOpen }/>
+          }
+        </motion.div>
+
+        <BoardsMenu boardsMenuOpen={ boardsMenuOpen } setBoardsMenuOpen={ setBoardsMenuOpen }/>
+      </div>
     </div>
   );
 }

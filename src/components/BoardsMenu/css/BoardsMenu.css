@@ -1,0 +1,25 @@
+.boards-menu {
+  position: absolute;
+  top: 0;
+  padding: 50px 0;
+  width: 320px;
+  height: 100%;
+  box-sizing: border-box;
+}
+.boards-menu .boards {
+  width: 100%;
+  height: 100%;
+  background-color: #181818;
+}
+.boards-menu .boards .plain-btn {
+  position: absolute;
+  top: 50px;
+  left: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: #181818;
+  border-radius: 10px 0 0 10px;
+}
+.boards-menu .boards .plain-btn .icon {
+  background-size: 80%;
+}/*# sourceMappingURL=BoardsMenu.css.map */

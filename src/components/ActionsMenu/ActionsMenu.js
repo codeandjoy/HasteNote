@@ -1,12 +1,10 @@
-import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import ActionButton from "./ActionButton";
 import Icon from "../Icon/Icon";
-import PageFade from '../PageFade/PageFade';
 
 import "./css/ActionsMenu.css";
 
-const actionBtnHover = { scale: 1.2 }
+const actionBtnHover = { scale: .9 }
 const action_btn_open_variants = {
     initial: {
         opacity: 0,
@@ -32,13 +30,9 @@ const quick_note_btn_variants = {
 };
 
 
-const ActionsMenu = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
-
+const ActionsMenu = ({ actionsMenuOpen, setActionsMenuOpen }) => {
     return (
         <div className="actions-menu">
-            <PageFade isActive={menuOpen}/>
-
             <div className="action-buttons">
                 <motion.div 
                     whileHover={ actionBtnHover }
@@ -46,15 +40,15 @@ const ActionsMenu = () => {
                     className="brush-btn"
                 >
                     <ActionButton 
-                        color={menuOpen ? "black" : "orange"}
-                        onClick={()=>setMenuOpen(menuOpen=>!menuOpen)}
+                        color={actionsMenuOpen ? "black" : "orange"}
+                        onClick={()=>setActionsMenuOpen(actionsMenuOpen => !actionsMenuOpen)}
                     >
                         <Icon type="brush"/>
                     </ActionButton>
                 </motion.div>
 
                 <AnimatePresence>
-                    { menuOpen &&
+                    { actionsMenuOpen &&
                         <>
                             <motion.div
                                 variants={ markdown_btn_variants }

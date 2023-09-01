@@ -1,11 +1,11 @@
-import MenuBtn from "./MenuBtn";
+import PlainBtn from "../PlainBtn/PlainBtn"
 import Tags from "./Tags";
 
 import "./css/Header.css";
 
 const dummyTags = ["work", "school"];
 
-const Header = () => {
+const Header = ({ boardsMenuOpen, setBoardsMenuOpen }) => {
     return (
         <div className="board-header">
             <div>
@@ -13,7 +13,9 @@ const Header = () => {
                 <Tags tags={ dummyTags }/>
             </div>
             <div>
-                <MenuBtn/>
+                { !boardsMenuOpen &&
+                    <PlainBtn type="menu" onClick={() => setBoardsMenuOpen(true)}/>
+                }
             </div>
         </div>
     );

@@ -1,3 +1,33 @@
+.App{
+  transform: scale(1);
+}
+.App .page-fade{
+  z-index: 0;
+}
+
+.app-container{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 1000px;
+  height: 100vh;
+
+  padding: 50px 0;
+
+  background-color: #181818;
+
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.animated-container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 /* Fonts */
 
 /*Poppins*/
