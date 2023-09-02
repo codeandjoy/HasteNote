@@ -37,7 +37,7 @@ const dummyNotes = [
 
 
 const App = () => {
-  const [boardsMenuOpen, setBoardsMenuOpen] = useState(true);
+  const [boardsMenuOpen, setBoardsMenuOpen] = useState(false);
   const [actionsMenuOpen, setActionsMenuOpen] = useState(false);
 
   return (
