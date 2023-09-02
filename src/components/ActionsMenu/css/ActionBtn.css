@@ -1,4 +1,4 @@
-.action-button {
+.action-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,19 +7,19 @@
   border: none;
   border-radius: 50%;
 }
-.action-button .icon {
+.action-btn .icon {
   width: 32px;
   height: 32px;
 }
 
-.action-button:hover {
+.action-btn:hover {
   cursor: pointer;
 }
 
-.action-button-orange {
+.action-btn-orange {
   background-color: #DD6E42;
 }
 
-.action-button-black {
+.action-btn-black {
   background-color: #0C0C0C;
-}/*# sourceMappingURL=ActionButton.css.map */
+}/*# sourceMappingURL=ActionBtn.css.map */

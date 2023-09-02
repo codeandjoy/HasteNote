@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import ActionButton from "./ActionButton";
+import ActionBtn from "./ActionBtn";
 import Icon from "../Icon/Icon";
 
 import "./css/ActionsMenu.css";
@@ -39,12 +39,12 @@ const ActionsMenu = ({ actionsMenuOpen, setActionsMenuOpen }) => {
 
                     className="brush-btn"
                 >
-                    <ActionButton 
+                    <ActionBtn 
                         color={actionsMenuOpen ? "black" : "orange"}
                         onClick={()=>setActionsMenuOpen(actionsMenuOpen => !actionsMenuOpen)}
                     >
                         <Icon type="brush"/>
-                    </ActionButton>
+                    </ActionBtn>
                 </motion.div>
 
                 <AnimatePresence>
@@ -59,9 +59,9 @@ const ActionsMenu = ({ actionsMenuOpen, setActionsMenuOpen }) => {
                                 
                                 className="markdown-note-btn"
                             >
-                                <ActionButton>
+                                <ActionBtn>
                                     <Icon type="markdown"/>
-                                </ActionButton>
+                                </ActionBtn>
                             </motion.div>
 
                             <motion.div 
@@ -73,9 +73,9 @@ const ActionsMenu = ({ actionsMenuOpen, setActionsMenuOpen }) => {
                                 
                                 className="quick-note-btn"
                             >
-                                <ActionButton>
+                                <ActionBtn>
                                     <Icon type="note"/>
-                                </ActionButton>
+                                </ActionBtn>
                             </motion.div>
                         </>
                     }
