@@ -5,8 +5,6 @@ import "./css/NoteModal.css";
 
 
 const NoteModal = ({ modalOpen, initialAnimationPosition, initialData }) => {
-    console.log("x: "+initialAnimationPosition.x);
-    console.log("y: "+initialAnimationPosition.y);
     const modalVariants = {
         initial: {
             opacity: 0,

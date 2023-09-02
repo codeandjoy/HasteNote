@@ -1,19 +1,15 @@
-import PropTypes from 'prop-types';
-
 import './css/Icon.css';
 
 
 const Icon = ({ type }) => {
     const classes = "icon icon-"+type;
 
+    console.log(classes);
+
     return (
         <div className={ classes }></div>
     )
 };
 
-
-Icon.propTypes = {
-    type: PropTypes.string.isRequired
-};
 
 export default Icon;
