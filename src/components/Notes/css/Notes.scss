@@ -2,10 +2,15 @@
     flex: 1;
 
     overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     .notes{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
+}
+.notes-container::-webkit-scrollbar{
+    display: none;
 }
