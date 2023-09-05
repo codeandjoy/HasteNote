@@ -9,7 +9,9 @@ const NoteModal = ({ modalOpen, initialAnimationPosition, initialData }) => {
         initial: {
             opacity: 0,
             top: initialAnimationPosition.y,
-            left: initialAnimationPosition.x
+            left: initialAnimationPosition.x,
+            translateX: 0,
+            translateY: 0
         },
         active: {
             opacity: 1,

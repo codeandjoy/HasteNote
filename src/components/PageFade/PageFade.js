@@ -1,6 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
-import "./css/PageFade.css";
 import { useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import { pageFadeActive } from "../../atom";
+import { pageFadeCallback } from "../../atom";
+
+import "./css/PageFade.css";
 
 const fadeVariants = {
     initial: {
@@ -12,7 +16,10 @@ const fadeVariants = {
 }
 
 
-const PageFade = ({ isActive }) => {
+const PageFade = () => {
+    const isActive = useRecoilValue(pageFadeActive);
+    const clickCallback = useRecoilValue(pageFadeCallback);
+
     useEffect(() => {
         if(isActive){
             document.body.style.overflow = "hidden";
@@ -32,6 +39,8 @@ const PageFade = ({ isActive }) => {
                     exit="initial"
 
                     className="page-fade"
+
+                    onClick={ clickCallback }
                 >
                 </motion.div>
             }

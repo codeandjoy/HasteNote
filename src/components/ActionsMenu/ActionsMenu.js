@@ -1,5 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import ActionBtn from "./ActionBtn";
+import { useSetRecoilState } from 'recoil';
+import { pageFadeActive } from '../../atom';
+import { pageFadeCallback } from '../../atom';
 
 import "./css/ActionsMenu.css";
 
@@ -30,6 +33,9 @@ const quick_note_btn_variants = {
 
 
 const ActionsMenu = ({ actionsMenuOpen, setActionsMenuOpen }) => {
+    const setPageFadeActive = useSetRecoilState(pageFadeActive);
+    const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
+
     return (
         <div className="actions-menu">
             <div className="action-buttons">
@@ -41,7 +47,18 @@ const ActionsMenu = ({ actionsMenuOpen, setActionsMenuOpen }) => {
                     <ActionBtn 
                         type="brush"
                         color={actionsMenuOpen ? "black" : "orange"}
-                        onClick={()=>setActionsMenuOpen(actionsMenuOpen => !actionsMenuOpen)}
+                        onClick={() => {
+                            setActionsMenuOpen(actionsMenuOpen => !actionsMenuOpen);
+                            setPageFadeActive(active => !active);
+                            setPageFadeCallback(
+                                actionsMenuOpen
+                                    ? () => () => {}
+                                    : () => () => {
+                                        setActionsMenuOpen(false);
+                                        setPageFadeActive(false);
+                                    }
+                            );
+                        }}
                     />
                 </motion.div>
 

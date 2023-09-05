@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { RecoilRoot } from 'recoil';
 import Header from './components/Header/Header';
 import Notes from './components/Notes/Notes';
 import ActionsMenu from './components/ActionsMenu/ActionsMenu';
@@ -41,33 +42,36 @@ const App = () => {
   const [actionsMenuOpen, setActionsMenuOpen] = useState(false);
 
   return (
-    <div className="App">
-      {/* desktop fade */}
-      <PageFade isActive={ boardsMenuOpen || actionsMenuOpen }/>
+    <RecoilRoot>
+      <div className="App">
+        {/* desktop fade */}
+        <PageFade/>
 
-      <div className='app-container'>
-        {/* app fade */}
-        <PageFade isActive={ boardsMenuOpen || actionsMenuOpen }/>
-        <motion.div
-          className='animated-container'
+        <div className='app-container'>
+          {/* app fade */}
+          {/* <PageFade isActive={ boardsMenuOpen || actionsMenuOpen }/> */}
+          <PageFade/>
+          <motion.div
+            className='animated-container'
 
-          animate={
-            boardsMenuOpen ?
-            {marginLeft: "-380px", marginRight: "380px"}
-            :
-            {marginLeft: 0, marginRight: 0}
-          }
-        >
-          <Header boardsMenuOpen={ boardsMenuOpen } setBoardsMenuOpen={ setBoardsMenuOpen }/>
-          <Notes notes={ dummyNotes }/>
-          { ! boardsMenuOpen &&
-            <ActionsMenu actionsMenuOpen={ actionsMenuOpen } setActionsMenuOpen={ setActionsMenuOpen }/>
-          }
-        </motion.div>
+            animate={
+              boardsMenuOpen ?
+              {marginLeft: "-380px", marginRight: "380px"}
+              :
+              {marginLeft: 0, marginRight: 0}
+            }
+          >
+            <Header boardsMenuOpen={ boardsMenuOpen } setBoardsMenuOpen={ setBoardsMenuOpen }/>
+            <Notes notes={ dummyNotes }/>
+            { ! boardsMenuOpen &&
+              <ActionsMenu actionsMenuOpen={ actionsMenuOpen } setActionsMenuOpen={ setActionsMenuOpen }/>
+            }
+          </motion.div>
 
-        <BoardsMenu boardsMenuOpen={ boardsMenuOpen } setBoardsMenuOpen={ setBoardsMenuOpen }/>
+          <BoardsMenu boardsMenuOpen={ boardsMenuOpen } setBoardsMenuOpen={ setBoardsMenuOpen }/>
+        </div>
       </div>
-    </div>
+    </RecoilRoot>
   );
 }
 

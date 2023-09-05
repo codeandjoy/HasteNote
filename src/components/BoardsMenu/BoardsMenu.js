@@ -1,7 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
+import PlainBtn from "../PlainBtn/PlainBtn";
+import { useSetRecoilState } from "recoil";
+import { pageFadeActive } from "../../atom";
+import { pageFadeCallback } from "../../atom";
 
 import "./css/BoardsMenu.css";
-import PlainBtn from "../PlainBtn/PlainBtn";
 
 // ! make <right> responsive using 'react-responsive' media query
 const boardMenuVariants = {
@@ -14,6 +17,9 @@ const boardMenuVariants = {
 }
 
 const BoardsMenu = ({ boardsMenuOpen, setBoardsMenuOpen }) => {
+    const setPageFadeActive = useSetRecoilState(pageFadeActive);
+    const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
+    
     return (
         <AnimatePresence>
             { boardsMenuOpen && 
@@ -26,7 +32,14 @@ const BoardsMenu = ({ boardsMenuOpen, setBoardsMenuOpen }) => {
                     className="boards-menu"
                 >
                     <div className="boards">
-                        <PlainBtn type="menu-close" onClick={() => setBoardsMenuOpen(false)}/>
+                        <PlainBtn
+                            type="menu-close"
+                            onClick={() => {
+                                setBoardsMenuOpen(false);
+                                setPageFadeActive(false);
+                                setPageFadeCallback(() => () => {});
+                            }}
+                        />
                     </div>
                 </motion.div>
             }
