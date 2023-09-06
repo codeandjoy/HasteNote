@@ -1,11 +1,28 @@
 .note-modal{
     position: absolute;
 
+    display: flex;
+    flex-direction: column;
+
     width: 290px;
     height: 200px;
     padding: 16px 14px;
 
+    font-family: Lato, sans-serif;
+    
+    background-color: #FFFAF0;
+
     border-radius: 10px;
 
-    background-color: red;
+    input,
+    textarea{
+        border-style: none;
+        outline: none;
+    }
+    textarea{
+        flex: 1;
+        resize: none;
+        
+        font-family: Lato, sans-serif;
+    }
 }
