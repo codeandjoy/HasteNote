@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import PlainBtn from "../PlainBtn/PlainBtn";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { boardsMenuOpen } from "../../atom";
-import { pageFadeActive } from "../../atom";
-import { pageFadeCallback } from "../../atom";
+import { boardsMenuOpen } from "../../atoms/UIAtoms";
+import { pageFadeActive } from "../../atoms/UIAtoms";
+import { pageFadeCallback } from "../../atoms/UIAtoms";
 
 import "./css/BoardsMenu.css";
 

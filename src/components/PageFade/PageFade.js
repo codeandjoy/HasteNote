@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import { pageFadeActive } from "../../atom";
-import { pageFadeCallback } from "../../atom";
+import { pageFadeActive } from "../../atoms/UIAtoms";
+import { pageFadeCallback } from "../../atoms/UIAtoms";
 
 import "./css/PageFade.css";
 

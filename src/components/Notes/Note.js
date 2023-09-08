@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import NoteModal from "../NoteModal/NoteModal";
 import { useSetRecoilState } from "recoil";
-import { pageFadeActive } from "../../atom";
-import { pageFadeCallback } from "../../atom";
+import { pageFadeActive } from "../../atoms/UIAtoms";
+import { pageFadeCallback } from "../../atoms/UIAtoms";
 
 import "./css/Note.css";
 

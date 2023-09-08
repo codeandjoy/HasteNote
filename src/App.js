@@ -4,7 +4,7 @@ import Notes from './components/Notes/Notes';
 import ActionsMenu from './components/ActionsMenu/ActionsMenu';
 import BoardsMenu from './components/BoardsMenu/BoardsMenu';
 import { useRecoilValue } from 'recoil';
-import { boardsMenuOpen } from './atom';
+import { boardsMenuOpen } from './atoms/UIAtoms';
 
 import './App.css';
 import PageFade from './components/PageFade/PageFade';
