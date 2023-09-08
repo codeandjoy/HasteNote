@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import ActionBtn from "./ActionBtn";
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { actionsMenuOpen } from '../../atom';
 import { pageFadeActive } from '../../atom';
 import { pageFadeCallback } from '../../atom';
 
@@ -32,7 +33,10 @@ const quick_note_btn_variants = {
 };
 
 
-const ActionsMenu = ({ actionsMenuOpen, setActionsMenuOpen }) => {
+const ActionsMenu = () => {
+    const isActionsMenuOpen = useRecoilValue(actionsMenuOpen);
+    const setActionsMenuOpen = useSetRecoilState(actionsMenuOpen);
+
     const setPageFadeActive = useSetRecoilState(pageFadeActive);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
 
@@ -46,12 +50,12 @@ const ActionsMenu = ({ actionsMenuOpen, setActionsMenuOpen }) => {
                 >
                     <ActionBtn 
                         type="brush"
-                        color={actionsMenuOpen ? "black" : "orange"}
+                        color={isActionsMenuOpen ? "black" : "orange"}
                         onClick={() => {
-                            setActionsMenuOpen(actionsMenuOpen => !actionsMenuOpen);
+                            setActionsMenuOpen(isActionsMenuOpen => !isActionsMenuOpen);
                             setPageFadeActive(active => !active);
                             setPageFadeCallback(
-                                actionsMenuOpen
+                                isActionsMenuOpen
                                     ? () => () => {}
                                     : () => () => {
                                         setActionsMenuOpen(false);
@@ -63,7 +67,7 @@ const ActionsMenu = ({ actionsMenuOpen, setActionsMenuOpen }) => {
                 </motion.div>
 
                 <AnimatePresence>
-                    { actionsMenuOpen &&
+                    { isActionsMenuOpen &&
                         <>
                             <motion.div
                                 variants={ markdown_btn_variants }

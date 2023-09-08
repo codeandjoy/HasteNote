@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import PlainBtn from "../PlainBtn/PlainBtn";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { boardsMenuOpen } from "../../atom";
 import { pageFadeActive } from "../../atom";
 import { pageFadeCallback } from "../../atom";
 
@@ -16,13 +17,17 @@ const boardMenuVariants = {
     }
 }
 
-const BoardsMenu = ({ boardsMenuOpen, setBoardsMenuOpen }) => {
+const BoardsMenu = () => {
+    const isBoardsMenuOpen = useRecoilValue(boardsMenuOpen);
+    const setBoardsMenuOpen = useSetRecoilState(boardsMenuOpen);
+    
     const setPageFadeActive = useSetRecoilState(pageFadeActive);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
     
+    
     return (
         <AnimatePresence>
-            { boardsMenuOpen && 
+            { isBoardsMenuOpen && 
                 <motion.div 
                     variants={ boardMenuVariants }
                     initial="initial"

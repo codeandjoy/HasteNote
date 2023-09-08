@@ -1,6 +1,7 @@
 import PlainBtn from "../PlainBtn/PlainBtn"
 import Tags from "./Tags";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { boardsMenuOpen } from "../../atom";
 import { pageFadeActive } from "../../atom";
 import { pageFadeCallback } from "../../atom";
 
@@ -8,10 +9,15 @@ import "./css/Header.css";
 
 const dummyTags = ["work", "school"];
 
-const Header = ({ boardsMenuOpen, setBoardsMenuOpen }) => {
+const Header = () => {
+    const isBoardsMenuOpen = useRecoilValue(boardsMenuOpen);
+    const setBoardsMenuOpen = useSetRecoilState(boardsMenuOpen);
+
     const setPageFadeActive = useSetRecoilState(pageFadeActive);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
 
+
+    
     return (
         <div className="board-header">
             <div>
@@ -19,7 +25,7 @@ const Header = ({ boardsMenuOpen, setBoardsMenuOpen }) => {
                 <Tags tags={ dummyTags }/>
             </div>
             <div>
-                { !boardsMenuOpen &&
+                { !isBoardsMenuOpen &&
                     <PlainBtn
                         type="menu"
                         onClick={() => {
