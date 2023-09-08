@@ -10,8 +10,7 @@ import "./css/Note.css";
 const Note = ({ note }) => {
     const setPageFadeActive = useSetRecoilState(pageFadeActive);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
-    const [editModalOpen, setEditModalOpen] = useState(true);
-    setPageFadeActive(true);
+    const [editModalOpen, setEditModalOpen] = useState(false);
     
     const [pos, setPos] = useState({x:0, y:0});
     const noteRef = useRef();
