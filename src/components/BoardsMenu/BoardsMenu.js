@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import PlainBtn from "../PlainBtn/PlainBtn";
+import Boards from "./Boards";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { boardsMenuOpen } from "../../atoms/UIAtoms";
 import { pageFadeActive } from "../../atoms/UIAtoms";
@@ -36,7 +37,7 @@ const BoardsMenu = () => {
 
                     className="boards-menu"
                 >
-                    <div className="boards">
+                    <div className="boards-pane">
                         <PlainBtn
                             type="menu-close"
                             onClick={() => {
@@ -44,7 +45,15 @@ const BoardsMenu = () => {
                                 setPageFadeActive(false);
                                 setPageFadeCallback(() => () => {});
                             }}
+                            className="btn-close-menu"
                         />
+                        <span className="boards-pane-title">Boards</span>
+                        <PlainBtn
+                            type="plus"
+                            onClick={()=>{}}
+                            className="btn-add-board"
+                        />
+                        <Boards/>
                     </div>
                 </motion.div>
             }

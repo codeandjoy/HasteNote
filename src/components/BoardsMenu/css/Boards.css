@@ -1,0 +1,6 @@
+.boards {
+  width: 100%;
+}
+.boards > *:not(:last-child) {
+  margin-bottom: 14px;
+}/*# sourceMappingURL=Boards.css.map */

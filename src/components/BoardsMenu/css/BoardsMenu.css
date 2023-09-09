@@ -6,20 +6,38 @@
   height: 100%;
   box-sizing: border-box;
 }
-.boards-menu .boards {
+.boards-menu .boards-pane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
   width: 100%;
   height: 100%;
   background-color: #181818;
+  border-radius: 10px 0 0 10px;
+  box-sizing: border-box;
 }
-.boards-menu .boards .plain-btn {
+.boards-menu .boards-pane .btn-close-menu {
   position: absolute;
-  top: 50px;
+  top: 20px;
   left: -50px;
   width: 50px;
   height: 50px;
   background-color: #181818;
   border-radius: 10px 0 0 10px;
 }
-.boards-menu .boards .plain-btn .icon {
-  background-size: 80%;
+.boards-menu .boards-pane .btn-close-menu .icon {
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position-x: 5px;
+}
+.boards-menu .boards-pane .boards-pane-title {
+  margin-bottom: 10px;
+  color: #ADADAD;
+  font-family: Poppins, sans-serif;
+  font-size: 26pt;
+}
+.boards-menu .boards-pane .btn-add-board {
+  margin-bottom: 20px;
 }/*# sourceMappingURL=BoardsMenu.css.map */
