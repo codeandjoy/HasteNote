@@ -3,11 +3,11 @@ import Header from './components/Header/Header';
 import Notes from './components/Notes/Notes';
 import ActionsMenu from './components/ActionsMenu/ActionsMenu';
 import BoardsMenu from './components/BoardsMenu/BoardsMenu';
+import PageFade from './components/PageFade/PageFade';
 import { useRecoilValue } from 'recoil';
 import { boardsMenuOpen } from './atoms/UIAtoms';
 
 import './App.css';
-import PageFade from './components/PageFade/PageFade';
 
 const dummyNotes = [
   {
@@ -38,6 +38,7 @@ const dummyNotes = [
 
 
 const App = () => {
+
   const isBoardsMenuOpen = useRecoilValue(boardsMenuOpen);
 
   return (
