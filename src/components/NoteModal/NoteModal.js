@@ -6,9 +6,9 @@ import { useState } from "react";
 
 
 const NoteModal = ({ modalOpen, initialAnimationPosition, initialData }) => {
-    const [title, setTitle] = useState(initialData.title || "");
-    const [tags, setTags] = useState(initialData.tags || "");
-    const [content, setContent] = useState(initialData.content || "");
+    const [title, setTitle] = useState(initialData?.title || "");
+    const [tags, setTags] = useState(initialData?.tags || "");
+    const [content, setContent] = useState(initialData?.content || "");
     
     const modalVariants = {
         initial: {

@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import ActionBtn from "./ActionBtn";
+import NoteModal from '../NoteModal/NoteModal';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { actionsMenuOpen } from '../../atoms/UIAtoms';
 import { pageFadeActive } from '../../atoms/UIAtoms';
@@ -40,34 +42,49 @@ const ActionsMenu = () => {
     const setPageFadeActive = useSetRecoilState(pageFadeActive);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
 
+    const [createModalOpen, setCreateModalOpen] = useState(false);
+
     return (
         <div className="actions-menu">
-            <div className="action-buttons">
-                <motion.div 
-                    whileHover={ actionBtnHover }
+            <NoteModal
+                modalOpen={ createModalOpen }
+                initialAnimationPosition={{ x: "80%", y: "100%" }}
+            />
 
-                    className="brush-btn"
-                >
-                    <ActionBtn 
-                        type="brush"
-                        color={isActionsMenuOpen ? "black" : "orange"}
-                        onClick={() => {
-                            setActionsMenuOpen(isActionsMenuOpen => !isActionsMenuOpen);
-                            setPageFadeActive(active => !active);
-                            setPageFadeCallback(
-                                isActionsMenuOpen
-                                    ? () => () => {}
-                                    : () => () => {
-                                        setActionsMenuOpen(false);
-                                        setPageFadeActive(false);
-                                    }
-                            );
-                        }}
-                    />
-                </motion.div>
+            <div className="action-buttons">
+                <AnimatePresence>
+                    { !createModalOpen &&
+                        <motion.div 
+                            variants={action_btn_open_variants}
+                            initial="initial"
+                            animate="menuopen"
+                            exit="initial"
+                            whileHover={ actionBtnHover }
+
+                            className="brush-btn"
+                        >
+                            <ActionBtn 
+                                type="brush"
+                                color={isActionsMenuOpen ? "black" : "orange"}
+                                onClick={() => {
+                                    setActionsMenuOpen(isActionsMenuOpen => !isActionsMenuOpen);
+                                    setPageFadeActive(active => !active);
+                                    setPageFadeCallback(
+                                        isActionsMenuOpen
+                                            ? () => () => {}
+                                            : () => () => {
+                                                setActionsMenuOpen(false);
+                                                setPageFadeActive(false);
+                                            }
+                                    );
+                                }}
+                            />
+                        </motion.div>
+                    }
+                </AnimatePresence>
 
                 <AnimatePresence>
-                    { isActionsMenuOpen &&
+                    { isActionsMenuOpen && !createModalOpen &&
                         <>
                             <motion.div
                                 variants={ markdown_btn_variants }
@@ -90,7 +107,18 @@ const ActionsMenu = () => {
                                 
                                 className="quick-note-btn"
                             >
-                                <ActionBtn type="note"/>
+                                <ActionBtn
+                                    type="note"
+                                    onClick={() => {
+                                        setCreateModalOpen(true);
+                                        setPageFadeActive(true);
+                                        setActionsMenuOpen(false);
+                                        setPageFadeCallback(() => () => {
+                                            setCreateModalOpen(false);
+                                            setPageFadeActive(false);
+                                        });
+                                    }}    
+                                />
                             </motion.div>
                         </>
                     }
