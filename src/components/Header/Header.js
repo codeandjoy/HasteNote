@@ -37,6 +37,7 @@ const Header = () => {
                                 setPageFadeActive(false);
                             });
                         }}
+                        className="btn-menu"
                     />
                 }
             </div>
