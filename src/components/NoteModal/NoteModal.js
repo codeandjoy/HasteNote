@@ -1,11 +1,20 @@
+import { forwardRef, useImperativeHandle, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import "./css/NoteModal.css";
-import { useState } from "react";
 
 
 
-const NoteModal = ({ modalOpen, initialAnimationPosition, initialData }) => {
+const NoteModal = forwardRef(({ modalOpen, initialAnimationPosition, initialData }, ref) => {
+    useImperativeHandle(ref, () => ({
+        createNote(){
+            console.log("Creating new note");
+        },
+        editNote(id){
+            console.log("Editing " + id + " note");
+        }
+    }));
+
     const [title, setTitle] = useState(initialData?.title || "");
     const [tags, setTags] = useState(initialData?.tags || "");
     const [content, setContent] = useState(initialData?.content || "");
@@ -62,7 +71,7 @@ const NoteModal = ({ modalOpen, initialAnimationPosition, initialData }) => {
         </AnimatePresence>
 
     )
-};
+});
 
 
 export default NoteModal;
