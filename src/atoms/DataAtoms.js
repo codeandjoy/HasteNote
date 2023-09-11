@@ -12,6 +12,12 @@ export const boardsState = atom({
                     title: "Note",
                     tags: "#start",
                     content: ""
+                },
+                {
+                    id: "2",
+                    title: "Note 2",
+                    tags: "#start #tags",
+                    content: ""
                 }
             ]
         }
@@ -97,7 +103,7 @@ export const activeBoardTagsState = selector({
         const activeBoardId = get(activeBoardIdState);
         
         // return all unique tags present in current active board
-        return [...new Set(boards.find(board => board.id === activeBoardId).notes.map(note => note.tags))];
+        return [...new Set(boards.find(board => board.id === activeBoardId).notes.map(note => note.tags.split(" ")).flat())];
     }
 });
 

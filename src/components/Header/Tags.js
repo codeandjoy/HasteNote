@@ -7,7 +7,7 @@ import "./css/Tags.css";
 
 const Tags = () => {
     const activeBoardTags = useRecoilValue(activeBoardTagsState);
-    
+
     return (
         <div className="board-tags">
             {   
