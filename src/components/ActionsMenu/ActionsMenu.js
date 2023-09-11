@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import ActionBtn from "./ActionBtn";
-import { useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilCallback, useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { actionsMenuOpen } from '../../atoms/UIAtoms';
 import { pageFadeActive } from '../../atoms/UIAtoms';
 import { pageFadeCallback } from '../../atoms/UIAtoms';
@@ -42,11 +42,13 @@ const ActionsMenu = () => {
 
     const setNoteModalAnimationPos = useSetRecoilState(noteModalAnimationPosState);
     const resetNoteModalAnimationPos = useResetRecoilState(noteModalAnimationPosState);
-    const resetNoteModalData = useResetRecoilState(noteModalState);
     const [noteModalOpen, setNoteModalOpen] = useRecoilState(noteModalOpenState);
-    // ! todo data callback
+    const resetNoteModalData = useResetRecoilState(noteModalState);
+    const getNoteModalData = useRecoilCallback(({snapshot}) => async () => {
+        return await snapshot.getPromise(noteModalState);
+    }, []);
     // * Add save action button that will either 'create' or 'edit' 
-    // ! based on NoteModal 'modalAction' (and 'editNoteId') atoms
+    // ! based on NoteModal 'modalAction'
 
 
     return (
@@ -146,8 +148,9 @@ const ActionsMenu = () => {
                             <ActionBtn
                                 type="save"
                                 color="blue"
-                                onClick={() => {
-                                    console.log("Save");
+                                onClick={async () => {
+                                    const modalData = await getNoteModalData();
+                                    console.log(modalData);
                                 }}
                             />
                         </motion.div>
