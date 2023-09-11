@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import uuid from "react-uuid";
 
 export const noteModalOpenState = atom({
     key: "noteModalOpenState",
@@ -14,7 +13,7 @@ export const noteModalAnimationPosState = atom({
 export const noteModalState = atom({
     key: "noteModalState",
     default: {
-        id: uuid(), 
+        id: "",
         title: "",
         tags: "",
         content: ""

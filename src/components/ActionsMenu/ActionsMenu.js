@@ -1,13 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import uuid from 'react-uuid';
 import ActionBtn from "./ActionBtn";
 import { useRecoilCallback, useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { actionsMenuOpen } from '../../atoms/UIAtoms';
 import { pageFadeActive } from '../../atoms/UIAtoms';
 import { pageFadeCallback } from '../../atoms/UIAtoms';
-
-import "./css/ActionsMenu.css";
 import { noteModalAnimationPosState, noteModalOpenState, noteModalState } from '../../atoms/NoteModalAtoms';
 import { activeBoardNotesState } from '../../atoms/DataAtoms';
+
+import "./css/ActionsMenu.css";
 
 const actionBtnHover = { scale: .9 }
 const action_btn_open_variants = {
@@ -152,7 +153,8 @@ const ActionsMenu = () => {
                                 type="save"
                                 color="blue"
                                 onClick={async () => {
-                                    const modalData = await getNoteModalData();
+                                    let modalData = await getNoteModalData();
+                                    if(!modalData.id) modalData = { ...modalData, id: uuid() }; // if note has no initial data (must be created) -> create new id
                                     setActiveBoardNotes(modalData);
 
                                     // Close and reset note modal
