@@ -4,16 +4,18 @@
 
     .action-buttons{
         position: relative;
+        width: 100%;
+        height: 60px;
 
         .brush-btn{
-            position: relative;
             z-index: 2;
         }
 
+        .brush-btn,
         .markdown-note-btn,
-        .quick-note-btn{
+        .quick-note-btn,
+        .save-btn{
             position: absolute;
-            top: 0;
         }
     }
 }

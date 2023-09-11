@@ -4,13 +4,15 @@
 }
 .actions-menu .action-buttons {
   position: relative;
+  width: 100%;
+  height: 60px;
 }
 .actions-menu .action-buttons .brush-btn {
-  position: relative;
   z-index: 2;
 }
+.actions-menu .action-buttons .brush-btn,
 .actions-menu .action-buttons .markdown-note-btn,
-.actions-menu .action-buttons .quick-note-btn {
+.actions-menu .action-buttons .quick-note-btn,
+.actions-menu .action-buttons .save-btn {
   position: absolute;
-  top: 0;
 }/*# sourceMappingURL=ActionsMenu.css.map */

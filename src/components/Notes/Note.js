@@ -1,23 +1,29 @@
 import { useEffect, useRef, useState } from "react";
-import NoteModal from "../NoteModal/NoteModal";
-import { useSetRecoilState } from "recoil";
+import { useResetRecoilState, useSetRecoilState } from "recoil";
 import { pageFadeActive } from "../../atoms/UIAtoms";
 import { pageFadeCallback } from "../../atoms/UIAtoms";
+import { noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
 
 import "./css/Note.css";
 
 
 const Note = ({ note }) => {
     const setPageFadeActive = useSetRecoilState(pageFadeActive);
+    const resetPageFadeActive = useResetRecoilState(pageFadeActive);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
-    const [editModalOpen, setEditModalOpen] = useState(false);
-    
+
+    // ? Refactor into custom hook
+    const setNoteModalAnimationPos = useSetRecoilState(noteModalAnimationPosState);
+    const resetNoteModalAnimationPos = useResetRecoilState(noteModalAnimationPosState);
+    const setNoteModalData = useSetRecoilState(noteModalState);
+    const resetNoteModalData = useResetRecoilState(noteModalState);
+    const setNoteModalOpen = useSetRecoilState(noteModalOpenState);
+    const resetNoteModalOpen = useResetRecoilState(noteModalOpenState);
+
     const [pos, setPos] = useState({x:0, y:0});
     const noteRef = useRef();
     useEffect(() => {
         setPos({
-            // x: noteRef.current.getBoundingClientRect().x,
-            // y: noteRef.current.getBoundingClientRect().y
             x: noteRef.current.offsetLeft,
             y: noteRef.current.offsetTop
         })
@@ -27,11 +33,20 @@ const Note = ({ note }) => {
         <div ref={ noteRef }
             className="note"
             onClick={() => {
-                setEditModalOpen(true);
+                // Open note modal
+                setNoteModalAnimationPos(pos);
+                setNoteModalData(note); // Set initial data
+                setNoteModalOpen(true);
+                //
                 setPageFadeActive(true);
+
                 setPageFadeCallback(()=>()=>{
-                    setEditModalOpen(false);
-                    setPageFadeActive(false);
+                    // Close and reset note modal
+                    resetNoteModalAnimationPos();
+                    resetNoteModalData();
+                    resetNoteModalOpen();
+                    //
+                    resetPageFadeActive(false);
                 });
             }}
         >
@@ -40,15 +55,8 @@ const Note = ({ note }) => {
             <div className="note-line"></div>
             <div className="note-content">{ note.content }</div>
             
-            {/* animate pressence */}
             {/* white overlay */}
             {/* screen fade */}
-            {/* ? screen resize support (change x and y) */}
-            <NoteModal
-                modalOpen={ editModalOpen }
-                initialAnimationPosition={ pos }
-                initialData={ note }
-            />
         </div>
     );
 };

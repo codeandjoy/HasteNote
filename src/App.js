@@ -8,6 +8,7 @@ import { useRecoilValue } from 'recoil';
 import { boardsMenuOpen } from './atoms/UIAtoms';
 
 import './App.css';
+import NoteModal from './components/NoteModal/NoteModal';
 
 const dummyNotes = [
   {
@@ -68,7 +69,9 @@ const App = () => {
         </motion.div>
 
         <BoardsMenu/>
+        <NoteModal/>
       </div>
+
     </div>
   );
 }

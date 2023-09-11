@@ -1,29 +1,22 @@
-import { forwardRef, useImperativeHandle, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
 
 import "./css/NoteModal.css";
 
 
+// ? screen resize support (change x and y)
+const NoteModal = () => {
+    const noteModalAnimationPos = useRecoilValue(noteModalAnimationPosState);
+    const noteModalOpen = useRecoilValue(noteModalOpenState);
+    const [noteModalData, setNoteModalData] = useRecoilState(noteModalState);
 
-const NoteModal = forwardRef(({ modalOpen, initialAnimationPosition, initialData }, ref) => {
-    useImperativeHandle(ref, () => ({
-        createNote(){
-            console.log("Creating new note");
-        },
-        editNote(id){
-            console.log("Editing " + id + " note");
-        }
-    }));
 
-    const [title, setTitle] = useState(initialData?.title || "");
-    const [tags, setTags] = useState(initialData?.tags || "");
-    const [content, setContent] = useState(initialData?.content || "");
-    
     const modalVariants = {
         initial: {
             opacity: 0,
-            top: initialAnimationPosition.y,
-            left: initialAnimationPosition.x,
+            top: noteModalAnimationPos.y,
+            left: noteModalAnimationPos.x,
             translateX: 0,
             translateY: 0
         },
@@ -35,9 +28,11 @@ const NoteModal = forwardRef(({ modalOpen, initialAnimationPosition, initialData
             translateY: "-50%"
         }
     }
+
+
     return (
         <AnimatePresence>
-            { modalOpen &&
+            { noteModalOpen &&
                 <motion.div
                     variants={ modalVariants }
                     initial="initial"
@@ -50,28 +45,27 @@ const NoteModal = forwardRef(({ modalOpen, initialAnimationPosition, initialData
                     <input
                         className="note-modal--inp-title note-title"
                         placeholder="Title"
-                        value={ title }
-                        onChange={ e => setTitle(e.target.value) }
+                        value={ noteModalData.title }
+                        onChange={ e => setNoteModalData(data => ({...data, title: e.target.value})) }
                     />
                     <input
                         className="note-modal--inp-tags note-tags"
                         placeholder="#"
-                        value={ tags }
-                        onChange={ e => setTags(e.target.value) }
+                        value={ noteModalData.tags }
+                        onChange={ e => setNoteModalData(data => ({...data, tags: e.target.value})) }
                     />
                     <div className="note-line"></div>
                     <textarea
                         className="note-modal--inp-content"
                         placeholder="Content"
-                        value={ content }
-                        onChange={ e => setContent(e.target.value) }
+                        value={ noteModalData.content }
+                        onChange={ e => setNoteModalData(data => ({...data, content: e.target.value})) }
                     />
                 </motion.div>
             }
         </AnimatePresence>
-
     )
-});
+};
 
 
 export default NoteModal;
