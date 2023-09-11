@@ -70,7 +70,7 @@ export const activeBoardNotesState = selector({
                         ...board,
                         notes: board.notes.map(note => {
                             if(note.id === newValue.id){
-                                return newValue;
+                                return validateNoteTags(newValue);
                             }
                             return note;
                         })
@@ -85,7 +85,7 @@ export const activeBoardNotesState = selector({
                 if(board.id === activeBoardId){
                     return {
                         ...board,
-                        notes: [newValue, ...board.notes]
+                        notes: [validateNoteTags(newValue), ...board.notes]
                     }
                 }
                 return board;
@@ -106,6 +106,21 @@ export const activeBoardTagsState = selector({
         return [...new Set(boards.find(board => board.id === activeBoardId).notes.map(note => note.tags.split(" ")).flat())];
     }
 });
+
+// ! UTIL
+const validateNoteTags = (note) => {
+    return {
+        ...note,
+        tags: note.tags
+            .split(" ")
+            .map(tag => {
+                if(tag.charAt(0)!== "#") return "#"+tag;
+                return tag;
+            })
+            .join(" ")
+    }
+}
+
 
 // TODO
 // Selector filter by tag
