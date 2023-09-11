@@ -43,18 +43,18 @@ const NoteModal = () => {
                     className="note-modal"
                 >
                     <input
-                        className="note-modal--inp-title note-title"
+                        className="note-modal--inp-title"
                         placeholder="Title"
                         value={ noteModalData.title }
                         onChange={ e => setNoteModalData(data => ({...data, title: e.target.value})) }
                     />
                     <input
-                        className="note-modal--inp-tags note-tags"
+                        className="note-modal--inp-tags"
                         placeholder="#"
                         value={ noteModalData.tags }
                         onChange={ e => setNoteModalData(data => ({...data, tags: e.target.value})) }
                     />
-                    <div className="note-line"></div>
+                    <div className="note-modal--line"></div>
                     <textarea
                         className="note-modal--inp-content"
                         placeholder="Content"

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useResetRecoilState, useSetRecoilState } from "recoil";
 import { pageFadeActive } from "../../atoms/UIAtoms";
 import { pageFadeCallback } from "../../atoms/UIAtoms";

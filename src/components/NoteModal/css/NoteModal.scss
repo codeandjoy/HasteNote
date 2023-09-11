@@ -25,4 +25,24 @@
         
         font-family: Lato, sans-serif;
     }
+
+    .note-modal--inp-title{
+        margin: 0;
+        
+        font-size: 26px;
+        font-weight: bold;
+    }
+    .note-modal--inp-tags{
+        margin-bottom: 6px;
+
+        font-size: 12pt;
+        color: #3f3f3f;
+    }
+    .note-modal--line{
+        margin-bottom: 6px;
+
+        width: 100%;
+        height: 2px;
+        background-color: #adadad;
+    }
 }
