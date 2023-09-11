@@ -43,6 +43,50 @@ export const activeBoardNotesState = selector({
         // if(!activeBoardId) return boards[0].notes;
 
         return boards.find(board => board.id === activeBoardId).notes;
+    },
+    set: ({get, set}, newValue) => {
+        const boards = get(boardsState);
+        const activeBoardId = get(activeBoardIdState);
+
+        // if note id present in current board -> edit
+        // else -> create
+        let newBoards;
+        if(
+            boards
+            .find(board => board.id === activeBoardId)
+            .notes
+            .some(n => n.id === newValue.id)
+        ){
+            // EDIT
+            newBoards = boards.map(board => {
+                if(board.id === activeBoardId){
+                    return {
+                        ...board,
+                        notes: board.notes.map(note => {
+                            if(note.id === newValue.id){
+                                return newValue;
+                            }
+                            return note;
+                        })
+                    }
+                }
+                return board;
+            });
+        }
+        else{
+            // CREATE
+            newBoards = boards.map(board => {
+                if(board.id === activeBoardId){
+                    return {
+                        ...board,
+                        notes: [newValue, ...board.notes]
+                    }
+                }
+                return board;
+            });
+        }
+
+        set(boardsState, newBoards);
     }
 });
 

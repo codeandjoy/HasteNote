@@ -7,6 +7,7 @@ import { pageFadeCallback } from '../../atoms/UIAtoms';
 
 import "./css/ActionsMenu.css";
 import { noteModalAnimationPosState, noteModalOpenState, noteModalState } from '../../atoms/NoteModalAtoms';
+import { activeBoardNotesState } from '../../atoms/DataAtoms';
 
 const actionBtnHover = { scale: .9 }
 const action_btn_open_variants = {
@@ -49,6 +50,8 @@ const ActionsMenu = () => {
     }, []);
     // * Add save action button that will either 'create' or 'edit' 
     // ! based on NoteModal 'modalAction'
+
+    const setActiveBoardNotes = useSetRecoilState(activeBoardNotesState);
 
 
     return (
@@ -150,7 +153,14 @@ const ActionsMenu = () => {
                                 color="blue"
                                 onClick={async () => {
                                     const modalData = await getNoteModalData();
-                                    console.log(modalData);
+                                    setActiveBoardNotes(modalData);
+
+                                    // Close and reset note modal
+                                    resetNoteModalAnimationPos();
+                                    resetNoteModalData();
+                                    setNoteModalOpen(false);
+                                    //
+                                    setPageFadeActive(false);
                                 }}
                             />
                         </motion.div>

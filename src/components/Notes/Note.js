@@ -20,21 +20,17 @@ const Note = ({ note }) => {
     const setNoteModalOpen = useSetRecoilState(noteModalOpenState);
     const resetNoteModalOpen = useResetRecoilState(noteModalOpenState);
 
-    const [pos, setPos] = useState({x:0, y:0});
     const noteRef = useRef();
-    useEffect(() => {
-        setPos({
-            x: noteRef.current.offsetLeft,
-            y: noteRef.current.offsetTop
-        })
-    }, []);
 
     return (
         <div ref={ noteRef }
             className="note"
             onClick={() => {
                 // Open note modal
-                setNoteModalAnimationPos(pos);
+                setNoteModalAnimationPos({
+                    x: noteRef.current.offsetLeft,
+                    y: noteRef.current.offsetTop
+                });
                 setNoteModalData(note); // Set initial data
                 setNoteModalOpen(true);
                 //
