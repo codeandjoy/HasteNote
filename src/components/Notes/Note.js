@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import { useResetRecoilState, useSetRecoilState } from "recoil";
 import { pageFadeActive } from "../../atoms/UIAtoms";
 import { pageFadeCallback } from "../../atoms/UIAtoms";
@@ -6,6 +7,15 @@ import { noteModalAnimationPosState, noteModalOpenState, noteModalState } from "
 
 import "./css/Note.css";
 
+const noteVariants = {
+    initial: { opacity: 0 },
+    animate: {
+        opacity: 1,
+        transition: {
+            duration: 1
+        }
+    }
+}
 
 const Note = ({ note }) => {
     const setPageFadeActive = useSetRecoilState(pageFadeActive);
@@ -23,8 +33,13 @@ const Note = ({ note }) => {
     const noteRef = useRef();
 
     return (
-        <div ref={ noteRef }
+        <motion.div 
+            variants={ noteVariants }
+        
+            ref={ noteRef }
+            
             className="note"
+            
             onClick={() => {
                 // Open note modal
                 setNoteModalAnimationPos({
@@ -53,7 +68,7 @@ const Note = ({ note }) => {
             
             {/* white overlay */}
             {/* screen fade */}
-        </div>
+        </motion.div>
     );
 };
 

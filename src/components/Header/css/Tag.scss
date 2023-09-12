@@ -10,6 +10,10 @@
     border-radius: 10px;
 }
 
+.tag:hover{
+    cursor: pointer;
+}
+
 .tag-active{
     color: #fff;
     background-color: #DD6E42FF;
