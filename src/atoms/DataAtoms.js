@@ -29,7 +29,11 @@ export const activeBoardIdState = atom({
     default: "0"
 });
 
-// ? filter out notes ?
+export const boardFilterTagsState = atom({
+    key: "boardFilterTags",
+    default: []
+});
+
 export const activeBoardState = selector({
     key: "activeBoardState",
     get: ({get}) => {
@@ -91,6 +95,20 @@ export const activeBoardNotesState = selector({
         }
 
         set(boardsState, newBoards);
+    }
+});
+
+export const activeBoardNotesFilteredByTagsState = selector({
+    key: "activeBoardNotesFilteredByTagsState",
+    get: ({get}) => {
+        const activeBoardNotes = get(activeBoardNotesState);
+        const boardFilterTags = get(boardFilterTagsState);
+
+        // if no filter tags -> return all notes
+        if(boardFilterTags.length === 0) return activeBoardNotes;
+
+        // return notes that contain boardFilterTag(s)
+        return activeBoardNotes.filter(note => boardFilterTags.some(filterTag => note.tags.split(" ").includes(filterTag)));
     }
 });
 
