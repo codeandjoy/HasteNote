@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import uuid from 'react-uuid';
 import ActionBtn from "./ActionBtn";
 import { useRecoilCallback, useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
-import { actionsMenuOpen } from '../../atoms/UIAtoms';
+import { actionsMenuOpenState } from '../../atoms/UIAtoms';
 import { pageFadeActiveState } from '../../atoms/UIAtoms';
 import { pageFadeCallbackState } from '../../atoms/UIAtoms';
 import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from '../../atoms/NoteModalAtoms';
@@ -47,7 +47,7 @@ const deleteBtnOpenVariants = {
 
 
 const ActionsMenu = () => {
-    const [isActionsMenuOpen, setActionsMenuOpen] = useRecoilState(actionsMenuOpen);
+    const [isActionsMenuOpen, setActionsMenuOpen] = useRecoilState(actionsMenuOpenState);
 
     const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);

@@ -19,7 +19,7 @@ export const boardsMenuOpenState = atom({
 
 
 
-export const actionsMenuOpen = atom({
+export const actionsMenuOpenState = atom({
     key: "actionsMenuOpen",
     default: false
 });
