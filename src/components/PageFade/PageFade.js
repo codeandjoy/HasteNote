@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { pageFadeActiveState } from "../../atoms/UIAtoms";
-import { pageFadeCallback } from "../../atoms/UIAtoms";
+import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 
 import "./css/PageFade.css";
 
@@ -17,7 +17,7 @@ const fadeVariants = {
 
 const PageFade = () => {
     const pageFadeActive = useRecoilValue(pageFadeActiveState);
-    const clickCallback = useRecoilValue(pageFadeCallback);
+    const clickCallback = useRecoilValue(pageFadeCallbackState);
 
     if(pageFadeActive){
         document.body.style.overflow = "hidden";

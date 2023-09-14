@@ -5,7 +5,7 @@ export const pageFadeActiveState = atom({
     default: false
 });
 
-export const pageFadeCallback = atom({
+export const pageFadeCallbackState = atom({
     key: "pageFadeCallback",
     default: () => () => {}
 });

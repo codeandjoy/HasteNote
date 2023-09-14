@@ -4,7 +4,7 @@ import Boards from "./Boards";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { boardsMenuOpen } from "../../atoms/UIAtoms";
 import { pageFadeActiveState } from "../../atoms/UIAtoms";
-import { pageFadeCallback } from "../../atoms/UIAtoms";
+import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 
 import "./css/BoardsMenu.css";
 
@@ -23,7 +23,7 @@ const BoardsMenu = () => {
     const setBoardsMenuOpen = useSetRecoilState(boardsMenuOpen);
     
     const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
-    const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
+    const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
     
     
     return (

@@ -4,7 +4,7 @@ import ActionBtn from "./ActionBtn";
 import { useRecoilCallback, useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { actionsMenuOpen } from '../../atoms/UIAtoms';
 import { pageFadeActiveState } from '../../atoms/UIAtoms';
-import { pageFadeCallback } from '../../atoms/UIAtoms';
+import { pageFadeCallbackState } from '../../atoms/UIAtoms';
 import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from '../../atoms/NoteModalAtoms';
 import { activeBoardNotesState } from '../../atoms/DataAtoms';
 
@@ -50,7 +50,7 @@ const ActionsMenu = () => {
     const [isActionsMenuOpen, setActionsMenuOpen] = useRecoilState(actionsMenuOpen);
 
     const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
-    const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
+    const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
 
     const setNoteModalAnimationPos = useSetRecoilState(noteModalAnimationPosState);
     const resetNoteModalAnimationPos = useResetRecoilState(noteModalAnimationPosState);
