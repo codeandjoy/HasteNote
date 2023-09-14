@@ -14,6 +14,10 @@ const noteVariants = {
         transition: {
             duration: 1
         }
+    },
+    exit: {
+        opacity: 0,
+        scale: .5
     }
 }
 
@@ -35,11 +39,15 @@ const Note = ({ note }) => {
     return (
         <motion.div 
             variants={ noteVariants }
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            layout
         
             ref={ noteRef }
             
             className="note"
-            
+
             onClick={() => {
                 // Open note modal
                 setNoteModalAnimationPos({

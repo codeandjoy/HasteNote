@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { activeBoardNotesFilteredByTagsState } from "../../atoms/DataAtoms";
 import Note from "./Note";
@@ -28,11 +28,13 @@ const Notes = () => {
             className="notes-container"
         >
             <div className="notes">
-                {
-                    activeBoardNotesFilteredByTags.map(note => 
-                        <Note key={ note.id } note={ note }/>    
-                    )
-                }
+                <AnimatePresence>
+                    {
+                        activeBoardNotesFilteredByTags.map(note => 
+                            <Note key={ note.id } note={ note }/>    
+                        )
+                    }
+                </AnimatePresence>
             </div>
         </motion.div>
     )
