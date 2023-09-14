@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useResetRecoilState, useSetRecoilState } from "recoil";
-import { pageFadeActive } from "../../atoms/UIAtoms";
+import { pageFadeActiveState } from "../../atoms/UIAtoms";
 import { pageFadeCallback } from "../../atoms/UIAtoms";
 import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
 
@@ -22,8 +22,7 @@ const noteVariants = {
 }
 
 const Note = ({ note }) => {
-    const setPageFadeActive = useSetRecoilState(pageFadeActive);
-    const resetPageFadeActive = useResetRecoilState(pageFadeActive);
+    const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
 
     // ? Refactor into custom hook
@@ -69,7 +68,7 @@ const Note = ({ note }) => {
                     resetNoteModalAction();
                     resetNoteModalOpen();
                     //
-                    resetPageFadeActive(false);
+                    setPageFadeActive(false);
                 });
             }}
         >

@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const pageFadeActive = atom({
+export const pageFadeActiveState = atom({
     key: "pageFadeActive",
     default: false
 });

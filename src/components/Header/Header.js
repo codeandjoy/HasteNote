@@ -2,7 +2,7 @@ import PlainBtn from "../PlainBtn/PlainBtn"
 import Tags from "./Tags";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { boardsMenuOpen } from "../../atoms/UIAtoms";
-import { pageFadeActive } from "../../atoms/UIAtoms";
+import { pageFadeActiveState } from "../../atoms/UIAtoms";
 import { pageFadeCallback } from "../../atoms/UIAtoms";
 import { activeBoardState } from "../../atoms/DataAtoms";
 
@@ -15,7 +15,7 @@ const Header = () => {
     const isBoardsMenuOpen = useRecoilValue(boardsMenuOpen);
     const setBoardsMenuOpen = useSetRecoilState(boardsMenuOpen);
 
-    const setPageFadeActive = useSetRecoilState(pageFadeActive);
+    const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallback);
 
     
