@@ -9,6 +9,9 @@ export const noteModalAnimationPosState = atom({
     key: "noteModalAnimationPosState",
     default: {x:0, y:0}
 });
+// TODO
+// noteModalEnterAnimationPos
+// noteModalExitAnimationPos
 
 export const noteModalState = atom({
     key: "noteModalState",

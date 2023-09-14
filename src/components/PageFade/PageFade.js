@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { pageFadeActive } from "../../atoms/UIAtoms";
 import { pageFadeCallback } from "../../atoms/UIAtoms";
@@ -20,14 +19,12 @@ const PageFade = () => {
     const isActive = useRecoilValue(pageFadeActive);
     const clickCallback = useRecoilValue(pageFadeCallback);
 
-    useEffect(() => {
-        if(isActive){
-            document.body.style.overflow = "hidden";
-        }
-        else{
-            document.body.style.overflow = "visible";
-        }
-    }); 
+    if(isActive){
+        document.body.style.overflow = "hidden";
+    }
+    else{
+        document.body.style.overflow = "visible";
+    }
 
     return (
         <AnimatePresence>
