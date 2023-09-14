@@ -5,6 +5,7 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  color: #adadad;
   background-color: rgba(0, 0, 0, 0.3019607843);
   border-radius: 10px;
 }

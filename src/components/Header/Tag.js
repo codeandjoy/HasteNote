@@ -7,7 +7,7 @@ import "./css/Tag.css";
 const Tag = ({ tag }) => {
     const [filterTags, setFilterTags] = useRecoilState(boardFilterTagsState);
 
-    const classNames = "tag txt-faded-white" + (filterTags.includes(tag) ? " tag-active" : "");
+    const classNames = "tag" + (filterTags.includes(tag) ? " tag-active" : "");
 
     return (
         <div 
