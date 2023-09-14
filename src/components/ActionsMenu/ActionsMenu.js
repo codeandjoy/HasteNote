@@ -7,9 +7,9 @@ import { pageFadeActiveState } from '../../atoms/UIAtoms';
 import { pageFadeCallbackState } from '../../atoms/UIAtoms';
 import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from '../../atoms/NoteModalAtoms';
 import { activeBoardNotesState } from '../../atoms/DataAtoms';
+import { validateNoteTags } from '../../utils/utils';
 
 import "./css/ActionsMenu.css";
-import { validateNoteTags } from '../../utils/utils';
 
 const actionBtnHover = { scale: .9 }
 const action_btn_open_variants = {
@@ -54,14 +54,15 @@ const ActionsMenu = () => {
 
     const setNoteModalAnimationPos = useSetRecoilState(noteModalAnimationPosState);
     const resetNoteModalAnimationPos = useResetRecoilState(noteModalAnimationPosState);
+
     const [noteModalOpen, setNoteModalOpen] = useRecoilState(noteModalOpenState);
+    
     const [noteModalAction, setNoteModalAction] = useRecoilState(noteModalActionState);
-    const resetNoteModalData = useResetRecoilState(noteModalState);
+    
     const getNoteModalData = useRecoilCallback(({snapshot}) => async () => {
         return await snapshot.getPromise(noteModalState);
     }, []);
-    // * Add save action button that will either 'create' or 'edit' 
-    // ! based on NoteModal 'modalAction'
+    const resetNoteModalData = useResetRecoilState(noteModalState);
 
     const setActiveBoardNotes = useSetRecoilState(activeBoardNotesState);
 
@@ -132,8 +133,10 @@ const ActionsMenu = () => {
                                         setNoteModalAction("create");
                                         setNoteModalOpen(true);
                                         //
+
                                         setPageFadeActive(true);
                                         setActionsMenuOpen(false);
+                                        
                                         setPageFadeCallback(() => () => {
                                             // Close and reset note modal
                                             resetNoteModalAnimationPos();
@@ -141,6 +144,7 @@ const ActionsMenu = () => {
                                             setNoteModalAction("create"); //reset to default
                                             setNoteModalOpen(false);
                                             //
+
                                             setPageFadeActive(false);
                                         });
                                     }}    
@@ -176,6 +180,7 @@ const ActionsMenu = () => {
                                             setNoteModalAction("create"); // reset to default
                                             setNoteModalOpen(false);
                                             //
+
                                             setPageFadeActive(false);
                                             }}
                                     />
@@ -195,7 +200,9 @@ const ActionsMenu = () => {
                                     color="blue"
                                     onClick={async () => {
                                         let modalData = await getNoteModalData();
-                                        if(!modalData.id) modalData = { ...modalData, id: uuid() }; // if note has no initial data (must be created) -> create new id
+                                        
+                                        // if note has no initial data (must be created) -> create new id
+                                        if(!modalData.id) modalData = { ...modalData, id: uuid() };
 
                                         setActiveBoardNotes(oldActiveNotes => {
                                             // If note already exists -> edit
@@ -219,6 +226,7 @@ const ActionsMenu = () => {
                                         setNoteModalAction("create"); // reset to default
                                         setNoteModalOpen(false);
                                         //
+
                                         setPageFadeActive(false);
                                     }}
                                 />
