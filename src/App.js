@@ -4,38 +4,11 @@ import Notes from './components/Notes/Notes';
 import ActionsMenu from './components/ActionsMenu/ActionsMenu';
 import BoardsMenu from './components/BoardsMenu/BoardsMenu';
 import PageFade from './components/PageFade/PageFade';
+import NoteModal from './components/NoteModal/NoteModal';
 import { useRecoilValue } from 'recoil';
 import { boardsMenuOpen } from './atoms/UIAtoms';
 
 import './App.css';
-import NoteModal from './components/NoteModal/NoteModal';
-
-const dummyNotes = [
-  {
-    id: "1",
-    title: "Lorem ipsum",
-    tags: "#work #school",
-    content: "Lorem ipsum dolor sit amet consectetur. At semper vel egestas lectus leo facilisi in feugiat nunc. Tempor id tempor viverra eget aliquet est. Quis vitae sapien elementum amet vel et proin. Nisi quis tellus non ac condimentum massa eu."
-  },
-  {
-    id: "2",
-    title: "Lorem ipsum",
-    tags: "#work #school",
-    content: "Lorem ipsum dolor sit amet consectetur. At semper vel egestas lectus leo facilisi in feugiat nunc. Tempor id tempor viverra eget aliquet est. Quis vitae sapien elementum amet vel et proin. Nisi quis tellus non ac condimentum massa eu."
-  },
-  {
-    id: "3",
-    title: "Lorem ipsum",
-    tags: "#work #school",
-    content: "Lorem ipsum dolor sit amet consectetur. At semper vel egestas lectus leo facilisi in feugiat nunc. Tempor id tempor viverra eget aliquet est. Quis vitae sapien elementum amet vel et proin. Nisi quis tellus non ac condimentum massa eu."
-  },
-  {
-    id: "4",
-    title: "Lorem ipsum",
-    tags: "#work #school",
-    content: "Lorem ipsum dolor sit amet consectetur. At semper vel egestas lectus leo facilisi in feugiat nunc. Tempor id tempor viverra eget aliquet est. Quis vitae sapien elementum amet vel et proin. Nisi quis tellus non ac condimentum massa eu."
-  }
-]
 
 
 const App = () => {
@@ -62,7 +35,7 @@ const App = () => {
           }
         >
           <Header/>
-          <Notes notes={ dummyNotes }/>
+          <Notes/>
           { !isBoardsMenuOpen &&
             <ActionsMenu/>
           }
