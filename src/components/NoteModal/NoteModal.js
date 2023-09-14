@@ -5,12 +5,10 @@ import { noteModalAnimationPosState, noteModalOpenState, noteModalState } from "
 import "./css/NoteModal.css";
 
 
-// ? screen resize support (change x and y)
 const NoteModal = () => {
     const noteModalAnimationPos = useRecoilValue(noteModalAnimationPosState);
     const noteModalOpen = useRecoilValue(noteModalOpenState);
     const [noteModalData, setNoteModalData] = useRecoilState(noteModalState);
-
 
     const modalVariants = {
         initial: {
@@ -29,7 +27,6 @@ const NoteModal = () => {
         },
         // TODO add exit state with custom animation pos (top, left)
     }
-
 
     return (
         <AnimatePresence>
