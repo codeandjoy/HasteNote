@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import PlainBtn from "../PlainBtn/PlainBtn";
 import Boards from "./Boards";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { boardsMenuOpenState } from "../../atoms/UIAtoms";
 import { pageFadeActiveState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
@@ -18,11 +18,12 @@ const boardMenuVariants = {
     }
 }
 
+
 const BoardsMenu = () => {
     const [boardsMenuOpen, setBoardsMenuOpen] = useRecoilState(boardsMenuOpenState);
 
     const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
-    const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
+    const resetPageFadeCallback = useResetRecoilState(pageFadeCallbackState);
     
     return (
         <AnimatePresence>
@@ -41,7 +42,7 @@ const BoardsMenu = () => {
                             onClick={() => {
                                 setBoardsMenuOpen(false);
                                 setPageFadeActive(false);
-                                setPageFadeCallback(() => () => {});
+                                resetPageFadeCallback();
                             }}
                             className="btn-close-menu"
                         />
