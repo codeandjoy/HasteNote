@@ -12,7 +12,7 @@ export const pageFadeCallbackState = atom({
 
 
 
-export const boardsMenuOpen = atom({
+export const boardsMenuOpenState = atom({
     key: "boardsMenuOpen",
     default: false
 });

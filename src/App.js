@@ -6,13 +6,13 @@ import ActionsMenu from './components/ActionsMenu/ActionsMenu';
 import BoardsMenu from './components/BoardsMenu/BoardsMenu';
 import PageFade from './components/PageFade/PageFade';
 import NoteModal from './components/NoteModal/NoteModal';
-import { boardsMenuOpen } from './atoms/UIAtoms';
+import { boardsMenuOpenState } from './atoms/UIAtoms';
 
 import './App.css';
 
 
 const App = () => {
-  const isBoardsMenuOpen = useRecoilValue(boardsMenuOpen);
+  const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
   return (
     <div className="App">
