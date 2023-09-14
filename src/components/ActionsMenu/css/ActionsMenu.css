@@ -13,6 +13,7 @@
 .actions-menu .action-buttons .brush-btn,
 .actions-menu .action-buttons .markdown-note-btn,
 .actions-menu .action-buttons .quick-note-btn,
-.actions-menu .action-buttons .save-btn {
+.actions-menu .action-buttons .save-btn,
+.actions-menu .action-buttons .delete-btn {
   position: absolute;
 }/*# sourceMappingURL=ActionsMenu.css.map */

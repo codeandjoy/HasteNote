@@ -56,45 +56,18 @@ export const activeBoardNotesState = selector({
         const boards = get(boardsState);
         const activeBoardId = get(activeBoardIdState);
 
-        // if note id present in current board -> edit
-        // else -> create
-        let newBoards;
-        if(
-            boards
-            .find(board => board.id === activeBoardId)
-            .notes
-            .some(n => n.id === newValue.id)
-        ){
-            // EDIT
-            newBoards = boards.map(board => {
+        set(
+            boardsState,
+            boards.map(board => {
                 if(board.id === activeBoardId){
                     return {
                         ...board,
-                        notes: board.notes.map(note => {
-                            if(note.id === newValue.id){
-                                return validateNoteTags(newValue);
-                            }
-                            return note;
-                        })
+                        notes: newValue
                     }
                 }
                 return board;
-            });
-        }
-        else{
-            // CREATE
-            newBoards = boards.map(board => {
-                if(board.id === activeBoardId){
-                    return {
-                        ...board,
-                        notes: [validateNoteTags(newValue), ...board.notes]
-                    }
-                }
-                return board;
-            });
-        }
-
-        set(boardsState, newBoards);
+            })
+        )
     }
 });
 
@@ -122,24 +95,3 @@ export const activeBoardTagsState = selector({
         return [...new Set(boards.find(board => board.id === activeBoardId).notes.map(note => note.tags.split(" ")).flat())];
     }
 });
-
-// ! UTIL
-const validateNoteTags = (note) => {
-    return {
-        ...note,
-        tags: note.tags
-            .split(" ")
-            .map(tag => {
-                if(tag.charAt(0)!== "#") return "#"+tag;
-                return tag;
-            })
-            .join(" ")
-    }
-}
-
-
-// TODO
-// Selector filter by tag
-//
-// activeBoardNotesFilteredByTags : 
-//      get(activeBoard) 

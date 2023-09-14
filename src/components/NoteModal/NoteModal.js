@@ -26,7 +26,8 @@ const NoteModal = () => {
             left: "50%",
             translateX: "-50%",
             translateY: "-50%"
-        }
+        },
+        // TODO add exit state with custom animation pos (top, left)
     }
 
 

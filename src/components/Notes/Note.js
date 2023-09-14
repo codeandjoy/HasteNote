@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useResetRecoilState, useSetRecoilState } from "recoil";
 import { pageFadeActive } from "../../atoms/UIAtoms";
 import { pageFadeCallback } from "../../atoms/UIAtoms";
-import { noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
+import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
 
 import "./css/Note.css";
 
@@ -31,6 +31,8 @@ const Note = ({ note }) => {
     const resetNoteModalAnimationPos = useResetRecoilState(noteModalAnimationPosState);
     const setNoteModalData = useSetRecoilState(noteModalState);
     const resetNoteModalData = useResetRecoilState(noteModalState);
+    const setNoteModalAction = useSetRecoilState(noteModalActionState);
+    const resetNoteModalAction = useResetRecoilState(noteModalActionState);
     const setNoteModalOpen = useSetRecoilState(noteModalOpenState);
     const resetNoteModalOpen = useResetRecoilState(noteModalOpenState);
 
@@ -55,6 +57,7 @@ const Note = ({ note }) => {
                     y: noteRef.current.offsetTop
                 });
                 setNoteModalData(note); // Set initial data
+                setNoteModalAction("edit");
                 setNoteModalOpen(true);
                 //
                 setPageFadeActive(true);
@@ -63,6 +66,7 @@ const Note = ({ note }) => {
                     // Close and reset note modal
                     resetNoteModalAnimationPos();
                     resetNoteModalData();
+                    resetNoteModalAction();
                     resetNoteModalOpen();
                     //
                     resetPageFadeActive(false);

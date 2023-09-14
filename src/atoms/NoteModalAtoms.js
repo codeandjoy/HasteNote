@@ -20,7 +20,7 @@ export const noteModalState = atom({
     }
 });
 
-export const noteModalActionTypeState = atom({
+export const noteModalActionState = atom({
     key: "noteModalActionState",
-    default: ""
+    default: "create" // create || edit
 });
