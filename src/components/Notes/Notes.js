@@ -7,12 +7,7 @@ import "./css/Notes.css";
 
 const notesVariants = {
     initial: { opacity: 0 },
-    animate: {
-        opacity: 1,
-        transition: {
-            staggerChildren: .1
-        }
-    }
+    animate: { opacity: 1 }
 }
 
 

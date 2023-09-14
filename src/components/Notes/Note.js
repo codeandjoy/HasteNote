@@ -25,13 +25,15 @@ const Note = ({ note }) => {
     const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
 
-    // ? Refactor into custom hook
     const setNoteModalAnimationPos = useSetRecoilState(noteModalAnimationPosState);
     const resetNoteModalAnimationPos = useResetRecoilState(noteModalAnimationPosState);
+
     const setNoteModalData = useSetRecoilState(noteModalState);
     const resetNoteModalData = useResetRecoilState(noteModalState);
+
     const setNoteModalAction = useSetRecoilState(noteModalActionState);
     const resetNoteModalAction = useResetRecoilState(noteModalActionState);
+
     const setNoteModalOpen = useSetRecoilState(noteModalOpenState);
     const resetNoteModalOpen = useResetRecoilState(noteModalOpenState);
 
@@ -76,9 +78,6 @@ const Note = ({ note }) => {
             <div className="note-tags"><span>{ note.tags }</span></div>
             <div className="note-line"></div>
             <div className="note-content">{ note.content }</div>
-            
-            {/* white overlay */}
-            {/* screen fade */}
         </motion.div>
     );
 };
