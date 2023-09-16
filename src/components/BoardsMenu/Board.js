@@ -1,7 +1,17 @@
 import { useRecoilState } from "recoil";
 import { activeBoardIdState } from "../../atoms/DataAtoms";
+import { motion } from "framer-motion"; 
 
 import "./css/Board.css";
+
+const boardVariants = {
+    initial: {
+        opacity: 0
+    },
+    animate: {
+        opacity: 1
+    }
+}
 
 
 const Board = ({ board }) => {
@@ -10,7 +20,12 @@ const Board = ({ board }) => {
     const classNames = "board"+(activeBoardId===board.id ? " board-active":"");
 
     return (
-        <div
+        <motion.div
+            variants={ boardVariants }
+            initial="initial"
+            animate="animate"
+            exit="initial"
+        
             onClick={() => {
                 setActiveBoardId(board.id);
             }}
@@ -18,7 +33,7 @@ const Board = ({ board }) => {
             className={ classNames }
         >
             <span className="board-name">{ board.name }</span>
-        </div>
+        </motion.div>
     );
 };
 
