@@ -1,25 +1,25 @@
 import { atom } from "recoil";
 
 export const pageFadeActiveState = atom({
-    key: "pageFadeActive",
+    key: "pageFadeActiveState",
     default: false
 });
 
 export const pageFadeCallbackState = atom({
-    key: "pageFadeCallback",
+    key: "pageFadeCallbackState",
     default: () => () => {}
 });
 
 
 
 export const boardsMenuOpenState = atom({
-    key: "boardsMenuOpen",
+    key: "boardsMenuOpenState",
     default: false
 });
 
 
 
 export const actionsMenuOpenState = atom({
-    key: "actionsMenuOpen",
+    key: "actionsMenuOpenState",
     default: false
 });
