@@ -20,6 +20,18 @@ export const boardsState = atom({
                     content: ""
                 }
             ]
+        },
+        {
+            id: "3",
+            name: "Board 2",
+            notes: [
+                {
+                    id: "4",
+                    title: "Board 2 note",
+                    tags: "#start",
+                    content: ""
+                }
+            ]
         }
     ]
 });

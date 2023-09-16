@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const pageFadeActiveState = atom({
     key: "pageFadeActiveState",
-    default: false
+    default: true
 });
 
 export const pageFadeCallbackState = atom({
@@ -14,7 +14,7 @@ export const pageFadeCallbackState = atom({
 
 export const boardsMenuOpenState = atom({
     key: "boardsMenuOpenState",
-    default: false
+    default: true
 });
 
 

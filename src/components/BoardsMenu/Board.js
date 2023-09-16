@@ -1,16 +1,22 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { activeBoardIdState } from "../../atoms/DataAtoms";
 
 import "./css/Board.css";
 
 
 const Board = ({ board }) => {
-    const activeBoardId = useRecoilValue(activeBoardIdState);
+    const [activeBoardId, setActiveBoardId] = useRecoilState(activeBoardIdState);
 
     const classNames = "board"+(activeBoardId===board.id ? " board-active":"");
 
     return (
-        <div className={ classNames }>
+        <div
+            onClick={() => {
+                setActiveBoardId(board.id);
+            }}
+        
+            className={ classNames }
+        >
             <span className="board-name">{ board.name }</span>
         </div>
     );
