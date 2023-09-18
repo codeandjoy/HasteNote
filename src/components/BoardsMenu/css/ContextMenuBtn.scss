@@ -1,0 +1,11 @@
+.context-menu-btn{
+    padding: 10px 20px;
+
+    .context-menu-btn--text{
+        color: #fff;
+    }
+}
+.context-menu-btn:hover{
+    cursor: pointer;
+    background-color: #000;
+}
