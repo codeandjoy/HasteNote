@@ -44,7 +44,7 @@ const Board = ({ board }) => {
             variants={ boardVariants }
             initial="initial"
             animate="animate"
-            exit="initial"
+            layout
         
             onClick={() => {
                 setActiveBoardId(board.id);
