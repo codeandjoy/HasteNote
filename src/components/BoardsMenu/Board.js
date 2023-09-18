@@ -71,6 +71,7 @@ const Board = ({ board }) => {
             <AnimatePresence>
                 { contextMenuOpen &&
                     <BoardContextMenu
+                        onClickOutside={() => { setContextMenuOpen(false); }}
                         onEdit={() => {}}
                         onDelete={async () => {
                             if(activeBoardId === board.id){
