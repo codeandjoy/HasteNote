@@ -6,7 +6,7 @@ import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { boardsMenuOpenState } from "../../atoms/UIAtoms";
 import { pageFadeActiveState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
-import { boardsState } from "../../atoms/DataAtoms";
+import { activeBoardIdState, boardsState } from "../../atoms/DataAtoms";
 
 import "./css/BoardsMenu.css";
 
@@ -23,7 +23,8 @@ const boardMenuVariants = {
 
 const BoardsMenu = () => {
     const [boardsMenuOpen, setBoardsMenuOpen] = useRecoilState(boardsMenuOpenState);
-    const setBoards = useSetRecoilState(boardsState);
+    const [boards, setBoards] = useRecoilState(boardsState);
+    const setActiveBoardId = useSetRecoilState(activeBoardIdState);
 
     const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
     const resetPageFadeCallback = useResetRecoilState(pageFadeCallbackState);
@@ -53,10 +54,15 @@ const BoardsMenu = () => {
                         <PlainBtn
                             type="plus"
                             onClick={()=>{
-                                setBoards(oldBoards => 
+                                const newId = uuid();
+
+                                // If creating first board
+                                if(!boards.length) setActiveBoardId(newId);
+
+                                setBoards(oldBoards =>
                                     [
                                         {
-                                            id: uuid(),
+                                            id: newId,
                                             name: "Board",
                                             notes: []
                                         },

@@ -65,7 +65,10 @@ export const activeBoardNotesState = selector({
         const boards = get(boardsState);
         const activeBoardId = get(activeBoardIdState);
         
-        return boards.find(board => board.id === activeBoardId).notes;
+        if(boards.length){
+            return boards.find(board => board.id === activeBoardId).notes;
+        }
+        return [];
     },
     set: ({get, set}, newValue) => {
         const boards = get(boardsState);
