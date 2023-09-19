@@ -6,8 +6,8 @@
 .data-placeholder .data-placeholder--text {
   position: absolute;
   top: 40%;
-  left: 40%;
-  transform: translate(-40%, -40%);
+  left: 50%;
+  transform: translate(-50%, -40%);
 }
 .data-placeholder .data-placeholder--logo-container {
   width: 300px;
