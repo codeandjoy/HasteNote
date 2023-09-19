@@ -1,10 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
+import uuid from "react-uuid";
 import PlainBtn from "../PlainBtn/PlainBtn";
 import Boards from "./Boards";
 import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { boardsMenuOpenState } from "../../atoms/UIAtoms";
 import { pageFadeActiveState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
+import { boardsState } from "../../atoms/DataAtoms";
 
 import "./css/BoardsMenu.css";
 
@@ -21,6 +23,7 @@ const boardMenuVariants = {
 
 const BoardsMenu = () => {
     const [boardsMenuOpen, setBoardsMenuOpen] = useRecoilState(boardsMenuOpenState);
+    const setBoards = useSetRecoilState(boardsState);
 
     const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
     const resetPageFadeCallback = useResetRecoilState(pageFadeCallbackState);
@@ -49,7 +52,18 @@ const BoardsMenu = () => {
                         <span className="boards-pane-title">Boards</span>
                         <PlainBtn
                             type="plus"
-                            onClick={()=>{}}
+                            onClick={()=>{
+                                setBoards(oldBoards => 
+                                    [
+                                        {
+                                            id: uuid(),
+                                            name: "Board",
+                                            notes: []
+                                        },
+                                        ...oldBoards
+                                    ]
+                                )
+                            }}
                             className="btn-add-board"
                         />
                         <Boards/>
