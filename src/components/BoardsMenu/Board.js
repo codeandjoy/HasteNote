@@ -6,6 +6,7 @@ import BoardContextMenu from "./BoardContextMenu";
 import PlainBtn from "../PlainBtn/PlainBtn";
 
 import "./css/Board.css";
+import EditableText from "./EditableText";
 
 const boardVariants = {
     initial: {
@@ -26,6 +27,8 @@ const Board = ({ board }) => {
 
     const [hoverHighlight, setHoverHiglight] = useState(false);
     const [contextMenuOpen, setContextMenuOpen] = useState(false);
+    const [isEditMode, setIsEditMode] = useState(false);
+    // Edit mode state thats changed by context menu edit action
 
     // TODO
     // contextMenuOpen opens contextmenu
@@ -55,7 +58,24 @@ const Board = ({ board }) => {
         
             className={ classNames }
         >
-            <span className="board-name">{ board.name }</span>
+            {/* <span className="board-name">{ board.name }</span> */}
+            <EditableText
+                className="board-name"
+
+                trueState={ board.name }
+                onCommit={(inputState) => {
+                    setBoards(oldBoards => {
+                        return oldBoards.map(oldBoard => {
+                            if(oldBoard.id === board.id){
+                                return {...board, name: inputState};
+                            }
+                            return oldBoard;
+                        })
+                    });
+                    setIsEditMode(false);
+                }}
+                isEditMode={ isEditMode }
+            />
 
             { hoverHighlight &&
                 <PlainBtn
@@ -72,7 +92,10 @@ const Board = ({ board }) => {
                 { contextMenuOpen &&
                     <BoardContextMenu
                         onClickOutside={() => { setContextMenuOpen(false); }}
-                        onEdit={() => {}}
+                        onEdit={() => {
+                            setIsEditMode(true);
+                            setContextMenuOpen(false);
+                        }}
                         onDelete={async () => {
                             if(activeBoardId === board.id){
                                 // Set first board in the array as active

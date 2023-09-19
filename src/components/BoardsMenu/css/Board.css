@@ -12,6 +12,16 @@
 .board .board-name {
   color: #ADADAD;
 }
+.board input.board-name {
+  padding: 0;
+  background-color: transparent;
+  font-size: 12pt;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #ADADAD;
+  margin-bottom: -2px;
+  box-sizing: border-box;
+}
 .board .btn-menu-dots {
   display: flex;
   align-items: center;
