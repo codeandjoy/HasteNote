@@ -98,10 +98,16 @@ const Board = ({ board }) => {
                         }}
                         onDelete={async () => {
                             if(activeBoardId === board.id){
-                                // Set first board in the array as active
-                                // ! Bug - can't find if no boards in the array !
-                                const nextActiveId = (await getAllBoards()).find(b => b.id !== activeBoardId).id;
-                                setActiveBoardId(nextActiveId);
+                                const allBoards = await getAllBoards();
+                                
+                                if(allBoards.length > 1){
+                                    // Set first board in the array as active
+                                    const nextActiveId = allBoards.find(b => b.id !== activeBoardId).id;
+                                    setActiveBoardId(nextActiveId);
+                                }
+                                else{
+                                    setActiveBoardId(0);
+                                }
                             }
                             setBoards(oldBoards => oldBoards.filter(b => b.id !== board.id));
                         }}
