@@ -32,5 +32,7 @@
   rotate: -45deg;
 }
 .data-placeholder .notes-direction-arrow {
-  border-style: dashed;
+  bottom: 60px;
+  right: 70px;
+  rotate: 45deg;
 }/*# sourceMappingURL=DataPlaceholder.css.map */

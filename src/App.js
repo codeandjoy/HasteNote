@@ -45,9 +45,7 @@ const App = () => {
             </>
           }
           { !!!boards.length &&
-            <DataPlaceholder
-              type="boards"
-            />
+            <DataPlaceholder type="boards"/>
           }
         </motion.div>
 

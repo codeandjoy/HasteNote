@@ -4,6 +4,7 @@ import { activeBoardNotesFilteredByTagsState } from "../../atoms/DataAtoms";
 import Note from "./Note";
 
 import "./css/Notes.css";
+import DataPlaceholder from "../DataPlaceholder/DataPlaceholder";
 
 const notesVariants = {
     initial: { opacity: 0 },
@@ -14,6 +15,8 @@ const notesVariants = {
 const Notes = () => {
     const activeBoardNotesFilteredByTags = useRecoilValue(activeBoardNotesFilteredByTagsState);
 
+    console.log(activeBoardNotesFilteredByTags);
+
     return (
         <motion.div 
             variants={ notesVariants }
@@ -22,15 +25,20 @@ const Notes = () => {
         
             className="notes-container"
         >
-            <div className="notes">
-                <AnimatePresence>
-                    {
-                        activeBoardNotesFilteredByTags.map(note => 
-                            <Note key={ note.id } note={ note }/>    
-                        )
-                    }
-                </AnimatePresence>
-            </div>
+            { !!activeBoardNotesFilteredByTags.length &&
+                <div className="notes">
+                    <AnimatePresence>
+                        {
+                            activeBoardNotesFilteredByTags.map(note => 
+                                <Note key={ note.id } note={ note }/>    
+                            )
+                        }
+                    </AnimatePresence>
+                </div>
+            }
+            { !!!activeBoardNotesFilteredByTags.length &&
+                <DataPlaceholder type="notes"/>
+            }
         </motion.div>
     )
 };
