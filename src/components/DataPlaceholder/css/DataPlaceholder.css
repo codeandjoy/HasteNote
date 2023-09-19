@@ -1,0 +1,36 @@
+.data-placeholder {
+  position: relative;
+  height: 100%;
+}
+.data-placeholder .data-placeholder--logo-container,
+.data-placeholder .data-placeholder--text {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  transform: translate(-40%, -40%);
+}
+.data-placeholder .data-placeholder--logo-container {
+  width: 300px;
+  height: 300px;
+}
+.data-placeholder .data-placeholder--text {
+  text-align: center;
+  width: 100%;
+  font-size: 70pt;
+  font-family: Lato, sans-serif;
+  font-weight: bold;
+  color: #fff;
+}
+.data-placeholder .direction-arrow {
+  position: absolute;
+  width: 100px;
+  height: 20px;
+}
+.data-placeholder .boards-direction-arrow {
+  top: 10px;
+  right: 40px;
+  rotate: -45deg;
+}
+.data-placeholder .notes-direction-arrow {
+  border-style: dashed;
+}/*# sourceMappingURL=DataPlaceholder.css.map */

@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <div className="board-header">
             <div>
-                <span className="board-name txt-faded-white">{ activeBoard.name }</span>
+                <span className="board-name txt-faded-white">{ activeBoard?.name }</span>
                 <Tags/>
             </div>
             <div>

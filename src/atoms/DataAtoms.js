@@ -3,36 +3,36 @@ import { atom, selector } from "recoil";
 export const boardsState = atom({
     key: "boardsState",
     default: [
-        {
-            id: "0",
-            name: "Board",
-            notes: [
-                {
-                    id: "1",
-                    title: "Note",
-                    tags: "#start",
-                    content: ""
-                },
-                {
-                    id: "2",
-                    title: "Note 2",
-                    tags: "#start #tags",
-                    content: ""
-                }
-            ]
-        },
-        {
-            id: "3",
-            name: "Board 2",
-            notes: [
-                {
-                    id: "4",
-                    title: "Board 2 note",
-                    tags: "#start",
-                    content: ""
-                }
-            ]
-        }
+        // {
+        //     id: "0",
+        //     name: "Board",
+        //     notes: [
+        //         {
+        //             id: "1",
+        //             title: "Note",
+        //             tags: "#start",
+        //             content: ""
+        //         },
+        //         {
+        //             id: "2",
+        //             title: "Note 2",
+        //             tags: "#start #tags",
+        //             content: ""
+        //         }
+        //     ]
+        // },
+        // {
+        //     id: "3",
+        //     name: "Board 2",
+        //     notes: [
+        //         {
+        //             id: "4",
+        //             title: "Board 2 note",
+        //             tags: "#start",
+        //             content: ""
+        //         }
+        //     ]
+        // }
     ]
 });
 
@@ -52,7 +52,10 @@ export const activeBoardState = selector({
         const boards = get(boardsState);
         const activeBoardId = get(activeBoardIdState);
 
-        return boards.find(board => board.id === activeBoardId);
+        if(boards.length){
+            return boards.find(board => board.id === activeBoardId);
+        }
+        return null;
     }
 });
 
@@ -103,7 +106,10 @@ export const activeBoardTagsState = selector({
         const boards = get(boardsState);
         const activeBoardId = get(activeBoardIdState);
         
-        // return all unique tags present in current active board
-        return [...new Set(boards.find(board => board.id === activeBoardId).notes.map(note => note.tags.split(" ")).flat())];
+        if(boards.length){
+            // return all unique tags present in current active board
+            return [...new Set(boards.find(board => board.id === activeBoardId).notes.map(note => note.tags.split(" ")).flat())];
+        }
+        return null;
     }
 });

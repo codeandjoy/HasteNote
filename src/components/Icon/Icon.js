@@ -1,11 +1,11 @@
 import './css/Icon.css';
 
 
-const Icon = ({ type }) => {
-    const classes = "icon icon-"+type;
+const Icon = ({ type, className }) => {
+    const classNames = "icon icon-"+type+" "+className;
 
     return (
-        <div className={ classes }></div>
+        <div className={ classNames }></div>
     )
 };
 

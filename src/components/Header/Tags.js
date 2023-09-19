@@ -11,7 +11,7 @@ const Tags = () => {
     return (
         <div className="board-tags">
             {   
-                activeBoardTags.map((tag, idx) =>
+                activeBoardTags?.map((tag, idx) =>
                     <Tag key={ idx } tag={ tag }/>
                 )
             }

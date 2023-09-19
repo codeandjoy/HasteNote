@@ -1,6 +1,7 @@
 .board-header {
   display: flex;
   justify-content: space-between;
+  height: 100px;
   margin-bottom: 30px;
 }
 .board-header .board-name {

@@ -7,11 +7,14 @@ import BoardsMenu from './components/BoardsMenu/BoardsMenu';
 import PageFade from './components/PageFade/PageFade';
 import NoteModal from './components/NoteModal/NoteModal';
 import { boardsMenuOpenState } from './atoms/UIAtoms';
+import { boardsState } from './atoms/DataAtoms';
 
 import './App.css';
+import DataPlaceholder from './components/DataPlaceholder/DataPlaceholder';
 
 
 const App = () => {
+  const boards = useRecoilValue(boardsState);
   const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
   return (
@@ -33,9 +36,18 @@ const App = () => {
           }
         >
           <Header/>
-          <Notes/>
-          { !isBoardsMenuOpen &&
-            <ActionsMenu/>
+          { !!boards.length &&
+            <>
+              <Notes/>
+              { !isBoardsMenuOpen &&
+                <ActionsMenu/>
+              }
+            </>
+          }
+          { !!!boards.length &&
+            <DataPlaceholder
+              type="boards"
+            />
           }
         </motion.div>
 
