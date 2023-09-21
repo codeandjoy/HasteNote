@@ -2,9 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { activeBoardNotesFilteredByTagsState } from "../../atoms/DataAtoms";
 import Note from "./Note";
+import DataPlaceholder from "../DataPlaceholder/DataPlaceholder";
+import { boardsMenuOpenState } from "../../atoms/UIAtoms";
 
 import "./css/Notes.css";
-import DataPlaceholder from "../DataPlaceholder/DataPlaceholder";
 
 const notesVariants = {
     initial: { opacity: 0 },
@@ -14,8 +15,7 @@ const notesVariants = {
 
 const Notes = () => {
     const activeBoardNotesFilteredByTags = useRecoilValue(activeBoardNotesFilteredByTagsState);
-
-    console.log(activeBoardNotesFilteredByTags);
+    const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
     return (
         <motion.div 
@@ -36,7 +36,7 @@ const Notes = () => {
                     </AnimatePresence>
                 </div>
             }
-            { !!!activeBoardNotesFilteredByTags.length &&
+            { !!!activeBoardNotesFilteredByTags.length && !isBoardsMenuOpen &&
                 <DataPlaceholder type="notes"/>
             }
         </motion.div>
