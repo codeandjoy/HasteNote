@@ -3,6 +3,7 @@
   z-index: 3;
   display: flex;
   justify-content: flex-end;
+  height: 60px;
 }
 .actions-menu .action-buttons {
   position: relative;

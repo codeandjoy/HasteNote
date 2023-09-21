@@ -18,6 +18,9 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className='desktop-art desktop-art-left'></div>
+      <div className='desktop-art desktop-art-right'></div>
+
       <div className='app-container'>
         <motion.div
           className='animated-container'
@@ -32,12 +35,10 @@ const App = () => {
           { !!boards.length &&
             <>
               <Notes/>
-              { !isBoardsMenuOpen &&
-                <ActionsMenu/>
-              }
+              <ActionsMenu/>
             </>
           }
-          { !!!boards.length &&
+          { !!!boards.length && !isBoardsMenuOpen &&
             <DataPlaceholder type="boards"/>
           }
         </motion.div>

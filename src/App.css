@@ -1,7 +1,29 @@
 .App{
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
+}
+
+.desktop-art{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 500px;
+  height: 500px;
+  
+  background-image: url('/public/icons/logo_dark_grey.svg');
+  background-size: cover;
+}
+.desktop-art-left{
+  left: -250px;
+}
+.desktop-art-right{
+  right: -250px;
 }
 
 .app-container{
