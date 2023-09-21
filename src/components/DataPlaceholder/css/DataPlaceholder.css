@@ -1,5 +1,6 @@
 .data-placeholder {
   position: relative;
+  z-index: 0;
   height: 100%;
 }
 .data-placeholder .data-placeholder--logo-container,

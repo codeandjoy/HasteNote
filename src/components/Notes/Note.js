@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useResetRecoilState, useSetRecoilState } from "recoil";
-import { pageFadeActiveState } from "../../atoms/UIAtoms";
+import { actionsMenuPageFadeActiveState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
 
@@ -22,7 +22,7 @@ const noteVariants = {
 }
 
 const Note = ({ note }) => {
-    const setPageFadeActive = useSetRecoilState(pageFadeActiveState);
+    const setActionsMenuPageFadeActive = useSetRecoilState(actionsMenuPageFadeActiveState);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
 
     const setNoteModalAnimationPos = useSetRecoilState(noteModalAnimationPosState);
@@ -61,7 +61,7 @@ const Note = ({ note }) => {
                 setNoteModalAction("edit");
                 setNoteModalOpen(true);
                 //
-                setPageFadeActive(true);
+                setActionsMenuPageFadeActive(true);
 
                 setPageFadeCallback(()=>()=>{
                     // Close and reset note modal
@@ -70,7 +70,7 @@ const Note = ({ note }) => {
                     resetNoteModalAction();
                     resetNoteModalOpen();
                     //
-                    setPageFadeActive(false);
+                    setActionsMenuPageFadeActive(false);
                 });
             }}
         >

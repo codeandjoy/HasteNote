@@ -4,7 +4,6 @@ import Header from './components/Header/Header';
 import Notes from './components/Notes/Notes';
 import ActionsMenu from './components/ActionsMenu/ActionsMenu';
 import BoardsMenu from './components/BoardsMenu/BoardsMenu';
-import PageFade from './components/PageFade/PageFade';
 import NoteModal from './components/NoteModal/NoteModal';
 import { boardsMenuOpenState } from './atoms/UIAtoms';
 import { boardsState } from './atoms/DataAtoms';
@@ -19,13 +18,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* desktop fade */}
-      <PageFade/>
-
       <div className='app-container'>
-        {/* app fade */}
-        <PageFade/>
-        
         <motion.div
           className='animated-container'
 

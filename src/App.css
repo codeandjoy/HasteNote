@@ -1,15 +1,11 @@
 .App{
-  transform: scale(1);
-}
-.App .page-fade{
-  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app-container{
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
 
   width: 1000px;
   height: 100vh;
