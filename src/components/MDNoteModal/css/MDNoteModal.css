@@ -2,24 +2,87 @@
   position: absolute;
   z-index: 3;
   top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 50px 0;
+  box-sizing: border-box;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background-color: #181818;
 }
-.MDNoteModal .MDEditor {
+.MDNoteModal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+}
+.MDNoteModal .modal-header .btn-back,
+.MDNoteModal .modal-header .btn-format {
+  display: flex;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+.MDNoteModal .modal-header .btn-back .icon,
+.MDNoteModal .modal-header .btn-format .icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.MDNoteModal .modal-header .art-paper {
+  display: flex;
+  align-items: center;
+  opacity: 0.1;
+  width: 36px;
+  height: 36px;
+}
+.MDNoteModal .note-header {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #000;
+}
+.MDNoteModal .note-header input {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.MDNoteModal .note-header .note-name {
+  margin-bottom: 5px;
+  font-size: 26pt;
+  font-weight: bold;
+  color: #fff;
+}
+.MDNoteModal .note-header .note-tags {
+  margin-bottom: 12px;
+  font-size: 12pt;
+  font-weight: bold;
+  color: #585858;
+}
+.MDNoteModal .content-editor {
+  flex: 1;
+}
+.MDNoteModal .content-editor .MDEditor {
   height: 100% !important;
-  resize: none;
+  box-shadow: none;
 }
-.MDNoteModal .MDEditor .w-md-editor-bar {
+.MDNoteModal .content-editor .MDEditor .w-md-editor-bar {
   display: none;
 }
-.MDNoteModal .MDEditor .w-md-editor-toolbar,
-.MDNoteModal .MDEditor .w-md-editor-content {
+.MDNoteModal .content-editor .MDEditor .w-md-editor-toolbar {
+  display: none;
+}
+.MDNoteModal .content-editor .MDEditor .w-md-editor-toolbar,
+.MDNoteModal .content-editor .MDEditor .w-md-editor-content {
   background-color: #181818;
   border-color: #000;
 }
-.MDNoteModal .MDEditor .w-md-editor-content .w-md-editor-preview {
+.MDNoteModal .content-editor .MDEditor .w-md-editor-content .w-md-editor-preview {
   box-shadow: inset 1px 0 0 0 #000;
 }
-.MDNoteModal .MDEditor .w-md-editor-content .w-md-editor-preview .wmde-markdown {
+.MDNoteModal .content-editor .MDEditor .w-md-editor-content .w-md-editor-preview .wmde-markdown {
   background-color: #181818;
+}
+.MDNoteModal .content-editor .MDEditor.format-visible .w-md-editor-toolbar {
+  display: flex;
 }/*# sourceMappingURL=MDNoteModal.css.map */

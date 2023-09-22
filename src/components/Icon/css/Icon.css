@@ -47,4 +47,20 @@
 
 .icon-arrow-orange {
   background-image: url("/public/icons/arrow_orange.svg");
+}
+
+.icon-menu-arrow-left {
+  background-image: url("/public/icons/menu_arrow_left.svg");
+}
+
+.icon-paper {
+  background-image: url("/public/icons/paper.svg");
+}
+
+.icon-format {
+  background-image: url("/public/icons/format.svg");
+}
+
+.icon-hide {
+  background-image: url("/public/icons/hide.svg");
 }/*# sourceMappingURL=Icon.css.map */
