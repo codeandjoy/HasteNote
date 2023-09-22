@@ -10,6 +10,7 @@ import { boardsState } from './atoms/DataAtoms';
 
 import './App.css';
 import DataPlaceholder from './components/DataPlaceholder/DataPlaceholder';
+import MDNoteModal from './components/MDNoteModal/MDNoteModal';
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
       <div className='desktop-art desktop-art-right'></div>
 
       <div className='app-container'>
+        <MDNoteModal/>
         <motion.div
           className='animated-container'
 
