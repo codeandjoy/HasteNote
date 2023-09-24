@@ -1,49 +1,16 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import uuid from 'react-uuid';
-import ActionBtn from "./ActionBtn";
+import { validateNoteTags } from '../../utils/utils';
 import { useRecoilCallback, useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { actionsMenuOpenState, actionsMenuPageFadeActiveState, boardsMenuOpenState } from '../../atoms/UIAtoms';
 import { pageFadeCallbackState } from '../../atoms/UIAtoms';
 import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from '../../atoms/NoteModalAtoms';
 import { activeBoardNotesState } from '../../atoms/DataAtoms';
-import { validateNoteTags } from '../../utils/utils';
+import { AnimatePresence } from 'framer-motion';
+import { action_btn_open_variants, deleteBtnOpenVariants, markdown_btn_variants, quick_note_btn_variants } from './animationVariants';
+import ActionBtn from "./ActionBtn";
 import PageFade from '../PageFade/PageFade';
 
 import "./css/ActionsMenu.css";
-
-const actionBtnHover = { scale: .9 }
-const action_btn_open_variants = {
-    initial: {
-        opacity: 0,
-        right: 0
-    },
-    menuopen: {
-        opacity: 1
-    }
-}
-const markdown_btn_variants = {
-    ...action_btn_open_variants,
-    menuopen:{
-        ...action_btn_open_variants.menuopen,
-        right: "160px"
-    }
-};
-const quick_note_btn_variants = {
-    ...action_btn_open_variants,
-    menuopen:{
-        ...action_btn_open_variants.menuopen,
-        right: "80px"
-    }
-};
-const deleteBtnOpenVariants = {
-    initial: {
-        opacity: 0,
-        left: 0
-    },
-    menuopen: {
-        opacity: 1
-    }
-}
 
 
 const ActionsMenu = () => {
@@ -76,85 +43,63 @@ const ActionsMenu = () => {
                     <div className="action-buttons">
                         <AnimatePresence>
                             { !noteModalOpen &&
-                                <motion.div 
+                                <ActionBtn 
                                     variants={ action_btn_open_variants }
-                                    initial="initial"
-                                    animate="menuopen"
-                                    exit="initial"
-                                    whileHover={ actionBtnHover }
-
                                     className="brush-btn"
-                                >
-                                    <ActionBtn 
-                                        type="brush"
-                                        color={isActionsMenuOpen ? "black" : "orange"}
-                                        onClick={() => {
-                                            setActionsMenuOpen(isActionsMenuOpen => !isActionsMenuOpen);
-                                            setPageFadeActive(active => !active);
-                                            setPageFadeCallback(
-                                                isActionsMenuOpen
-                                                    ? () => () => {}
-                                                    : () => () => {
-                                                        setActionsMenuOpen(false);
-                                                        setPageFadeActive(false);
-                                                    }
-                                            );
-                                        }}
-                                    />
-                                </motion.div>
+                                    type="brush"
+                                    color={isActionsMenuOpen ? "black" : "orange"}
+                                    onClick={() => {
+                                        setActionsMenuOpen(isActionsMenuOpen => !isActionsMenuOpen);
+                                        setPageFadeActive(active => !active);
+                                        setPageFadeCallback(
+                                            isActionsMenuOpen
+                                                ? () => () => {}
+                                                : () => () => {
+                                                    setActionsMenuOpen(false);
+                                                    setPageFadeActive(false);
+                                                }
+                                        );
+                                    }}
+                                />
                             }
                         </AnimatePresence>
 
                         <AnimatePresence>
                             { isActionsMenuOpen && !noteModalOpen &&
                                 <>
-                                    <motion.div
-                                        variants={ markdown_btn_variants }
-                                        initial="initial"
-                                        animate="menuopen"
-                                        exit="initial"
-                                        whileHover={ actionBtnHover }
-                                        
-                                        className="markdown-note-btn"
-                                    >
-                                        <ActionBtn type="markdown"/>
-                                    </motion.div>
+                                    <ActionBtn 
+                                        variants={ markdown_btn_variants } 
+                                        className="md-note-btn"
+                                        type="markdown"
+                                    />
 
-                                    <motion.div 
+                                    <ActionBtn
                                         variants={ quick_note_btn_variants }
-                                        initial="initial"
-                                        animate="menuopen"
-                                        exit="initial"
-                                        whileHover={ actionBtnHover }
-                                        
                                         className="quick-note-btn"
-                                    >
-                                        <ActionBtn
-                                            type="note"
-                                            onClick={() => {
-                                                // Open note modal
-                                                setNoteModalAnimationPos({x: "80%", y: "100%"});
-                                                resetNoteModalData(); // Initial data is "" because it's a 'create' button
-                                                setNoteModalAction("create");
-                                                setNoteModalOpen(true);
+                                        type="note"
+                                        onClick={() => {
+                                            // Open note modal
+                                            setNoteModalAnimationPos({x: "80%", y: "100%"});
+                                            resetNoteModalData(); // Initial data is "" because it's a 'create' button
+                                            setNoteModalAction("create");
+                                            setNoteModalOpen(true);
+                                            //
+
+                                            setPageFadeActive(true);
+                                            setActionsMenuOpen(false);
+                                            
+                                            setPageFadeCallback(() => () => {
+                                                // Close and reset note modal
+                                                resetNoteModalAnimationPos();
+                                                resetNoteModalData();
+                                                setNoteModalAction("create"); //reset to default
+                                                setNoteModalOpen(false);
                                                 //
 
-                                                setPageFadeActive(true);
-                                                setActionsMenuOpen(false);
-                                                
-                                                setPageFadeCallback(() => () => {
-                                                    // Close and reset note modal
-                                                    resetNoteModalAnimationPos();
-                                                    resetNoteModalData();
-                                                    setNoteModalAction("create"); //reset to default
-                                                    setNoteModalOpen(false);
-                                                    //
-
-                                                    setPageFadeActive(false);
-                                                });
-                                            }}    
-                                        />
-                                    </motion.div>
+                                                setPageFadeActive(false);
+                                            });
+                                        }}    
+                                    />
                                 </>
                             }
                         </AnimatePresence>
@@ -163,68 +108,15 @@ const ActionsMenu = () => {
                             { noteModalOpen &&
                                 <>
                                     { noteModalAction === "edit" &&
-                                        <motion.div
-                                            variants={ deleteBtnOpenVariants }
-                                            initial="initial"
-                                            animate="menuopen"
-                                            exit="initial"
-                                            whileHover={ actionBtnHover }
-
-                                            className='delete-btn'
-                                        >
-                                            <ActionBtn
-                                                type="delete"
-                                                color="red"
-                                                onClick={async () => {
-                                                    let modalData = await getNoteModalData();
-                                                    setActiveBoardNotes(oldActiveNotes => oldActiveNotes.filter(oldNote => oldNote.id !== modalData.id));
-                                            
-                                                    // Close and reset note modal
-                                                    resetNoteModalAnimationPos();
-                                                    resetNoteModalData();
-                                                    setNoteModalAction("create"); // reset to default
-                                                    setNoteModalOpen(false);
-                                                    //
-
-                                                    setPageFadeActive(false);
-                                                    }}
-                                            />
-                                        </motion.div>
-                                    }
-                                    <motion.div
-                                        variants={ action_btn_open_variants }
-                                        initial="initial"
-                                        animate="menuopen"
-                                        exit="initial"
-                                        whileHover={ actionBtnHover }
-
-                                        className='save-btn'
-                                    >
                                         <ActionBtn
-                                            type="save"
-                                            color="blue"
+                                            variants={ deleteBtnOpenVariants }
+                                            className="delete-btn"
+                                            type="delete"
+                                            color="red"
                                             onClick={async () => {
                                                 let modalData = await getNoteModalData();
-                                                
-                                                // if note has no initial data (must be created) -> create new id
-                                                if(!modalData.id) modalData = { ...modalData, id: uuid() };
-
-                                                setActiveBoardNotes(oldActiveNotes => {
-                                                    // If note already exists -> edit
-                                                    if(oldActiveNotes.some(oldNote => oldNote.id === modalData.id)){
-                                                        return oldActiveNotes.map(oldNote => {
-                                                            if(oldNote.id === modalData.id){
-                                                                return validateNoteTags(modalData);
-                                                            }
-                                                            return oldNote;
-                                                        })
-                                                    }
-                                                    // else -> create
-                                                    else{
-                                                        return [validateNoteTags(modalData), ...oldActiveNotes];
-                                                    }
-                                                });
-
+                                                setActiveBoardNotes(oldActiveNotes => oldActiveNotes.filter(oldNote => oldNote.id !== modalData.id));
+                                        
                                                 // Close and reset note modal
                                                 resetNoteModalAnimationPos();
                                                 resetNoteModalData();
@@ -233,9 +125,46 @@ const ActionsMenu = () => {
                                                 //
 
                                                 setPageFadeActive(false);
-                                            }}
+                                                }}
                                         />
-                                    </motion.div>
+                                    }
+                                    <ActionBtn
+                                        variants={ action_btn_open_variants }
+                                        className="save-btn"
+                                        type="save"
+                                        color="blue"
+                                        onClick={async () => {
+                                            let modalData = await getNoteModalData();
+                                            
+                                            // if note has no initial data (must be created) -> create new id
+                                            if(!modalData.id) modalData = { ...modalData, id: uuid() };
+
+                                            setActiveBoardNotes(oldActiveNotes => {
+                                                // If note already exists -> edit
+                                                if(oldActiveNotes.some(oldNote => oldNote.id === modalData.id)){
+                                                    return oldActiveNotes.map(oldNote => {
+                                                        if(oldNote.id === modalData.id){
+                                                            return validateNoteTags(modalData);
+                                                        }
+                                                        return oldNote;
+                                                    })
+                                                }
+                                                // else -> create
+                                                else{
+                                                    return [validateNoteTags(modalData), ...oldActiveNotes];
+                                                }
+                                            });
+
+                                            // Close and reset note modal
+                                            resetNoteModalAnimationPos();
+                                            resetNoteModalData();
+                                            setNoteModalAction("create"); // reset to default
+                                            setNoteModalOpen(false);
+                                            //
+
+                                            setPageFadeActive(false);
+                                        }}
+                                    />
                                 </>
                             }
                         </AnimatePresence>

@@ -1,15 +1,28 @@
+import { motion } from "framer-motion";
+import { actionBtnHover } from "./animationVariants";
 import Icon from '../Icon/Icon';
 
 import './css/ActionBtn.css';
 
 
-const ActionBtn = ({ type, color, onClick }) => {
-    const classNames = 'action-btn action-btn-'+ (color?color:"orange");
+const ActionBtn = ({ type, color, variants, className, onClick }) => {
+    const classNames = "action-btn" +
+        (className?" "+className:"") + 
+        " action-btn-" + (color?color:"orange");
 
     return (
-        <button className={ classNames } onClick={ onClick }>
+        <motion.button 
+            variants={ variants }
+            initial="initial"
+            animate="menuopen"
+            exit="initial"
+            whileHover={ actionBtnHover }
+
+            className={ classNames }
+            onClick={ onClick }
+        >
             <Icon type={ type }/>
-        </button>
+        </motion.button>
     );
 };
 
