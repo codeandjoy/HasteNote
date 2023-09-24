@@ -11,10 +11,10 @@ import ActionBtn from "./ActionBtn";
 import PageFade from '../PageFade/PageFade';
 
 import "./css/ActionsMenu.css";
+import MenuCreate from './MenuCreate';
 
 
 const ActionsMenu = () => {
-    const [isActionsMenuOpen, setActionsMenuOpen] = useRecoilState(actionsMenuOpenState);
     const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
     const [pageFadeActive, setPageFadeActive] = useRecoilState(actionsMenuPageFadeActiveState);
@@ -43,64 +43,7 @@ const ActionsMenu = () => {
                     <div className="action-buttons">
                         <AnimatePresence>
                             { !noteModalOpen &&
-                                <ActionBtn 
-                                    variants={ action_btn_open_variants }
-                                    className="brush-btn"
-                                    type="brush"
-                                    color={isActionsMenuOpen ? "black" : "orange"}
-                                    onClick={() => {
-                                        setActionsMenuOpen(isActionsMenuOpen => !isActionsMenuOpen);
-                                        setPageFadeActive(active => !active);
-                                        setPageFadeCallback(
-                                            isActionsMenuOpen
-                                                ? () => () => {}
-                                                : () => () => {
-                                                    setActionsMenuOpen(false);
-                                                    setPageFadeActive(false);
-                                                }
-                                        );
-                                    }}
-                                />
-                            }
-                        </AnimatePresence>
-
-                        <AnimatePresence>
-                            { isActionsMenuOpen && !noteModalOpen &&
-                                <>
-                                    <ActionBtn 
-                                        variants={ markdown_btn_variants } 
-                                        className="md-note-btn"
-                                        type="markdown"
-                                    />
-
-                                    <ActionBtn
-                                        variants={ quick_note_btn_variants }
-                                        className="quick-note-btn"
-                                        type="note"
-                                        onClick={() => {
-                                            // Open note modal
-                                            setNoteModalAnimationPos({x: "80%", y: "100%"});
-                                            resetNoteModalData(); // Initial data is "" because it's a 'create' button
-                                            setNoteModalAction("create");
-                                            setNoteModalOpen(true);
-                                            //
-
-                                            setPageFadeActive(true);
-                                            setActionsMenuOpen(false);
-                                            
-                                            setPageFadeCallback(() => () => {
-                                                // Close and reset note modal
-                                                resetNoteModalAnimationPos();
-                                                resetNoteModalData();
-                                                setNoteModalAction("create"); //reset to default
-                                                setNoteModalOpen(false);
-                                                //
-
-                                                setPageFadeActive(false);
-                                            });
-                                        }}    
-                                    />
-                                </>
+                                <MenuCreate/>
                             }
                         </AnimatePresence>
 
