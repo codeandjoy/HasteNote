@@ -1,0 +1,51 @@
+.md-note{
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 180px;
+
+    background-color: #0C0C0C;
+
+    overflow: hidden;
+
+    .md-note--art-side{
+        position: absolute;
+
+        width: 150px;
+        height: 150px;
+    }
+    .md-note--art-side-left{
+        left: -75px;
+    }
+    .md-note--art-side-right{
+        right: -75px;
+    }
+
+    
+    .centered-preview-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .preview-art{
+            width: 60px;
+            height: 60px;
+            margin-right: 5px;
+        }
+
+        .note-title{
+            margin: 0;
+    
+            font-size: 20pt;
+    
+            color: #FFFAF0;
+        }
+    
+        .note-tags{
+            color: #3F3F3F;
+        }
+    }
+}

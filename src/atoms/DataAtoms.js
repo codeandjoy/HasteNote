@@ -9,26 +9,16 @@ export const boardsState = atom({
             notes: [
                 {
                     id: "1",
+                    type: "quicknote",
                     title: "Note",
                     tags: "#start",
                     content: ""
                 },
                 {
                     id: "2",
+                    type: "mdnote",
                     title: "Note 2",
                     tags: "#start #tags",
-                    content: ""
-                }
-            ]
-        },
-        {
-            id: "3",
-            name: "Board 2",
-            notes: [
-                {
-                    id: "4",
-                    title: "Board 2 note",
-                    tags: "#start",
                     content: ""
                 }
             ]

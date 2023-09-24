@@ -1,11 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { activeBoardNotesFilteredByTagsState } from "../../atoms/DataAtoms";
-import QuickNote from "./QuickNote";
-import DataPlaceholder from "../DataPlaceholder/DataPlaceholder";
 import { boardsMenuOpenState } from "../../atoms/UIAtoms";
+import DataPlaceholder from "../DataPlaceholder/DataPlaceholder";
+import QuickNote from "./QuickNote";
+import MDNote from "./MDNote";
 
-import "./css/Notes.css";
+import "./css/NotesGrid.css";
 
 const notesVariants = {
     initial: { opacity: 0 },
@@ -13,7 +14,7 @@ const notesVariants = {
 }
 
 
-const Notes = () => {
+const NotesGrid = () => {
     const activeBoardNotesFilteredByTags = useRecoilValue(activeBoardNotesFilteredByTagsState);
     const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
@@ -30,7 +31,9 @@ const Notes = () => {
                     <AnimatePresence>
                         {
                             activeBoardNotesFilteredByTags.map(note => 
-                                <QuickNote key={ note.id } note={ note }/>    
+                                (note.type === "quicknote" && <QuickNote key={ note.id } note={ note }/>)
+                                ||
+                                (note.type === "mdnote" && <MDNote key={ note.id } note={ note }/>)    
                             )
                         }
                     </AnimatePresence>
@@ -41,7 +44,8 @@ const Notes = () => {
             }
         </motion.div>
     )
+
 };
 
 
-export default Notes;
+export default NotesGrid;

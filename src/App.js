@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useRecoilValue } from 'recoil';
 import Header from './components/Header/Header';
-import Notes from './components/Notes/Notes';
+import NotesGrid from './components/Notes/NotesGrid';
 import ActionsMenu from './components/ActionsMenu/ActionsMenu';
 import BoardsMenu from './components/BoardsMenu/BoardsMenu';
 import QuickNoteModal from './components/Notes/QuickNoteModal';
@@ -34,7 +34,7 @@ const App = () => {
           <Header/>
           { !!boards.length &&
             <>
-              <Notes/>
+              <NotesGrid/>
               <ActionsMenu/>
             </>
           }
@@ -45,7 +45,7 @@ const App = () => {
 
         <BoardsMenu/>
         <QuickNoteModal/>
-        <MDNoteModal/>
+        {/* <MDNoteModal/> */}
       </div>
     </div>
   );

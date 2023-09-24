@@ -4,24 +4,13 @@ import { useResetRecoilState, useSetRecoilState } from "recoil";
 import { actionsMenuPageFadeActiveState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 import { quickNoteModalActionState, quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
+import { noteVariants } from "./animationVariants";
 
-import "./css/Note.css";
+import "./css/NotePreview.css";
+import "./css/QuickNote.css";
 
-const noteVariants = {
-    initial: { opacity: 0 },
-    animate: {
-        opacity: 1,
-        transition: {
-            duration: 1
-        }
-    },
-    exit: {
-        opacity: 0,
-        scale: .5
-    }
-}
 
-const Note = ({ note }) => {
+const QuickNote = ({ note }) => {
     const setActionsMenuPageFadeActive = useSetRecoilState(actionsMenuPageFadeActiveState);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
 
@@ -49,7 +38,7 @@ const Note = ({ note }) => {
         
             ref={ noteRef }
             
-            className="note"
+            className="note-preview quick-note"
 
             onClick={() => {
                 // Open note modal
@@ -82,4 +71,4 @@ const Note = ({ note }) => {
     );
 };
 
-export default Note;
+export default QuickNote;
