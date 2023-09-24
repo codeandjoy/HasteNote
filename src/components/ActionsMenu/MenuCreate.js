@@ -1,8 +1,8 @@
 import { action_btn_open_variants, markdown_btn_variants, quick_note_btn_variants } from "./animationVariants";
 import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { actionsMenuOpenState, actionsMenuPageFadeActiveState, pageFadeCallbackState } from "../../atoms/UIAtoms";
-import ActionBtn from "./ActionBtn";
 import { quickNoteModalActionState, quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
+import ActionBtn from "./ActionBtn";
 
 
 const MenuCreate = () => {
