@@ -48,7 +48,7 @@ const MenuCreate = () => {
                     <ActionBtn 
                         variants={ markdown_btn_variants } 
                         className="md-note-btn"
-                        type="markdown"
+                        type="paper"
                         onClick={() => {
                             // Open MD note modal
                             resetMDNoteModalData();

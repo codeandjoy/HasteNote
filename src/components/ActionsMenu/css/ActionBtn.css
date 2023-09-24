@@ -11,6 +11,9 @@
   width: 32px;
   height: 32px;
 }
+.action-btn .icon-paper {
+  margin-right: 5px;
+}
 
 .action-btn:hover {
   cursor: pointer;
