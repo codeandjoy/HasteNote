@@ -45,7 +45,7 @@ const App = () => {
 
         <BoardsMenu/>
         <QuickNoteModal/>
-        {/* <MDNoteModal/> */}
+        <MDNoteModal/>
       </div>
     </div>
   );
