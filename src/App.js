@@ -4,13 +4,12 @@ import Header from './components/Header/Header';
 import Notes from './components/Notes/Notes';
 import ActionsMenu from './components/ActionsMenu/ActionsMenu';
 import BoardsMenu from './components/BoardsMenu/BoardsMenu';
-import NoteModal from './components/NoteModal/NoteModal';
+import QuickNoteModal from './components/Notes/QuickNoteModal';
+import MDNoteModal from './components/Notes/MDNoteModal';
+import DataPlaceholder from './components/DataPlaceholder/DataPlaceholder';
 import { boardsMenuOpenState } from './atoms/UIAtoms';
 import { boardsState } from './atoms/DataAtoms';
-
 import './App.css';
-import DataPlaceholder from './components/DataPlaceholder/DataPlaceholder';
-import MDNoteModal from './components/MDNoteModal/MDNoteModal';
 
 
 const App = () => {
@@ -45,10 +44,9 @@ const App = () => {
         </motion.div>
 
         <BoardsMenu/>
-        <NoteModal/>
+        <QuickNoteModal/>
         <MDNoteModal/>
       </div>
-
     </div>
   );
 }

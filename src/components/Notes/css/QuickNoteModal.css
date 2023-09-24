@@ -1,4 +1,4 @@
-.note-modal {
+.quick-note-modal {
   position: absolute;
   z-index: 3;
   display: flex;
@@ -10,29 +10,29 @@
   background-color: #FFFAF0;
   border-radius: 10px;
 }
-.note-modal input,
-.note-modal textarea {
+.quick-note-modal input,
+.quick-note-modal textarea {
   border-style: none;
   outline: none;
 }
-.note-modal textarea {
+.quick-note-modal textarea {
   flex: 1;
   resize: none;
   font-family: Lato, sans-serif;
 }
-.note-modal .note-modal--inp-title {
+.quick-note-modal .note-modal--inp-title {
   margin: 0;
   font-size: 26px;
   font-weight: bold;
 }
-.note-modal .note-modal--inp-tags {
+.quick-note-modal .note-modal--inp-tags {
   margin-bottom: 6px;
   font-size: 12pt;
   color: #3f3f3f;
 }
-.note-modal .note-modal--line {
+.quick-note-modal .note-modal--line {
   margin-bottom: 6px;
   width: 100%;
   height: 2px;
   background-color: #adadad;
-}/*# sourceMappingURL=NoteModal.css.map */
+}/*# sourceMappingURL=QuickNoteModal.css.map */

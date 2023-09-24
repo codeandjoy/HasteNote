@@ -2,10 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
 
-import "./css/NoteModal.css";
+import "./css/QuickNoteModal.css";
 
 
-const NoteModal = () => {
+const QuickNoteModal = () => {
     const noteModalAnimationPos = useRecoilValue(noteModalAnimationPosState);
     const noteModalOpen = useRecoilValue(noteModalOpenState);
     const [noteModalData, setNoteModalData] = useRecoilState(noteModalState);
@@ -24,8 +24,7 @@ const NoteModal = () => {
             left: "50%",
             translateX: "-50%",
             translateY: "-50%"
-        },
-        // TODO add exit state with custom animation pos (top, left)
+        }
     }
 
     return (
@@ -38,7 +37,7 @@ const NoteModal = () => {
                     exit="initial"
                     transition={{ type:"tween" }}
 
-                    className="note-modal"
+                    className="quick-note-modal"
                 >
                     <input
                         className="note-modal--inp-title"
@@ -66,4 +65,4 @@ const NoteModal = () => {
 };
 
 
-export default NoteModal;
+export default QuickNoteModal;

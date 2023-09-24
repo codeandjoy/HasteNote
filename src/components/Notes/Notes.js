@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { activeBoardNotesFilteredByTagsState } from "../../atoms/DataAtoms";
-import Note from "./Note";
+import QuickNote from "./QuickNote";
 import DataPlaceholder from "../DataPlaceholder/DataPlaceholder";
 import { boardsMenuOpenState } from "../../atoms/UIAtoms";
 
@@ -30,7 +30,7 @@ const Notes = () => {
                     <AnimatePresence>
                         {
                             activeBoardNotesFilteredByTags.map(note => 
-                                <Note key={ note.id } note={ note }/>    
+                                <QuickNote key={ note.id } note={ note }/>    
                             )
                         }
                     </AnimatePresence>
