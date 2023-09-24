@@ -1,14 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
+import { quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
 
 import "./css/QuickNoteModal.css";
 
 
 const QuickNoteModal = () => {
-    const noteModalAnimationPos = useRecoilValue(noteModalAnimationPosState);
-    const noteModalOpen = useRecoilValue(noteModalOpenState);
-    const [noteModalData, setNoteModalData] = useRecoilState(noteModalState);
+    const noteModalAnimationPos = useRecoilValue(quickNoteModalAnimationPosState);
+    const noteModalOpen = useRecoilValue(quickNoteModalOpenState);
+    const [noteModalData, setNoteModalData] = useRecoilState(quickNoteModalState);
 
     const modalVariants = {
         initial: {

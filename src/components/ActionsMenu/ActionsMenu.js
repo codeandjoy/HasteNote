@@ -3,7 +3,7 @@ import { validateNoteTags } from '../../utils/utils';
 import { useRecoilCallback, useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import { actionsMenuOpenState, actionsMenuPageFadeActiveState, boardsMenuOpenState } from '../../atoms/UIAtoms';
 import { pageFadeCallbackState } from '../../atoms/UIAtoms';
-import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from '../../atoms/NoteModalAtoms';
+import { quickNoteModalActionState, quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from '../../atoms/QuickNoteModalAtoms';
 import { activeBoardNotesState } from '../../atoms/DataAtoms';
 import { AnimatePresence } from 'framer-motion';
 import { action_btn_open_variants, deleteBtnOpenVariants, markdown_btn_variants, quick_note_btn_variants } from './animationVariants';
@@ -20,17 +20,17 @@ const ActionsMenu = () => {
     const [pageFadeActive, setPageFadeActive] = useRecoilState(actionsMenuPageFadeActiveState);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
 
-    const setNoteModalAnimationPos = useSetRecoilState(noteModalAnimationPosState);
-    const resetNoteModalAnimationPos = useResetRecoilState(noteModalAnimationPosState);
+    const setNoteModalAnimationPos = useSetRecoilState(quickNoteModalAnimationPosState);
+    const resetNoteModalAnimationPos = useResetRecoilState(quickNoteModalAnimationPosState);
 
-    const [noteModalOpen, setNoteModalOpen] = useRecoilState(noteModalOpenState);
+    const [noteModalOpen, setNoteModalOpen] = useRecoilState(quickNoteModalOpenState);
     
-    const [noteModalAction, setNoteModalAction] = useRecoilState(noteModalActionState);
+    const [noteModalAction, setNoteModalAction] = useRecoilState(quickNoteModalActionState);
     
     const getNoteModalData = useRecoilCallback(({snapshot}) => async () => {
-        return await snapshot.getPromise(noteModalState);
+        return await snapshot.getPromise(quickNoteModalState);
     }, []);
-    const resetNoteModalData = useResetRecoilState(noteModalState);
+    const resetNoteModalData = useResetRecoilState(quickNoteModalState);
 
     const setActiveBoardNotes = useSetRecoilState(activeBoardNotesState);
 

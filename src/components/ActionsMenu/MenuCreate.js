@@ -2,7 +2,7 @@ import { action_btn_open_variants, markdown_btn_variants, quick_note_btn_variant
 import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { actionsMenuOpenState, actionsMenuPageFadeActiveState, pageFadeCallbackState } from "../../atoms/UIAtoms";
 import ActionBtn from "./ActionBtn";
-import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
+import { quickNoteModalActionState, quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
 
 
 const MenuCreate = () => {
@@ -11,11 +11,11 @@ const MenuCreate = () => {
     const setPageFadeActive = useSetRecoilState(actionsMenuPageFadeActiveState)
     const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
 
-    const setNoteModalAnimationPos = useSetRecoilState(noteModalAnimationPosState);
-    const resetNoteModalAnimationPos = useResetRecoilState(noteModalAnimationPosState);
-    const setNoteModalAction = useSetRecoilState(noteModalActionState);
-    const resetNoteModalData = useResetRecoilState(noteModalState)
-    const setNoteModalOpen = useSetRecoilState(noteModalOpenState);
+    const setNoteModalAnimationPos = useSetRecoilState(quickNoteModalAnimationPosState);
+    const resetNoteModalAnimationPos = useResetRecoilState(quickNoteModalAnimationPosState);
+    const setNoteModalAction = useSetRecoilState(quickNoteModalActionState);
+    const resetNoteModalData = useResetRecoilState(quickNoteModalState)
+    const setNoteModalOpen = useSetRecoilState(quickNoteModalOpenState);
 
     return (
         <>

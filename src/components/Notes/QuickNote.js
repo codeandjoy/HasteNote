@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useResetRecoilState, useSetRecoilState } from "recoil";
 import { actionsMenuPageFadeActiveState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
-import { noteModalActionState, noteModalAnimationPosState, noteModalOpenState, noteModalState } from "../../atoms/NoteModalAtoms";
+import { quickNoteModalActionState, quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
 
 import "./css/Note.css";
 
@@ -25,17 +25,17 @@ const Note = ({ note }) => {
     const setActionsMenuPageFadeActive = useSetRecoilState(actionsMenuPageFadeActiveState);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
 
-    const setNoteModalAnimationPos = useSetRecoilState(noteModalAnimationPosState);
-    const resetNoteModalAnimationPos = useResetRecoilState(noteModalAnimationPosState);
+    const setNoteModalAnimationPos = useSetRecoilState(quickNoteModalAnimationPosState);
+    const resetNoteModalAnimationPos = useResetRecoilState(quickNoteModalAnimationPosState);
 
-    const setNoteModalData = useSetRecoilState(noteModalState);
-    const resetNoteModalData = useResetRecoilState(noteModalState);
+    const setNoteModalData = useSetRecoilState(quickNoteModalState);
+    const resetNoteModalData = useResetRecoilState(quickNoteModalState);
 
-    const setNoteModalAction = useSetRecoilState(noteModalActionState);
-    const resetNoteModalAction = useResetRecoilState(noteModalActionState);
+    const setNoteModalAction = useSetRecoilState(quickNoteModalActionState);
+    const resetNoteModalAction = useResetRecoilState(quickNoteModalActionState);
 
-    const setNoteModalOpen = useSetRecoilState(noteModalOpenState);
-    const resetNoteModalOpen = useResetRecoilState(noteModalOpenState);
+    const setNoteModalOpen = useSetRecoilState(quickNoteModalOpenState);
+    const resetNoteModalOpen = useResetRecoilState(quickNoteModalOpenState);
 
     const noteRef = useRef();
 
