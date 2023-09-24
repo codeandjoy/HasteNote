@@ -8,6 +8,7 @@ import MenuCreate from './MenuCreate';
 import MenuQuickNoteModal from './MenuQuickNoteModal';
 
 import "./css/ActionsMenu.css";
+import MenuMDNoteModal from './MenuMDNoteModal';
 
 
 const ActionsMenu = () => {
@@ -24,7 +25,7 @@ const ActionsMenu = () => {
                 { !isBoardsMenuOpen && 
                     <div className="action-buttons">
                         <AnimatePresence>
-                            { !quickNoteModalOpen &&
+                            { !quickNoteModalOpen && !mdNoteModalOpen &&
                                 <MenuCreate/>
                             }
                         </AnimatePresence>
@@ -36,6 +37,9 @@ const ActionsMenu = () => {
                         </AnimatePresence>
 
                         <AnimatePresence>
+                            { mdNoteModalOpen &&
+                                <MenuMDNoteModal/>
+                            }
                         </AnimatePresence>
                     </div>
                 }

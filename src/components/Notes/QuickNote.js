@@ -14,17 +14,17 @@ const QuickNote = ({ note }) => {
     const setActionsMenuPageFadeActive = useSetRecoilState(actionsMenuPageFadeActiveState);
     const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
 
-    const setNoteModalAnimationPos = useSetRecoilState(quickNoteModalAnimationPosState);
-    const resetNoteModalAnimationPos = useResetRecoilState(quickNoteModalAnimationPosState);
+    const setQuickNoteModalAnimationPos = useSetRecoilState(quickNoteModalAnimationPosState);
+    const resetQuickNoteModalAnimationPos = useResetRecoilState(quickNoteModalAnimationPosState);
 
-    const setNoteModalData = useSetRecoilState(quickNoteModalState);
-    const resetNoteModalData = useResetRecoilState(quickNoteModalState);
+    const setQuickNoteModalData = useSetRecoilState(quickNoteModalState);
+    const resetQuickNoteModalData = useResetRecoilState(quickNoteModalState);
 
-    const setNoteModalAction = useSetRecoilState(quickNoteModalActionState);
-    const resetNoteModalAction = useResetRecoilState(quickNoteModalActionState);
+    const setQuickNoteModalAction = useSetRecoilState(quickNoteModalActionState);
+    const resetQuickNoteModalAction = useResetRecoilState(quickNoteModalActionState);
 
-    const setNoteModalOpen = useSetRecoilState(quickNoteModalOpenState);
-    const resetNoteModalOpen = useResetRecoilState(quickNoteModalOpenState);
+    const setQuickNoteModalOpen = useSetRecoilState(quickNoteModalOpenState);
+    const resetQuickNoteModalOpen = useResetRecoilState(quickNoteModalOpenState);
 
     const noteRef = useRef();
 
@@ -42,22 +42,22 @@ const QuickNote = ({ note }) => {
 
             onClick={() => {
                 // Open note modal
-                setNoteModalAnimationPos({
+                setQuickNoteModalAnimationPos({
                     x: noteRef.current.offsetLeft,
                     y: noteRef.current.offsetTop
                 });
-                setNoteModalData(note); // Set initial data
-                setNoteModalAction("edit");
-                setNoteModalOpen(true);
+                setQuickNoteModalData(note); // Set initial data
+                setQuickNoteModalAction("edit");
+                setQuickNoteModalOpen(true);
                 //
                 setActionsMenuPageFadeActive(true);
 
                 setPageFadeCallback(()=>()=>{
                     // Close and reset note modal
-                    resetNoteModalAnimationPos();
-                    resetNoteModalData();
-                    resetNoteModalAction();
-                    resetNoteModalOpen();
+                    resetQuickNoteModalAnimationPos();
+                    resetQuickNoteModalData();
+                    resetQuickNoteModalAction();
+                    resetQuickNoteModalOpen();
                     //
                     setActionsMenuPageFadeActive(false);
                 });

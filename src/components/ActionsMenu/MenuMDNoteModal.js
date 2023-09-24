@@ -1,46 +1,44 @@
 import uuid from "react-uuid";
 import { useRecoilCallback, useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
-import { quickNoteModalActionState, quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
-import { activeBoardNotesState } from "../../atoms/DataAtoms";
+import { mdNoteModalActionState, mdNoteModalOpenState, mdNoteModalState } from "../../atoms/MDNoteModalAtoms";
 import { action_btn_open_variants, deleteBtnOpenVariants } from "./animationVariants";
+import { actionsMenuPageFadeActiveState } from "../../atoms/UIAtoms";
+import { activeBoardNotesState } from "../../atoms/DataAtoms";
 import { validateNoteTags } from "../../utils/utils";
 import ActionBtn from "./ActionBtn";
-import { actionsMenuPageFadeActiveState } from "../../atoms/UIAtoms";
 
 
-const MenuQuickNoteModal = () => {
-    const [quickNoteModalAction, setQuickNoteModalAction] = useRecoilState(quickNoteModalActionState);
-    const resetQuickNoteModalAnimationPos = useResetRecoilState(quickNoteModalAnimationPosState);
-    const setQuickNoteModalOpen = useSetRecoilState(quickNoteModalOpenState);
-    const resetQuickNoteModalData = useResetRecoilState(quickNoteModalState);
-    const getQuickNoteModalData = useRecoilCallback(({snapshot}) => async () => {
-        return await snapshot.getPromise(quickNoteModalState);
+const MenuMDNoteModal = () => {
+    const [mdNoteModalAction, setMDNoteModalAction] = useRecoilState(mdNoteModalActionState);
+    const setMDNoteModalOpen = useSetRecoilState(mdNoteModalOpenState);
+    const resetMDNoteModalData = useResetRecoilState(mdNoteModalState);
+    const getMDNoteModalData = useRecoilCallback(({snapshot}) => async () => {
+        return await snapshot.getPromise(mdNoteModalState);
     }, []);
 
     const setPageFadeActive = useSetRecoilState(actionsMenuPageFadeActiveState);
-
+    
     const setActiveBoardNotes = useSetRecoilState(activeBoardNotesState);
 
     return (
         <>
-            { quickNoteModalAction === "edit" &&
+            { mdNoteModalAction === "edit" &&
                 <ActionBtn
                     variants={ deleteBtnOpenVariants }
                     className="delete-btn"
                     type="delete"
                     color="red"
                     onClick={async () => {
-                        let modalData = await getQuickNoteModalData();
+                        let modalData = await getMDNoteModalData();
                         setActiveBoardNotes(oldActiveNotes => oldActiveNotes.filter(oldNote => oldNote.id !== modalData.id));
                 
                         // Close and reset note modal
-                        resetQuickNoteModalAnimationPos();
-                        resetQuickNoteModalData();
-                        setQuickNoteModalAction("create"); // reset to default
-                        setQuickNoteModalOpen(false);
+                        resetMDNoteModalData();
+                        setMDNoteModalAction("create"); // reset to default
+                        setMDNoteModalOpen(false);
                         //
 
-                        setPageFadeActive(false);
+                        setPageFadeActive(false);                     
                     }}
                 />
             }
@@ -50,9 +48,8 @@ const MenuQuickNoteModal = () => {
                 type="save"
                 color="blue"
                 onClick={async () => {
-                    let modalData = await getQuickNoteModalData();
-                    
-                    // if note has no initial data (must be created) -> create new id
+                    let modalData = await getMDNoteModalData();
+
                     if(!modalData.id) modalData = { ...modalData, id: uuid() };
 
                     setActiveBoardNotes(oldActiveNotes => {
@@ -72,18 +69,17 @@ const MenuQuickNoteModal = () => {
                     });
 
                     // Close and reset note modal
-                    resetQuickNoteModalAnimationPos();
-                    resetQuickNoteModalData();
-                    setQuickNoteModalAction("create"); // reset to default
-                    setQuickNoteModalOpen(false);
+                    resetMDNoteModalData();
+                    setMDNoteModalAction("create"); // reset to default
+                    setMDNoteModalOpen(false);
                     //
 
-                    setPageFadeActive(false);
+                    setPageFadeActive(false);             
                 }}
             />
         </>
-    );  
+    );
 };
 
 
-export default MenuQuickNoteModal;
+export default MenuMDNoteModal;
