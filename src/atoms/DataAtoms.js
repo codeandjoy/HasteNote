@@ -10,16 +10,9 @@ export const boardsState = atom({
                 {
                     id: "1",
                     type: "quicknote",
-                    title: "Note 1",
-                    tags: "#start",
-                    content: ""
-                },
-                {
-                    id: "2",
-                    type: "mdnote",
-                    title: "Note 2",
-                    tags: "#start #tag",
-                    content: ""
+                    title: "Note",
+                    tags: "#tag",
+                    content: "Content"
                 }
             ]
         }
