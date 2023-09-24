@@ -2,6 +2,7 @@ import { useRecoilValue } from 'recoil';
 import { AnimatePresence } from 'framer-motion';
 import { actionsMenuPageFadeActiveState, boardsMenuOpenState } from '../../atoms/UIAtoms';
 import { quickNoteModalOpenState } from '../../atoms/QuickNoteModalAtoms';
+import { mdNoteModalOpenState } from '../../atoms/MDNoteModalAtoms';
 import PageFade from '../PageFade/PageFade';
 import MenuCreate from './MenuCreate';
 import MenuQuickNoteModal from './MenuQuickNoteModal';
@@ -13,6 +14,7 @@ const ActionsMenu = () => {
     const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
     const pageFadeActive = useRecoilValue(actionsMenuPageFadeActiveState);
     const quickNoteModalOpen = useRecoilValue(quickNoteModalOpenState);
+    const mdNoteModalOpen = useRecoilValue(mdNoteModalOpenState);
 
     return (
         <>
@@ -31,6 +33,9 @@ const ActionsMenu = () => {
                             { quickNoteModalOpen &&
                                 <MenuQuickNoteModal/>
                             }
+                        </AnimatePresence>
+
+                        <AnimatePresence>
                         </AnimatePresence>
                     </div>
                 }

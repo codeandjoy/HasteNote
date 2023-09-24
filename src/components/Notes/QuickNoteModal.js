@@ -6,10 +6,11 @@ import "./css/QuickNoteModal.css";
 
 
 const QuickNoteModal = () => {
+    // TODO rename to quickNote*
+    const [noteModalData, setNoteModalData] = useRecoilState(quickNoteModalState);
     const noteModalAnimationPos = useRecoilValue(quickNoteModalAnimationPosState);
     const noteModalOpen = useRecoilValue(quickNoteModalOpenState);
-    const [noteModalData, setNoteModalData] = useRecoilState(quickNoteModalState);
-
+    
     const modalVariants = {
         initial: {
             opacity: 0,

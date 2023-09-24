@@ -18,5 +18,5 @@ export const mdNoteModalState = atom({
 
 export const mdNoteModalActionState = atom({
     key: "mdNoteModalActionState",
-    default: "create"
+    default: "create" // create || edit
 });
