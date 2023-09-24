@@ -23,7 +23,6 @@ const App = () => {
       <div className='desktop-art desktop-art-right'></div>
 
       <div className='app-container'>
-        <MDNoteModal/>
         <motion.div
           className='animated-container'
 
@@ -47,6 +46,7 @@ const App = () => {
 
         <BoardsMenu/>
         <NoteModal/>
+        <MDNoteModal/>
       </div>
 
     </div>
