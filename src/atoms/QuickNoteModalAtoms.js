@@ -14,6 +14,7 @@ export const quickNoteModalState = atom({
     key: "quickNoteModalState",
     default: {
         id: "",
+        type: "quicknote",
         title: "",
         tags: "",
         content: ""
