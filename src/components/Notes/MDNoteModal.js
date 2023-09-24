@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { mdNoteModalOpenState, mdNoteModalState } from "../../atoms/MDNoteModalAtoms";
 import MDEditor from "@uiw/react-md-editor";
 import PlainBtn from "../PlainBtn/PlainBtn";
 import Icon from "../Icon/Icon";
 
 import "./css/MDNoteModal.css";
+import { actionsMenuPageFadeActiveState, pageFadeCallbackState } from "../../atoms/UIAtoms";
 
 const mdNoteModalVariants = {
     initial: {
@@ -26,8 +27,11 @@ const mdNoteModalVariants = {
 
 
 const MDNoteModal = () => {
+    const setPageFadeActive = useSetRecoilState(actionsMenuPageFadeActiveState);
+    const resetPageFadeCallback = useResetRecoilState(pageFadeCallbackState);
+    
     const [mdNoteModalData, setMDNoteModalData] = useRecoilState(mdNoteModalState);
-    const mdNoteModalOpen = useRecoilValue(mdNoteModalOpenState);
+    const [mdNoteModalOpen, setMDNoteModalOpen] = useRecoilState(mdNoteModalOpenState);
     
     const [formatVisible, setFormatVisible] = useState(false);
     
@@ -48,6 +52,11 @@ const MDNoteModal = () => {
                         <PlainBtn
                             type="menu-arrow-left"
                             className="btn-back"
+                            onClick={() => {
+                                setMDNoteModalOpen(false);
+                                setPageFadeActive(false);
+                                resetPageFadeCallback();
+                            }}
                         />
                         <Icon type="paper" className="art-paper"/>
                         <PlainBtn
