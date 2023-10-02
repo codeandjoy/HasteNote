@@ -20,17 +20,17 @@
 }
 
 .action-btn-orange {
-  background-color: #DD6E42;
+  background-color: var(--clr-primary);
 }
 
 .action-btn-black {
-  background-color: #0C0C0C;
+  background-color: var(--clr-mid-black);
 }
 
 .action-btn-blue {
-  background-color: #425BDD;
+  background-color: var(--clr-blue);
 }
 
 .action-btn-red {
-  background-color: #7B2127;
+  background-color: var(--clr-red);
 }/*# sourceMappingURL=ActionBtn.css.map */

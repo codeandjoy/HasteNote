@@ -2,10 +2,10 @@
     padding: 10px 20px;
 
     .context-menu-btn--text{
-        color: #fff;
+        color: var(--clr-light-white);
     }
 }
 .context-menu-btn:hover{
     cursor: pointer;
-    background-color: #000;
+    background-color: var(--clr-black);
 }

@@ -5,8 +5,8 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  color: #adadad;
-  background-color: rgba(0, 0, 0, 0.3019607843);
+  color: var(--clr-gray);
+  background-color: var(--clr-midlight-black);
   border-radius: 10px;
 }
 
@@ -15,6 +15,6 @@
 }
 
 .tag-active {
-  color: #fff;
-  background-color: #dd6e42;
+  color: var(--clr-light-white);
+  background-color: var(--clr-primary);
 }/*# sourceMappingURL=Tag.css.map */

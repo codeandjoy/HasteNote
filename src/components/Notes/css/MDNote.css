@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 180px;
-  background-color: #0C0C0C;
+  background-color: var(--clr-mid-black);
   overflow: hidden;
 }
 .md-note .md-note--art-side {
@@ -31,8 +31,8 @@
 .md-note .centered-preview-content .note-title {
   margin: 0;
   font-size: 20pt;
-  color: #FFFAF0;
+  color: var(--clr-ligh-white);
 }
 .md-note .centered-preview-content .note-tags {
-  color: #3F3F3F;
+  color: var(--clr-dark-gray);
 }/*# sourceMappingURL=MDNote.css.map */

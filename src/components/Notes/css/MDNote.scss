@@ -7,7 +7,7 @@
 
     height: 180px;
 
-    background-color: #0C0C0C;
+    background-color: var(--clr-mid-black);
 
     overflow: hidden;
 
@@ -41,11 +41,11 @@
     
             font-size: 20pt;
     
-            color: #FFFAF0;
+            color: var(--clr-ligh-white);
         }
     
         .note-tags{
-            color: #3F3F3F;
+            color: var(--clr-dark-gray);
         }
     }
 }

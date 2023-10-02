@@ -1,6 +1,6 @@
 .quick-note {
   color: #111;
-  background-color: #FFFAF0;
+  background-color: var(--clr-light-white);
 }
 .quick-note .note-title {
   margin: 0;
@@ -9,11 +9,11 @@
 }
 .quick-note .note-tags {
   margin-bottom: 6px;
-  color: #3F3F3F;
+  color: var(--clr-dark-gray);
 }
 .quick-note .note-line {
   margin-bottom: 6px;
   width: 100%;
   height: 2px;
-  background-color: #adadad;
+  background-color: var(--clr-gray);
 }/*# sourceMappingURL=QuickNote.css.map */

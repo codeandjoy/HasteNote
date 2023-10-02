@@ -5,8 +5,8 @@
     font-size: 14px;
     user-select: none;
 
-    color: #adadad;
-    background-color: #0000004D;
+    color: var(--clr-gray);
+    background-color: var(--clr-midlight-black);
 
     border-radius: 10px;
 }
@@ -16,6 +16,6 @@
 }
 
 .tag-active{
-    color: #fff;
-    background-color: #DD6E42FF;
+    color: var(--clr-light-white);
+    background-color: var(--clr-primary);
 }

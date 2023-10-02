@@ -20,7 +20,7 @@
   font-size: 70pt;
   font-family: Lato, sans-serif;
   font-weight: bold;
-  color: #fff;
+  color: var(--clr-light-white);
 }
 .data-placeholder .direction-arrow {
   position: absolute;
