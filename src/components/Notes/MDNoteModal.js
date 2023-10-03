@@ -11,15 +11,12 @@ import { actionsMenuPageFadeActiveState, pageFadeCallbackState } from "../../ato
 
 const mdNoteModalVariants = {
     initial: {
-        opacity: 0,
         top: "100%"
     },
     animate: {
-        opacity: 1,
         top: 0
     },
     exit: {
-        opacity: 0,
         top: 0,
         left: "-100%"
     }
