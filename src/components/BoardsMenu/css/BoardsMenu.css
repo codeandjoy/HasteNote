@@ -41,4 +41,10 @@
 }
 .boards-menu .boards-pane .btn-add-board {
   margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .boards-menu {
+    width: 60vw;
+  }
 }/*# sourceMappingURL=BoardsMenu.css.map */

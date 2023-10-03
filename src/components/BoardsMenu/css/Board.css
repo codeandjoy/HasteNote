@@ -36,4 +36,10 @@
 
 .board-hover {
   background-color: #373737;
+}
+
+@media (max-width: 600px) {
+  .board {
+    height: 24px;
+  }
 }/*# sourceMappingURL=Board.css.map */

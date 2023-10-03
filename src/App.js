@@ -9,12 +9,16 @@ import MDNoteModal from './components/Notes/MDNoteModal';
 import DataPlaceholder from './components/DataPlaceholder/DataPlaceholder';
 import { boardsMenuOpenState } from './atoms/UIAtoms';
 import { boardsState } from './atoms/DataAtoms';
+import { useMediaQuery } from 'react-responsive';
+
 import './App.css';
 
 
 const App = () => {
   const boards = useRecoilValue(boardsState);
   const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
+
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 600px)" })
 
   return (
     <div className="App">
@@ -27,7 +31,7 @@ const App = () => {
 
           animate={
             isBoardsMenuOpen
-            ? { marginLeft: "-380px", marginRight: "380px" }
+            ? { marginLeft: isSmallScreen?"-60vw":"-380px", marginRight: isSmallScreen?"60vw":"380px" }
             : { marginLeft: 0, marginRight: 0 }
           }
         >
