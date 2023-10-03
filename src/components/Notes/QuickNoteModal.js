@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { quickNoteModalActionState, quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
+import { quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
 
 import "./css/QuickNoteModal.css";
 
@@ -10,7 +10,6 @@ const QuickNoteModal = () => {
     const [noteModalData, setNoteModalData] = useRecoilState(quickNoteModalState);
     const noteModalAnimationPos = useRecoilValue(quickNoteModalAnimationPosState);
     const noteModalOpen = useRecoilValue(quickNoteModalOpenState);
-    const noteModalAction = useRecoilValue(quickNoteModalActionState);
 
     const modalVariants = {
         initial: {
@@ -36,7 +35,6 @@ const QuickNoteModal = () => {
                     variants={ modalVariants }
                     initial="initial"
                     animate="active"
-                    exit={ noteModalAction==="edit"?"initial":null }
                     transition={{ type:"tween" }}
 
                     className="quick-note-modal"
