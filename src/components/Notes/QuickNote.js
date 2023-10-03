@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useResetRecoilState, useSetRecoilState } from "recoil";
 import { actionsMenuPageFadeActiveState } from "../../atoms/UIAtoms";
@@ -28,6 +28,8 @@ const QuickNote = ({ note }) => {
 
     const noteRef = useRef();
 
+    const [isHidden, setIsHidden] = useState(false);
+
     return (
         <motion.div 
             variants={ noteVariants }
@@ -38,9 +40,11 @@ const QuickNote = ({ note }) => {
         
             ref={ noteRef }
             
-            className="note-preview quick-note"
+            className={"note-preview quick-note" + (isHidden?" note-preview-hidden":"")}
 
             onClick={() => {
+                setIsHidden(true);
+
                 // Open note modal
                 setQuickNoteModalAnimationPos({
                     x: noteRef.current.offsetLeft,
@@ -53,6 +57,8 @@ const QuickNote = ({ note }) => {
                 setActionsMenuPageFadeActive(true);
 
                 setPageFadeCallback(()=>()=>{
+                    setIsHidden(false);
+
                     // Close and reset note modal
                     resetQuickNoteModalAnimationPos();
                     resetQuickNoteModalData();
