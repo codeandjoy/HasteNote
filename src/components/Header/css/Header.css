@@ -12,4 +12,13 @@
 }
 .board-header .btn-menu {
   margin-top: 30px;
+}
+
+@media (max-width: 800px) {
+  .board-header {
+    margin-bottom: 20px;
+  }
+  .board-header .btn-menu {
+    margin-top: 24px;
+  }
 }/*# sourceMappingURL=Header.css.map */

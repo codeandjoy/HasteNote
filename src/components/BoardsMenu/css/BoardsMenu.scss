@@ -60,7 +60,32 @@
         }
     }
 }
+@media (max-width: 1000px) {
+    .boards-menu{
+        padding: 0;
 
+        .boards-pane{
+            padding: 60px 20px;
+
+            border-radius: 0;
+            
+            .btn-close-menu{
+                top: 60px;
+            }
+        }
+    }
+}
+@media (max-width: 800px) {
+    .boards-menu{
+        .boards-pane{
+            padding: 34px 20px;
+
+            .btn-close-menu{
+                top: 34px;
+            }
+        }
+    }
+}
 @media (max-width: 600px) {
     .boards-menu{
         width: 60vw;
