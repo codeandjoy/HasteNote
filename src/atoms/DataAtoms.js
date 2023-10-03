@@ -12,7 +12,56 @@ export const boardsState = atom({
                     type: "quicknote",
                     title: "Note",
                     tags: "#tag",
-                    content: "Content"
+                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                },
+                {
+                    id: "2",
+                    type: "quicknote",
+                    title: "Note",
+                    tags: "#tag",
+                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                },
+                {
+                    id: "3",
+                    type: "quicknote",
+                    title: "Note",
+                    tags: "#tag",
+                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                },
+                {
+                    id: "4",
+                    type: "quicknote",
+                    title: "Note",
+                    tags: "#tag",
+                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                },
+                {
+                    id: "5",
+                    type: "quicknote",
+                    title: "Note",
+                    tags: "#tag",
+                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                },
+                {
+                    id: "6",
+                    type: "quicknote",
+                    title: "Note",
+                    tags: "#tag",
+                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                },
+                {
+                    id: "7",
+                    type: "quicknote",
+                    title: "Note",
+                    tags: "#tag",
+                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                },
+                {
+                    id: "8",
+                    type: "quicknote",
+                    title: "Note",
+                    tags: "#tag",
+                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
                 }
             ]
         }

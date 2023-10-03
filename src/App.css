@@ -25,6 +25,11 @@
 .desktop-art-right{
   right: -250px;
 }
+@media (max-width: 1600px) {
+  .desktop-art{
+    display: none;
+  }
+}
 
 .app-container{
   position: relative;
@@ -38,6 +43,11 @@
 
   box-sizing: border-box;
   overflow: hidden;
+}
+@media (max-width: 1000px) {
+  .app-container{
+    padding: 40px 20px;
+  }
 }
 
 .animated-container{

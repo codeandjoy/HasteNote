@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import Icon from "../Icon/Icon";
-
-import "./css/NotePreview.css"
-import "./css/MDNote.css"
 import { noteVariants } from "./animationVariants";
 import { useResetRecoilState, useSetRecoilState } from "recoil";
 import { mdNoteModalActionState, mdNoteModalOpenState, mdNoteModalState } from "../../atoms/MDNoteModalAtoms";
 import { actionsMenuPageFadeActiveState, pageFadeCallbackState } from "../../atoms/UIAtoms";
+
+import "./css/NotePreview.css"
+import "./css/MDNote.css"
 
 
 const MDNote = ({ note }) => {
