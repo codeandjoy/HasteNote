@@ -2,13 +2,13 @@
     position: absolute;
     z-index: 3;
     top: 0;
+    left: 0;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 
-    padding: 0 20px;
-    padding-top: 50px;
+    padding: 50px 20px;
     box-sizing: border-box;
 
     width: 100%;
@@ -81,11 +81,13 @@
     .content-editor{
         flex: 1;
 
+        overflow: scroll;
+
         .MDEditor{
             height: 100% !important;
             
             box-shadow: none;
-    
+
             .w-md-editor-bar{
                 display: none;
             }

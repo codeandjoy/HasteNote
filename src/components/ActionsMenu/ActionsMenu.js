@@ -6,9 +6,9 @@ import { mdNoteModalOpenState } from '../../atoms/MDNoteModalAtoms';
 import PageFade from '../PageFade/PageFade';
 import MenuCreate from './MenuCreate';
 import MenuQuickNoteModal from './MenuQuickNoteModal';
+import MenuMDNoteModal from './MenuMDNoteModal';
 
 import "./css/ActionsMenu.css";
-import MenuMDNoteModal from './MenuMDNoteModal';
 
 
 const ActionsMenu = () => {

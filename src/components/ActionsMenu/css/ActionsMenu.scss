@@ -1,12 +1,15 @@
 .actions-menu{
-    position: relative;
+    position: absolute;
     z-index: 4;
-
+    bottom: 80px;
+    right: 0;
+    
     display: flex;
     justify-content: flex-end;
 
+    width: 100vw;
     height: 60px;
-
+    
     margin-top: 20px;
 
     .action-buttons{
