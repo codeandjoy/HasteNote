@@ -31,7 +31,7 @@
 .md-note .centered-preview-content .note-title {
   margin: 0;
   font-size: 20pt;
-  color: var(--clr-ligh-white);
+  color: var(--clr-light-white);
 }
 .md-note .centered-preview-content .note-tags {
   color: var(--clr-dark-gray);
