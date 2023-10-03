@@ -1,24 +1,22 @@
 import uuid from "react-uuid";
-import { useRecoilCallback, useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
-import { mdNoteModalActionState, mdNoteModalOpenState, mdNoteModalState } from "../../atoms/MDNoteModalAtoms";
+import { useRecoilCallback, useRecoilValue, useSetRecoilState } from "recoil";
+import { mdNoteModalActionState, mdNoteModalState } from "../../atoms/MDNoteModalAtoms";
 import { action_btn_open_variants, deleteBtnOpenVariants } from "./animationVariants";
-import { actionsMenuPageFadeActiveState } from "../../atoms/UIAtoms";
+import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 import { activeBoardNotesState } from "../../atoms/DataAtoms";
 import { validateNoteTags } from "../../utils/utils";
 import ActionBtn from "./ActionBtn";
 
 
 const MenuMDNoteModal = () => {
-    const [mdNoteModalAction, setMDNoteModalAction] = useRecoilState(mdNoteModalActionState);
-    const setMDNoteModalOpen = useSetRecoilState(mdNoteModalOpenState);
-    const resetMDNoteModalData = useResetRecoilState(mdNoteModalState);
+    const mdNoteModalAction = useRecoilValue(mdNoteModalActionState);
     const getMDNoteModalData = useRecoilCallback(({snapshot}) => async () => {
         return await snapshot.getPromise(mdNoteModalState);
     }, []);
 
-    const setPageFadeActive = useSetRecoilState(actionsMenuPageFadeActiveState);
-    
     const setActiveBoardNotes = useSetRecoilState(activeBoardNotesState);
+
+    const pageFadeCallback = useRecoilValue(pageFadeCallbackState);
 
     return (
         <>
@@ -32,13 +30,7 @@ const MenuMDNoteModal = () => {
                         let modalData = await getMDNoteModalData();
                         setActiveBoardNotes(oldActiveNotes => oldActiveNotes.filter(oldNote => oldNote.id !== modalData.id));
                 
-                        // Close and reset note modal
-                        resetMDNoteModalData();
-                        setMDNoteModalAction("create"); // reset to default
-                        setMDNoteModalOpen(false);
-                        //
-
-                        setPageFadeActive(false);                     
+                        pageFadeCallback();
                     }}
                 />
             }
@@ -68,13 +60,7 @@ const MenuMDNoteModal = () => {
                         }
                     });
 
-                    // Close and reset note modal
-                    resetMDNoteModalData();
-                    setMDNoteModalAction("create"); // reset to default
-                    setMDNoteModalOpen(false);
-                    //
-
-                    setPageFadeActive(false);             
+                    pageFadeCallback();           
                 }}
             />
         </>

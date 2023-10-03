@@ -1,25 +1,22 @@
 import uuid from "react-uuid";
-import { useRecoilCallback, useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
-import { quickNoteModalActionState, quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
+import { useRecoilCallback, useRecoilValue, useSetRecoilState } from "recoil";
+import { quickNoteModalActionState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
 import { activeBoardNotesState } from "../../atoms/DataAtoms";
 import { action_btn_open_variants, deleteBtnOpenVariants } from "./animationVariants";
 import { validateNoteTags } from "../../utils/utils";
 import ActionBtn from "./ActionBtn";
-import { actionsMenuPageFadeActiveState } from "../../atoms/UIAtoms";
+import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 
 
 const MenuQuickNoteModal = () => {
-    const [quickNoteModalAction, setQuickNoteModalAction] = useRecoilState(quickNoteModalActionState);
-    const resetQuickNoteModalAnimationPos = useResetRecoilState(quickNoteModalAnimationPosState);
-    const setQuickNoteModalOpen = useSetRecoilState(quickNoteModalOpenState);
-    const resetQuickNoteModalData = useResetRecoilState(quickNoteModalState);
+    const quickNoteModalAction = useRecoilValue(quickNoteModalActionState);
     const getQuickNoteModalData = useRecoilCallback(({snapshot}) => async () => {
         return await snapshot.getPromise(quickNoteModalState);
     }, []);
 
-    const setPageFadeActive = useSetRecoilState(actionsMenuPageFadeActiveState);
-
     const setActiveBoardNotes = useSetRecoilState(activeBoardNotesState);
+
+    const pageFadeCallback = useRecoilValue(pageFadeCallbackState);
 
     return (
         <>
@@ -33,14 +30,7 @@ const MenuQuickNoteModal = () => {
                         let modalData = await getQuickNoteModalData();
                         setActiveBoardNotes(oldActiveNotes => oldActiveNotes.filter(oldNote => oldNote.id !== modalData.id));
                 
-                        // Close and reset note modal
-                        resetQuickNoteModalAnimationPos();
-                        resetQuickNoteModalData();
-                        setQuickNoteModalAction("create"); // reset to default
-                        setQuickNoteModalOpen(false);
-                        //
-
-                        setPageFadeActive(false);
+                        pageFadeCallback();
                     }}
                 />
             }
@@ -71,14 +61,7 @@ const MenuQuickNoteModal = () => {
                         }
                     });
 
-                    // Close and reset note modal
-                    resetQuickNoteModalAnimationPos();
-                    resetQuickNoteModalData();
-                    setQuickNoteModalAction("create"); // reset to default
-                    setQuickNoteModalOpen(false);
-                    //
-
-                    setPageFadeActive(false);
+                    pageFadeCallback();
                 }}
             />
         </>

@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import uuid from "react-uuid";
 import PlainBtn from "../PlainBtn/PlainBtn";
 import Boards from "./Boards";
-import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { boardsMenuPageFadeActiveState, boardsMenuOpenState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 import { activeBoardIdState, boardsState } from "../../atoms/DataAtoms";
@@ -22,12 +22,12 @@ const boardMenuVariants = {
 
 
 const BoardsMenu = () => {
-    const [boardsMenuOpen, setBoardsMenuOpen] = useRecoilState(boardsMenuOpenState);
+    const boardsMenuOpen = useRecoilValue(boardsMenuOpenState);
     const [boards, setBoards] = useRecoilState(boardsState);
     const setActiveBoardId = useSetRecoilState(activeBoardIdState);
 
-    const [pageFadeActive, setPageFadeActive] = useRecoilState(boardsMenuPageFadeActiveState);
-    const resetPageFadeCallback = useResetRecoilState(pageFadeCallbackState);
+    const pageFadeActive = useRecoilValue(boardsMenuPageFadeActiveState);
+    const pageFadeCallback = useRecoilValue(pageFadeCallbackState);
     
     return (
         <>
@@ -46,9 +46,7 @@ const BoardsMenu = () => {
                             <PlainBtn
                                 type="menu-close"
                                 onClick={() => {
-                                    setBoardsMenuOpen(false);
-                                    setPageFadeActive(false);
-                                    resetPageFadeCallback();
+                                    pageFadeCallback();
                                 }}
                                 className="btn-close-menu"
                             />
