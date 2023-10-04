@@ -13,7 +13,6 @@
     }
 
     .data-placeholder--logo-container{
-        
         width: 300px;
         height: 300px;
     }   
@@ -47,5 +46,36 @@
         right: 80px;
 
         rotate: 45deg;
+    }
+}
+
+@media (max-width: 1000px) {
+    .data-placeholder{
+        .data-placeholder--text{
+            font-size: 12vw;
+        }
+
+        .notes-direction-arrow{
+            bottom: 140px;
+            right: 60px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .data-placeholder{
+        .notes-direction-arrow{
+            bottom: 160px;
+            right: 60px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .data-placeholder{
+        .data-placeholder--logo-container{
+            width: 50vw;
+            height: 50vw;
+        }
     }
 }
