@@ -2,9 +2,6 @@ import Icon from "../Icon/Icon";
 
 import "./css/DataPlaceholder.css";
 
-// custom text prop
-// custom size prop
-// center relative to parent
 
 const DataPlaceholder = ({ type }) => {
     return (
