@@ -1,0 +1,8 @@
+.masonry-grid {
+  display: flex;
+  width: 100%;
+}
+.masonry-grid .masonry-col {
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=MasonryGrid.css.map */

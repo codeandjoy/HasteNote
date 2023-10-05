@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
 import { activeBoardNotesFilteredByTagsState } from "../../atoms/DataAtoms";
 import { boardsMenuOpenState } from "../../atoms/UIAtoms";
@@ -7,6 +7,7 @@ import QuickNote from "./QuickNote";
 import MDNote from "./MDNote";
 
 import "./css/NotesGrid.css";
+import MasonryGrid from "../MasonryGrid/MasonryGrid";
 
 const notesVariants = {
     initial: { opacity: 0 },
@@ -27,17 +28,19 @@ const NotesGrid = () => {
             className="notes-container"
         >
             { !!activeBoardNotesFilteredByTags.length &&
-                <div className="notes">
-                    <AnimatePresence>
-                        {
-                            activeBoardNotesFilteredByTags.map(note => 
-                                (note.type === "quicknote" && <QuickNote key={ note.id } note={ note }/>)
-                                ||
-                                (note.type === "mdnote" && <MDNote key={ note.id } note={ note }/>)    
-                            )
-                        }
-                    </AnimatePresence>
-                </div>
+                <MasonryGrid
+                    numCols={ 3 } // make responsive based on max-width
+                    colGap={ 20 }
+                    rowGap={ 20 }
+                >
+                    {
+                        activeBoardNotesFilteredByTags.map(note => 
+                            (note.type === "quicknote" && <QuickNote key={ note.id } note={ note }/>)
+                            ||
+                            (note.type === "mdnote" && <MDNote key={ note.id } note={ note }/>)    
+                        )
+                    }
+                </MasonryGrid>
             }
             { !!!activeBoardNotesFilteredByTags.length && !isBoardsMenuOpen &&
                 <DataPlaceholder type="notes"/>
