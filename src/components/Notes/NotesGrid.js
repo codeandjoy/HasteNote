@@ -8,6 +8,7 @@ import MDNote from "./MDNote";
 
 import "./css/NotesGrid.css";
 import MasonryGrid from "../MasonryGrid/MasonryGrid";
+import { useMediaQuery } from "react-responsive";
 
 const notesVariants = {
     initial: { opacity: 0 },
@@ -19,6 +20,10 @@ const NotesGrid = () => {
     const activeBoardNotesFilteredByTags = useRecoilValue(activeBoardNotesFilteredByTagsState);
     const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
+    const is2Col = useMediaQuery({ query: '(max-width: 800px)' });
+    const is1Col = useMediaQuery({ query: '(max-width: 500px)' });
+    const numCols = (()=>{if(is1Col) return 1; if(is2Col) return 2; return 3})();
+
     return (
         <motion.div 
             variants={ notesVariants }
@@ -29,7 +34,7 @@ const NotesGrid = () => {
         >
             { !!activeBoardNotesFilteredByTags.length &&
                 <MasonryGrid
-                    numCols={ 3 } // make responsive based on max-width
+                    numCols={ numCols }
                     colGap={ 20 }
                     rowGap={ 20 }
                 >

@@ -21,8 +21,8 @@ const MasonryGrid = ({ children, numCols, colGap, rowGap, className }) => {
     return (
         <div className={ "masonry-grid "+ className } style={{gap:colGap}}>
             { 
-                masonry.map(col => (
-                    <div className="masonry-col" style={{gap:rowGap}}>
+                masonry.map((col, idx) => (
+                    <div key={ idx } className="masonry-col" style={{gap:rowGap}}>
                         { col.map(component => component) }
                     </div>
                 ))
