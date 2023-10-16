@@ -2,11 +2,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import uuid from "react-uuid";
 import PlainBtn from "../PlainBtn/PlainBtn";
 import Boards from "./Boards";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { boardsMenuPageFadeActiveState, boardsMenuOpenState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
-import { activeBoardIdState, boardsState } from "../../atoms/DataAtoms";
 import PageFade from "../PageFade/PageFade";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "../../db";
 
 import "./css/BoardsMenu.css";
 
@@ -22,9 +23,11 @@ const boardMenuVariants = {
 
 
 const BoardsMenu = () => {
+    // const [boards, setBoards] = useRecoilState(boardsState);
+    // const setActiveBoardId = useSetRecoilState(activeBoardIdState);
+    const boards = useLiveQuery(() => db.boards.toArray());
+
     const boardsMenuOpen = useRecoilValue(boardsMenuOpenState);
-    const [boards, setBoards] = useRecoilState(boardsState);
-    const setActiveBoardId = useSetRecoilState(activeBoardIdState);
 
     const pageFadeActive = useRecoilValue(boardsMenuPageFadeActiveState);
     const pageFadeCallback = useRecoilValue(pageFadeCallbackState);
@@ -53,26 +56,23 @@ const BoardsMenu = () => {
                             <span className="boards-pane-title">Boards</span>
                             <PlainBtn
                                 type="plus"
-                                onClick={()=>{
+                                onClick={async ()=>{
                                     const newId = uuid();
 
                                     // If creating first board
-                                    if(!boards.length) setActiveBoardId(newId);
+                                    if(!boards.length) localStorage.setItem('activeBoardId', newId);
 
-                                    setBoards(oldBoards =>
-                                        [
-                                            {
-                                                id: newId,
-                                                name: "Board",
-                                                notes: []
-                                            },
-                                            ...oldBoards
-                                        ]
-                                    )
+                                    await db.boards.add(
+                                        {
+                                            id: newId,
+                                            name: "Board",
+                                            notes: []
+                                        },
+                                    );
                                 }}
                                 className="btn-add-board"
                             />
-                            <Boards/>
+                            <Boards boards={ boards }/>
                         </div>
                     </motion.div>
                 }

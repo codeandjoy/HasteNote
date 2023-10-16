@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { useRecoilCallback, useRecoilState, useSetRecoilState } from "recoil";
-import { activeBoardIdState, boardsState } from "../../atoms/DataAtoms";
 import { AnimatePresence, motion } from "framer-motion"; 
 import BoardContextMenu from "./BoardContextMenu";
 import PlainBtn from "../PlainBtn/PlainBtn";
+import EditableText from "./EditableText";
+import { db } from "../../db";
 
 import "./css/Board.css";
-import EditableText from "./EditableText";
 
 const boardVariants = {
     initial: {
@@ -19,24 +18,17 @@ const boardVariants = {
 
 
 const Board = ({ board }) => {
-    const [activeBoardId, setActiveBoardId] = useRecoilState(activeBoardIdState);
-    const setBoards = useSetRecoilState(boardsState);
-    const getAllBoards = useRecoilCallback(({snapshot}) => async () => {
-        return await snapshot.getPromise(boardsState)
-    }, []);
+    // const [activeBoardId, setActiveBoardId] = useRecoilState(activeBoardIdState);
+    // const setBoards = useSetRecoilState(boardsState);
+    // const getAllBoards = useRecoilCallback(({snapshot}) => async () => {
+    //     return await snapshot.getPromise(boardsState)
+    // }, []);
+    const activeBoardId = localStorage.getItem('activeBoardId');
 
     const [hoverHighlight, setHoverHiglight] = useState(false);
     const [contextMenuOpen, setContextMenuOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
-    // Edit mode state thats changed by context menu edit action
 
-    // TODO
-    // contextMenuOpen opens contextmenu
-
-    // TODO modes 
-    // edit mode == true
-    // make span into input and on click outside save new board name
-    // delete button just deletes board
 
     const classNames = "board"
         +(activeBoardId===board.id ? " board-active":"")
@@ -50,7 +42,7 @@ const Board = ({ board }) => {
             layout
         
             onClick={() => {
-                setActiveBoardId(board.id);
+                localStorage.setItem('activeBoardId', board.id);
             }}
 
             onMouseOver={(e) => setHoverHiglight(true)}
@@ -63,15 +55,9 @@ const Board = ({ board }) => {
                 className="board-name"
 
                 trueState={ board.name }
-                onCommit={(inputState) => {
-                    setBoards(oldBoards => {
-                        return oldBoards.map(oldBoard => {
-                            if(oldBoard.id === board.id){
-                                return {...board, name: inputState};
-                            }
-                            return oldBoard;
-                        })
-                    });
+                onCommit={async (inputState) => {
+                    await db.boards.update(board.id, { name: inputState });
+
                     setIsEditMode(false);
                 }}
                 isEditMode={ isEditMode }
@@ -97,19 +83,22 @@ const Board = ({ board }) => {
                             setContextMenuOpen(false);
                         }}
                         onDelete={async () => {
+                            // change active board id if current board is active
                             if(activeBoardId === board.id){
-                                const allBoards = await getAllBoards();
+                                const allBoards = await db.boards.toArray();
                                 
+                                // if boards besides this one exist
                                 if(allBoards.length > 1){
                                     // Set first board in the array as active
                                     const nextActiveId = allBoards.find(b => b.id !== activeBoardId).id;
-                                    setActiveBoardId(nextActiveId);
+                                    localStorage.setItem('activeBoardId', nextActiveId);
                                 }
                                 else{
-                                    setActiveBoardId(0);
+                                    localStorage.removeItem('activeBoardId');
                                 }
                             }
-                            setBoards(oldBoards => oldBoards.filter(b => b.id !== board.id));
+
+                            db.boards.delete(board.id);
                         }}
                     />
                 }
