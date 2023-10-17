@@ -1,11 +1,11 @@
 import { useRecoilState } from "recoil";
-import { boardFilterTagsState } from "../../atoms/DataAtoms";
+import { activeFilterTagsState } from "../../atoms/DataAtoms";
 
 import "./css/Tag.css";
 
 
 const Tag = ({ tag }) => {
-    const [filterTags, setFilterTags] = useRecoilState(boardFilterTagsState);
+    const [filterTags, setFilterTags] = useRecoilState(activeFilterTagsState);
 
     const classNames = "tag" + (filterTags.includes(tag) ? " tag-active" : "");
 

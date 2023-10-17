@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
-import { activeBoardNotesFilteredByTagsState } from "../../atoms/DataAtoms";
+import { activeFilterTagsState } from "../../atoms/DataAtoms";
 import { boardsMenuOpenState } from "../../atoms/UIAtoms";
 import DataPlaceholder from "../DataPlaceholder/DataPlaceholder";
 import QuickNote from "./QuickNote";
@@ -9,15 +9,29 @@ import MDNote from "./MDNote";
 import "./css/NotesGrid.css";
 import MasonryGrid from "../MasonryGrid/MasonryGrid";
 import { useMediaQuery } from "react-responsive";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "../../db";
 
 const notesVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1 }
 }
 
+const filterNotesByTags = (notes, filterTags) => {
+    if(!notes) return [];
+    if(filterTags.length === 0) return notes;
+    
+    return notes.filter(note => filterTags.some(filterTag => note.tags.split(" ").includes(filterTag)));
+}
+
 
 const NotesGrid = () => {
-    const activeBoardNotesFilteredByTags = useRecoilValue(activeBoardNotesFilteredByTagsState);
+    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId')));
+    const activeFilterTags = useRecoilValue(activeFilterTagsState);
+
+    const activeBoardNotesFilteredByTags = filterNotesByTags(activeBoard?.notes, activeFilterTags);
+
+    
     const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
     const is2Col = useMediaQuery({ query: '(max-width: 800px)' });
@@ -32,7 +46,7 @@ const NotesGrid = () => {
         
             className="notes-container"
         >
-            { !!activeBoardNotesFilteredByTags.length &&
+            { activeBoardNotesFilteredByTags && !!activeBoardNotesFilteredByTags.length &&
                 <MasonryGrid
                     numCols={ numCols }
                     colGap={ 20 }
@@ -47,7 +61,7 @@ const NotesGrid = () => {
                     }
                 </MasonryGrid>
             }
-            { !!!activeBoardNotesFilteredByTags.length && !isBoardsMenuOpen &&
+            { activeBoardNotesFilteredByTags && !!!activeBoardNotesFilteredByTags.length && !isBoardsMenuOpen &&
                 <DataPlaceholder type="notes"/>
             }
         </motion.div>

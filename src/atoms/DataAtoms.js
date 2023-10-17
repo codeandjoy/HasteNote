@@ -73,8 +73,8 @@ export const activeBoardIdState = atom({
     default: "0"
 });
 
-export const boardFilterTagsState = atom({
-    key: "boardFilterTags",
+export const activeFilterTagsState = atom({
+    key: "activeFilterTagsState",
     default: []
 });
 
@@ -121,19 +121,19 @@ export const activeBoardNotesState = selector({
     }
 });
 
-export const activeBoardNotesFilteredByTagsState = selector({
-    key: "activeBoardNotesFilteredByTagsState",
-    get: ({get}) => {
-        const activeBoardNotes = get(activeBoardNotesState);
-        const boardFilterTags = get(boardFilterTagsState);
+// export const activeBoardNotesFilteredByTagsState = selector({
+//     key: "activeBoardNotesFilteredByTagsState",
+//     get: ({get}) => {
+//         const activeBoardNotes = get(activeBoardNotesState);
+//         const boardFilterTags = get(boardFilterTagsState);
 
-        // if no filter tags -> return all notes
-        if(boardFilterTags.length === 0) return activeBoardNotes;
+//         // if no filter tags -> return all notes
+//         if(boardFilterTags.length === 0) return activeBoardNotes;
 
-        // return notes that contain boardFilterTag(s)
-        return activeBoardNotes.filter(note => boardFilterTags.some(filterTag => note.tags.split(" ").includes(filterTag)));
-    }
-});
+//         // return notes that contain boardFilterTag(s)
+//         return activeBoardNotes.filter(note => boardFilterTags.some(filterTag => note.tags.split(" ").includes(filterTag)));
+//     }
+// });
 
 export const activeBoardTagsState = selector({
     key: "activeBoardTagsState",
