@@ -1,18 +1,16 @@
-import { useRecoilCallback, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { quickNoteModalActionState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
 import ModalMenu from "./ModalMenu";
 
 
 const MenuQuickNoteModal = () => {
     const quickNoteModalAction = useRecoilValue(quickNoteModalActionState);
-    const getQuickNoteModalData = useRecoilCallback(({snapshot}) => async () => {
-        return await snapshot.getPromise(quickNoteModalState);
-    }, []);
+    const quickNoteModalData = useRecoilValue(quickNoteModalState);
 
     return (
         <ModalMenu
-            modalAction={quickNoteModalAction}
-            modalData={ async () => await getQuickNoteModalData() }
+            modalAction={ quickNoteModalAction }
+            modalData={ quickNoteModalData }
         />
     );
 };
