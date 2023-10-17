@@ -1,9 +1,8 @@
 import PlainBtn from "../PlainBtn/PlainBtn"
 import Tags from "./Tags";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { boardsMenuPageFadeActiveState, boardsMenuOpenState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
-import { activeBoardState } from "../../atoms/DataAtoms";
 
 import "./css/Header.css";
 import { useLiveQuery } from "dexie-react-hooks";

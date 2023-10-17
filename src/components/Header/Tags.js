@@ -1,6 +1,4 @@
 import Tag from "./Tag";
-import { useRecoilValue } from "recoil";
-import { activeBoardTagsState } from "../../atoms/DataAtoms";
 
 import "./css/Tags.css";
 import { useLiveQuery } from "dexie-react-hooks";
