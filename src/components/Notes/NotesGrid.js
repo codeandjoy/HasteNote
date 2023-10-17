@@ -26,7 +26,7 @@ const filterNotesByTags = (notes, filterTags) => {
 
 
 const NotesGrid = () => {
-    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId')));
+    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId') || 0));
     const activeFilterTags = useRecoilValue(activeFilterTagsState);
 
     const activeBoardNotesFilteredByTags = filterNotesByTags(activeBoard?.notes, activeFilterTags);

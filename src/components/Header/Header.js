@@ -10,7 +10,7 @@ import { db } from "../../db";
 
 
 const Header = () => {
-    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId')));
+    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId') || 0));
 
     const [boardsMenuOpen, setBoardsMenuOpen] = useRecoilState(boardsMenuOpenState);
 
