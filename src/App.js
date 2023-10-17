@@ -8,14 +8,15 @@ import QuickNoteModal from './components/Notes/QuickNoteModal';
 import MDNoteModal from './components/Notes/MDNoteModal';
 import DataPlaceholder from './components/DataPlaceholder/DataPlaceholder';
 import { boardsMenuOpenState } from './atoms/UIAtoms';
-import { boardsState } from './atoms/DataAtoms';
 import { useMediaQuery } from 'react-responsive';
+import { useLiveQuery } from 'dexie-react-hooks';
+import { db } from './db';
 
 import './App.css';
 
 
 const App = () => {
-  const boards = useRecoilValue(boardsState);
+  const boards = useLiveQuery(() => db.boards.toArray());
   const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px)" })
@@ -36,13 +37,13 @@ const App = () => {
           }
         >
           <Header/>
-          { !!boards.length &&
+          { boards && !!boards.length &&
             <>
               <NotesGrid/>
               <ActionsMenu/>
             </>
           }
-          { !!!boards.length && !isBoardsMenuOpen &&
+          { boards && !!!boards.length && !isBoardsMenuOpen &&
             <DataPlaceholder type="boards"/>
           }
         </motion.div>
