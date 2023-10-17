@@ -6,10 +6,12 @@ import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 import { activeBoardState } from "../../atoms/DataAtoms";
 
 import "./css/Header.css";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "../../db";
 
 
 const Header = () => {
-    const activeBoard = useRecoilValue(activeBoardState);
+    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId')));
 
     const [boardsMenuOpen, setBoardsMenuOpen] = useRecoilState(boardsMenuOpenState);
 
@@ -19,8 +21,12 @@ const Header = () => {
     return (
         <div className="board-header">
             <div>
-                <span className="board-name txt-faded-white">{ activeBoard?.name }</span>
-                <Tags/>
+                { activeBoard &&
+                    <>
+                        <span className="board-name txt-faded-white">{ activeBoard.name }</span>
+                        <Tags/>
+                    </>
+                }
             </div>
             <div>
                 { !boardsMenuOpen &&
