@@ -65,6 +65,8 @@ const ModalMenu = ({ modalData, modalAction }) => {
                                 await db.boards.update(activeBoardId, { notes: [validateNoteTags(modalData), ...activeBoard.notes]});
                             }
                         }); 
+
+                        pageFadeCallback();
                     }
                 }
             />
