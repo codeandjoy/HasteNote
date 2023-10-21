@@ -91,3 +91,12 @@
         width: 60vw;
     }
 }
+@media (max-width: 500px) {
+    .boards-menu{
+        .boards-pane{
+            .btn-close-menu{
+                top: 30px;
+            }
+        }
+    }
+}
