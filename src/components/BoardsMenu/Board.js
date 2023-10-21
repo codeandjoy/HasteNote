@@ -22,14 +22,11 @@ const boardVariants = {
 const Board = ({ board }) => {
     const [activeBoardId, setActiveBoardId] = useRecoilState(activeBoardIdState);
 
-    const [hoverHighlight, setHoverHiglight] = useState(false);
     const [contextMenuOpen, setContextMenuOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
 
-
     const classNames = "board"
         +(activeBoardId===board.id ? " board-active":"")
-        +(hoverHighlight ? " board-hover":"");
 
     return (
         <motion.div
@@ -41,9 +38,6 @@ const Board = ({ board }) => {
             onClick={() => {
                 setActiveBoardId(board.id);
             }}
-
-            onMouseOver={(e) => setHoverHiglight(true)}
-            onMouseOut={() => setHoverHiglight(false)}
         
             className={ classNames }
         >
@@ -59,16 +53,14 @@ const Board = ({ board }) => {
                 isEditMode={ isEditMode }
             />
 
-            { hoverHighlight &&
-                <PlainBtn
-                    type="menu-dots"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setContextMenuOpen(o => !o);
-                    }}
-                    className="btn-menu-dots"
-                />
-            }
+            <PlainBtn
+                type="menu-dots"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setContextMenuOpen(o => !o);
+                }}
+                className="btn-menu-dots"
+            />
 
             <AnimatePresence>
                 { contextMenuOpen &&

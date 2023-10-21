@@ -36,6 +36,14 @@
     .btn-menu-dots{
         display: flex;
         align-items: center;
+
+        width: 34px;
+        height: 34px;
+
+        .icon{
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
     }
 }
 
@@ -45,10 +53,6 @@
     .board-name{
         color: #fff;
     }
-}
-
-.board-hover{
-    background-color: #373737;
 }
 
 @media (max-width: 600px) {
