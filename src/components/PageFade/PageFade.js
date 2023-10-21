@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 
 import "./css/PageFade.css";
+import { useSwipeable } from "react-swipeable";
 
 const fadeVariants = {
     initial: {
@@ -14,8 +15,10 @@ const fadeVariants = {
 }
 
 
-const PageFade = ({ active }) => {
+const PageFade = ({ active, swipeHandlers }) => {
     const clickCallback = useRecoilValue(pageFadeCallbackState);
+
+    const swipe = useSwipeable({ ...swipeHandlers });
 
     if(active){
         document.body.style.overflow = "hidden";
@@ -36,6 +39,8 @@ const PageFade = ({ active }) => {
                     className="page-fade"
 
                     onClick={ clickCallback }
+
+                    {...swipe}
                 >
                 </motion.div>
             }

@@ -10,6 +10,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db";
 
 import "./css/BoardsMenu.css";
+import { useSwipeable } from "react-swipeable";
 
 // ! make <right> responsive using 'react-responsive' media query
 const boardMenuVariants = {
@@ -22,19 +23,23 @@ const boardMenuVariants = {
 }
 
 
-const BoardsMenu = () => {
-    // const [boards, setBoards] = useRecoilState(boardsState);
-    // const setActiveBoardId = useSetRecoilState(activeBoardIdState);
-    const boards = useLiveQuery(() => db.boards.toArray());
 
+const BoardsMenu = () => {
+    const boards = useLiveQuery(() => db.boards.toArray());
+    
     const boardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
     const pageFadeActive = useRecoilValue(boardsMenuPageFadeActiveState);
     const pageFadeCallback = useRecoilValue(pageFadeCallbackState);
     
+    const swipeHandlers = {
+        onSwipedRight: (ed) => { pageFadeCallback(); }
+    }
+    const swipe = useSwipeable({ ...swipeHandlers });
+
     return (
         <>
-            <PageFade active={ pageFadeActive }/>
+            <PageFade active={ pageFadeActive } swipeHandlers={ swipeHandlers }/>
             <AnimatePresence>
                 { boardsMenuOpen && 
                     <motion.div 
@@ -44,6 +49,8 @@ const BoardsMenu = () => {
                         exit="initial"
 
                         className="boards-menu"
+
+                        {...swipe}
                     >
                         <div className="boards-pane">
                             <PlainBtn
