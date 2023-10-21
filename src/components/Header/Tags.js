@@ -6,7 +6,7 @@ import { db } from "../../db";
 
 
 const Tags = () => {
-    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId')));
+    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId') || 0));
     // Unique tags across active board notes
     const activeBoardTags = [...new Set(activeBoard?.notes.map(note => note.tags.split(" ")).flat())];
 
