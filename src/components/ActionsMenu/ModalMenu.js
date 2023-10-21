@@ -41,6 +41,12 @@ const ModalMenu = ({ modalData, modalAction }) => {
                 color="blue"
                 onClick={ 
                     async () => {
+                        // if no data entered -> return
+                        if(!modalData.title && !modalData.tags && !modalData.content){
+                            pageFadeCallback();
+                            return;
+                        }
+
                         // if note has no initial data (must be created) -> create new id
                         if(!modalData.id) modalData = { ...modalData, id: uuid() };
                         
