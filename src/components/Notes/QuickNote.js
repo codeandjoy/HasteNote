@@ -69,9 +69,15 @@ const QuickNote = ({ note }) => {
                 });
             }}
         >
-            <h3 className="note-title">{ note.title }</h3>
-            <div className="note-tags"><span>{ note.tags }</span></div>
-            <div className="note-line"></div>
+            { note.title && 
+                <h3 className="note-title">{ note.title }</h3>
+            }
+            { note.tags &&
+                <span className="note-tags">{ note.tags }</span>
+            }
+            { (note.title || note.tags) &&
+                <div className="note-line"></div>
+            }
             <div className="note-content">{ note.content }</div>
         </motion.div>
     );

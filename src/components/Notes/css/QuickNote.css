@@ -8,6 +8,7 @@
   font-weight: bold;
 }
 .quick-note .note-tags {
+  display: block;
   margin-bottom: 6px;
   color: var(--clr-dark-gray);
 }
