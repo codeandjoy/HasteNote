@@ -1,16 +1,18 @@
 import PlainBtn from "../PlainBtn/PlainBtn"
 import Tags from "./Tags";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { boardsMenuPageFadeActiveState, boardsMenuOpenState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 
 import "./css/Header.css";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db";
+import { activeBoardIdState } from "../../atoms/DataAtoms";
 
 
 const Header = () => {
-    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId') || 0));
+    const activeBoardId = useRecoilValue(activeBoardIdState);
+    const activeBoard = useLiveQuery(() => db.boards.get(activeBoardId), [activeBoardId]);
 
     const [boardsMenuOpen, setBoardsMenuOpen] = useRecoilState(boardsMenuOpenState);
 

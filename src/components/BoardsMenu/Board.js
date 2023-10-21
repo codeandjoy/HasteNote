@@ -6,6 +6,8 @@ import EditableText from "./EditableText";
 import { db } from "../../db";
 
 import "./css/Board.css";
+import { useRecoilState } from "recoil";
+import { activeBoardIdState } from "../../atoms/DataAtoms";
 
 const boardVariants = {
     initial: {
@@ -18,12 +20,7 @@ const boardVariants = {
 
 
 const Board = ({ board }) => {
-    // const [activeBoardId, setActiveBoardId] = useRecoilState(activeBoardIdState);
-    // const setBoards = useSetRecoilState(boardsState);
-    // const getAllBoards = useRecoilCallback(({snapshot}) => async () => {
-    //     return await snapshot.getPromise(boardsState)
-    // }, []);
-    const activeBoardId = localStorage.getItem('activeBoardId');
+    const [activeBoardId, setActiveBoardId] = useRecoilState(activeBoardIdState);
 
     const [hoverHighlight, setHoverHiglight] = useState(false);
     const [contextMenuOpen, setContextMenuOpen] = useState(false);
@@ -42,7 +39,7 @@ const Board = ({ board }) => {
             layout
         
             onClick={() => {
-                localStorage.setItem('activeBoardId', board.id);
+                setActiveBoardId(board.id);
             }}
 
             onMouseOver={(e) => setHoverHiglight(true)}
@@ -91,10 +88,10 @@ const Board = ({ board }) => {
                                 if(allBoards.length > 1){
                                     // Set first board in the array as active
                                     const nextActiveId = allBoards.find(b => b.id !== activeBoardId).id;
-                                    localStorage.setItem('activeBoardId', nextActiveId);
+                                    setActiveBoardId(nextActiveId);
                                 }
                                 else{
-                                    localStorage.removeItem('activeBoardId');
+                                    setActiveBoardId(0);
                                 }
                             }
 

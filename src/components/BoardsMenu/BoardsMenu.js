@@ -2,15 +2,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import uuid from "react-uuid";
 import PlainBtn from "../PlainBtn/PlainBtn";
 import Boards from "./Boards";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { boardsMenuPageFadeActiveState, boardsMenuOpenState } from "../../atoms/UIAtoms";
 import { pageFadeCallbackState } from "../../atoms/UIAtoms";
 import PageFade from "../PageFade/PageFade";
+import { useSwipeable } from "react-swipeable";
+import { activeBoardIdState } from "../../atoms/DataAtoms";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db";
 
 import "./css/BoardsMenu.css";
-import { useSwipeable } from "react-swipeable";
 
 // ! make <right> responsive using 'react-responsive' media query
 const boardMenuVariants = {
@@ -26,7 +27,9 @@ const boardMenuVariants = {
 
 const BoardsMenu = () => {
     const boards = useLiveQuery(() => db.boards.toArray());
-    
+
+    const setActiveBoardId = useSetRecoilState(activeBoardIdState);
+
     const boardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 
     const pageFadeActive = useRecoilValue(boardsMenuPageFadeActiveState);
@@ -67,7 +70,7 @@ const BoardsMenu = () => {
                                     const newId = uuid();
 
                                     // If creating first board
-                                    if(!boards.length) localStorage.setItem('activeBoardId', newId);
+                                    if(!boards.length) setActiveBoardId(newId);
 
                                     await db.boards.add(
                                         {

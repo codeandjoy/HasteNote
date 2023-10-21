@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useRecoilValue } from "recoil";
-import { activeFilterTagsState } from "../../atoms/DataAtoms";
+import { activeBoardIdState, activeFilterTagsState } from "../../atoms/DataAtoms";
 import { boardsMenuOpenState } from "../../atoms/UIAtoms";
 import DataPlaceholder from "../DataPlaceholder/DataPlaceholder";
 import QuickNote from "./QuickNote";
@@ -26,7 +26,8 @@ const filterNotesByTags = (notes, filterTags) => {
 
 
 const NotesGrid = () => {
-    const activeBoard = useLiveQuery(() => db.boards.get(localStorage.getItem('activeBoardId') || 0));
+    const activeBoardId = useRecoilValue(activeBoardIdState);
+    const activeBoard = useLiveQuery(() => db.boards.get(activeBoardId));
     const activeFilterTags = useRecoilValue(activeFilterTagsState);
 
     const activeBoardNotesFilteredByTags = filterNotesByTags(activeBoard?.notes, activeFilterTags);
