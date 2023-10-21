@@ -27,11 +27,10 @@ const filterNotesByTags = (notes, filterTags) => {
 
 const NotesGrid = () => {
     const activeBoardId = useRecoilValue(activeBoardIdState);
-    const activeBoard = useLiveQuery(() => db.boards.get(activeBoardId));
+    const activeBoard = useLiveQuery(() => db.boards.get(activeBoardId), [activeBoardId]);
     const activeFilterTags = useRecoilValue(activeFilterTagsState);
 
     const activeBoardNotesFilteredByTags = filterNotesByTags(activeBoard?.notes, activeFilterTags);
-
     
     const isBoardsMenuOpen = useRecoilValue(boardsMenuOpenState);
 

@@ -9,7 +9,7 @@ import "./css/Tags.css";
 
 const Tags = () => {
     const activeBoardId = useRecoilValue(activeBoardIdState);
-    const activeBoard = useLiveQuery(() => db.boards.get(activeBoardId));
+    const activeBoard = useLiveQuery(() => db.boards.get(activeBoardId), [activeBoardId]);
     // Unique tags across active board notes
     const activeBoardTags = [...new Set(activeBoard?.notes.map(note => note.tags.split(" ")).flat())];
     const pureTags = activeBoardTags.filter(tag => tag !== "");
