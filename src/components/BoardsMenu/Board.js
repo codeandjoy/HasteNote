@@ -47,7 +47,6 @@ const Board = ({ board }) => {
         
             className={ classNames }
         >
-            {/* <span className="board-name">{ board.name }</span> */}
             <EditableText
                 className="board-name"
 

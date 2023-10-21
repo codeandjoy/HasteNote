@@ -35,4 +35,8 @@
   width: 100%;
   height: 2px;
   background-color: var(--clr-gray);
+}
+
+.quick-note-modal-avoid-keyboard {
+  top: 20%;
 }/*# sourceMappingURL=QuickNoteModal.css.map */

@@ -4,8 +4,6 @@ import { useState } from "react";
 const EditableText = ({ className, trueState, onCommit, isEditMode=false }) => {
     const [inputState, setInputState] = useState(trueState);
 
-
-
     const classNames = className+" editable-text";
     
     if(isEditMode){
