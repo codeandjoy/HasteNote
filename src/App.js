@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import Header from './components/Header/Header';
 import NotesGrid from './components/Notes/NotesGrid';
 import ActionsMenu from './components/ActionsMenu/ActionsMenu';
