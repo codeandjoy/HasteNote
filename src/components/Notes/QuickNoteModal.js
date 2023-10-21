@@ -3,13 +3,15 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
 
 import "./css/QuickNoteModal.css";
+import useDetectKeyboardOpen from "use-detect-keyboard-open";
 
 
 const QuickNoteModal = () => {
-    // TODO rename to quickNote*
     const [noteModalData, setNoteModalData] = useRecoilState(quickNoteModalState);
     const noteModalAnimationPos = useRecoilValue(quickNoteModalAnimationPosState);
     const noteModalOpen = useRecoilValue(quickNoteModalOpenState);
+
+    const isKeyboardOpen = useDetectKeyboardOpen();
 
     const modalVariants = {
         initial: {
@@ -21,7 +23,7 @@ const QuickNoteModal = () => {
         },
         active: {
             opacity: 1,
-            top: "50%",
+            top: isKeyboardOpen ? "20%" : "50%",
             left: "50%",
             translateX: "-50%",
             translateY: "-50%"
