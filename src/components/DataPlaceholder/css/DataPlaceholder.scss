@@ -22,7 +22,7 @@
         
         width: 100%;
 
-        font-size: 70pt;
+        font-size: 50pt;
         font-family: Lato, sans-serif;
         font-weight: bold;
 
@@ -54,7 +54,7 @@
 @media (max-width: 1000px) {
     .data-placeholder{
         .data-placeholder--text{
-            font-size: 12vw;
+            font-size: 6vw;
         }
 
         .notes-direction-arrow{
@@ -66,6 +66,10 @@
 
 @media (max-width: 800px) {
     .data-placeholder{
+        .data-placeholder--text{
+            font-size: 8vw;
+        }
+
         .notes-direction-arrow{
             bottom: 220px;
             right: 60px;

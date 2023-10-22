@@ -10,7 +10,7 @@ const DataPlaceholder = ({ type }) => {
                 <Icon type="logo-dark-grey"/>
             </div>
 
-            <span className="data-placeholder--text">No {type} yet</span>
+            <span className="data-placeholder--text">Create your first {type==="boards" ? "board": "note"}</span>
             
             <div className={"direction-arrow " + type + "-direction-arrow"}>
                 <Icon type="arrow-orange"/>

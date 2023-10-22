@@ -17,7 +17,7 @@
 .data-placeholder .data-placeholder--text {
   text-align: center;
   width: 100%;
-  font-size: 70pt;
+  font-size: 50pt;
   font-family: Lato, sans-serif;
   font-weight: bold;
   color: var(--clr-light-white);
@@ -41,7 +41,7 @@
 
 @media (max-width: 1000px) {
   .data-placeholder .data-placeholder--text {
-    font-size: 12vw;
+    font-size: 6vw;
   }
   .data-placeholder .notes-direction-arrow {
     bottom: 140px;
@@ -49,6 +49,9 @@
   }
 }
 @media (max-width: 800px) {
+  .data-placeholder .data-placeholder--text {
+    font-size: 8vw;
+  }
   .data-placeholder .notes-direction-arrow {
     bottom: 220px;
     right: 60px;

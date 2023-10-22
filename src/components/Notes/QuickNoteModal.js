@@ -3,7 +3,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { quickNoteModalAnimationPosState, quickNoteModalOpenState, quickNoteModalState } from "../../atoms/QuickNoteModalAtoms";
 
 import "./css/QuickNoteModal.css";
-import useDetectKeyboardOpen from "use-detect-keyboard-open";
 
 
 const QuickNoteModal = () => {
