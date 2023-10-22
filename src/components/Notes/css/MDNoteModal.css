@@ -67,6 +67,7 @@
 }
 .MDNoteModal .content-editor {
   flex: 1;
+  padding-bottom: 100px;
   overflow: scroll;
 }
 .MDNoteModal .content-editor .MDEditor {
@@ -105,5 +106,8 @@
 @media (max-width: 800px) {
   .MDNoteModal {
     padding: 20px 20px;
+  }
+  .MDNoteModal .content-editor {
+    padding-bottom: 100px;
   }
 }/*# sourceMappingURL=MDNoteModal.css.map */
