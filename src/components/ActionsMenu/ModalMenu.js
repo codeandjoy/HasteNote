@@ -7,7 +7,7 @@ import ActionBtn from "./ActionBtn";
 import { action_btn_open_variants, deleteBtnOpenVariants } from "./animationVariants";
 
 
-const ModalMenu = ({ modalData, modalAction }) => {
+const ModalMenu = ({ modalData, modalAction, transparent=false }) => {
     const pageFadeCallback = useRecoilValue(pageFadeCallbackState);
 
     return (
@@ -16,8 +16,8 @@ const ModalMenu = ({ modalData, modalAction }) => {
                 <ActionBtn
                     variants={ deleteBtnOpenVariants }
                     className="delete-btn"
-                    type="delete"
-                    color="red"
+                    type={ "delete" + (transparent ? "-transparent" : "")}
+                    color={ "red" + (transparent ? "-transparent" : "")}
                     onClick={
                         async () => {
                             const activeBoardId = localStorage.getItem('activeBoardId');
@@ -37,8 +37,8 @@ const ModalMenu = ({ modalData, modalAction }) => {
             <ActionBtn
                 variants={ action_btn_open_variants }
                 className="save-btn"
-                type="save"
-                color="blue"
+                type={ "save" + (transparent ? "-transparent" : "")}
+                color={ "blue" + (transparent ? "-transparent" : "")}
                 onClick={ 
                     async () => {
                         // if no data entered -> return

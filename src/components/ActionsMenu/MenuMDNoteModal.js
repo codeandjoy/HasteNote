@@ -11,6 +11,7 @@ const MenuMDNoteModal = () => {
         <ModalMenu
             modalAction={ mdNoteModalAction }
             modalData={ mdNoteModalData }
+            transparent
         />
     );
 };

@@ -29,8 +29,16 @@
   background-image: url("/public/icons/save.svg");
 }
 
+.icon-save-transparent {
+  background-image: url("/public/icons/save_transparent.svg");
+}
+
 .icon-delete {
   background-image: url("/public/icons/delete.svg");
+}
+
+.icon-delete-transparent {
+  background-image: url("/public/icons/delete_transparent.svg");
 }
 
 .icon-menu-dots {

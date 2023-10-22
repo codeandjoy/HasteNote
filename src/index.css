@@ -11,7 +11,9 @@
 
   --clr-primary: #DD6E42;
   --clr-blue: #425BDD;
+  --clr-blue-transparent: #425BDD66;
   --clr-red: #7B2127;
+  --clr-red-transparent: #7B212766;
 }
 
 body {
