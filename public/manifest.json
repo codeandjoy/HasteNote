@@ -3,17 +3,23 @@
     "name": "HasteNote",
     "icons": [
         {
-            "src": "/icons-192.png",
+            "src": "/Icon-144.png",
+            "type": "image/png",
+            "sizes": "144x144",
+            "purpose": "any"
+        },
+        {
+            "src": "/Icon-192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/icons-256.png",
+            "src": "/Icon-256.png",
             "type": "image/png",
             "sizes": "256x256"
         },
         {
-            "src": "/icons-512.png",
+            "src": "/Icon-512.png",
             "type": "image/png",
             "sizes": "512x512"
         }
