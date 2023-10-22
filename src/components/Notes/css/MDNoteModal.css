@@ -68,6 +68,9 @@
   height: 100% !important;
   box-shadow: none;
 }
+.MDNoteModal .content-editor .MDEditor .wmde-markdown pre.language-mermaid {
+  text-align: center;
+}
 .MDNoteModal .content-editor .MDEditor .w-md-editor-bar {
   display: none;
 }

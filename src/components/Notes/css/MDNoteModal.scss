@@ -88,6 +88,10 @@
             
             box-shadow: none;
 
+            .wmde-markdown pre.language-mermaid{
+                text-align: center;
+            }
+
             .w-md-editor-bar{
                 display: none;
             }

@@ -5,9 +5,10 @@ import { mdNoteModalOpenState, mdNoteModalState } from "../../atoms/MDNoteModalA
 import MDEditor from "@uiw/react-md-editor";
 import PlainBtn from "../PlainBtn/PlainBtn";
 import Icon from "../Icon/Icon";
+import { actionsMenuPageFadeActiveState, pageFadeCallbackState } from "../../atoms/UIAtoms";
+import { Code } from "../../mermaid/MermaidSupport";
 
 import "./css/MDNoteModal.css";
-import { actionsMenuPageFadeActiveState, pageFadeCallbackState } from "../../atoms/UIAtoms";
 
 const mdNoteModalVariants = {
     initial: {
@@ -83,6 +84,12 @@ const MDNoteModal = () => {
                             value={ mdNoteModalData.content }
                             onChange={ value => setMDNoteModalData(data => ({...data, content: value })) }
                             className={"MDEditor"+(formatVisible ? " format-visible":"")}
+                        
+                            previewOptions={{
+                                components: {
+                                    code: Code
+                                }
+                            }}
                         />
                     </div>
                 </motion.div>
