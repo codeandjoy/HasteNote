@@ -26,6 +26,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-color: #181818;
+
+  /* Prevent mermaid error message from breaking layout */
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden !important;
+  /*  */
 }
 
 code {
