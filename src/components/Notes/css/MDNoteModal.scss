@@ -78,10 +78,16 @@
         }
     }
 
+    .content-editor::-webkit-scrollbar{
+        display: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
     .content-editor{
         flex: 1;
 
         overflow: scroll;
+
 
         .MDEditor{
             height: 100% !important;
