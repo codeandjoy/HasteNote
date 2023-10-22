@@ -94,6 +94,9 @@
 .MDNoteModal .content-editor .MDEditor .w-md-editor-content .w-md-editor-preview .wmde-markdown {
   background-color: var(--clr-light-black);
 }
+.MDNoteModal .content-editor .w-md-editor-show-preview .w-md-editor-content .w-md-editor-preview {
+  box-shadow: inset 0 0 0 0;
+}
 .MDNoteModal .content-editor .MDEditor.format-visible .w-md-editor-toolbar {
   display: flex;
 }

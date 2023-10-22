@@ -115,12 +115,21 @@
             .w-md-editor-content{
                 .w-md-editor-preview{
                     box-shadow: inset 1px 0 0 0 var(--clr-black);
+
                     .wmde-markdown{
                         background-color: var(--clr-light-black);
                     }
                 }
             }
         }
+        .w-md-editor-show-preview{
+            .w-md-editor-content{
+                .w-md-editor-preview{
+                    box-shadow: inset 0 0 0 0;
+                }
+            }
+        }
+
         .MDEditor.format-visible{
             .w-md-editor-toolbar{
                 display: flex;
