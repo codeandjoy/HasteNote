@@ -11,8 +11,6 @@ const QuickNoteModal = () => {
     const noteModalAnimationPos = useRecoilValue(quickNoteModalAnimationPosState);
     const noteModalOpen = useRecoilValue(quickNoteModalOpenState);
 
-    const isKeyboardOpen = useDetectKeyboardOpen();
-
     const modalVariants = {
         initial: {
             opacity: 0,
@@ -23,7 +21,7 @@ const QuickNoteModal = () => {
         },
         active: {
             opacity: 1,
-            top: isKeyboardOpen ? "20%" : "50%",
+            top: "50%",
             left: "50%",
             translateX: "-50%",
             translateY: "-50%"

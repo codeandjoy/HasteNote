@@ -8,7 +8,6 @@ import MenuCreate from './MenuCreate';
 import MenuQuickNoteModal from './MenuQuickNoteModal';
 import MenuMDNoteModal from './MenuMDNoteModal';
 import { motion } from 'framer-motion';
-import useDetectKeyboardOpen from 'use-detect-keyboard-open';
 
 import "./css/ActionsMenu.css";
 
@@ -19,15 +18,11 @@ const ActionsMenu = () => {
     const quickNoteModalOpen = useRecoilValue(quickNoteModalOpenState);
     const mdNoteModalOpen = useRecoilValue(mdNoteModalOpenState);
 
-    const isKeyboardOpen = useDetectKeyboardOpen();
-
     return (
         <>
             <PageFade active={ pageFadeActive }/>
             
             <motion.div
-                animate={{ top: isKeyboardOpen ? "40%" : "auto" }}
-
                 className="actions-menu"
             >
                 { !isBoardsMenuOpen && 

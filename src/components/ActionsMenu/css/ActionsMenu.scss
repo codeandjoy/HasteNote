@@ -1,7 +1,7 @@
 .actions-menu{
     position: absolute;
     z-index: 4;
-    bottom: 80px;
+    top: 80%;
     right: 0;
     
     display: flex;
@@ -28,5 +28,11 @@
         .delete-btn{
             position: absolute;
         }
+    }
+}
+
+@media (max-width: 800px) {
+    .actions-menu{
+        top: 75%;
     }
 }
