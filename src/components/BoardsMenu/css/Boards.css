@@ -1,6 +1,15 @@
 .boards {
   width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  overflow: scroll;
 }
 .boards > *:not(:last-child) {
   margin-bottom: 14px;
+}
+
+.boards::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }/*# sourceMappingURL=Boards.css.map */

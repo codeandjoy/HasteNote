@@ -1,7 +1,17 @@
 .boards{
     width: 100%;
+    height: 100%;
+
+    margin-bottom: 20px;
+
+    overflow: scroll;
 
     &>*:not(:last-child){
         margin-bottom: 14px;
     }
+}
+.boards::-webkit-scrollbar{
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
