@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="notes/icon_transparent.svg" width="80">
+</p>
+
 # HasteNote
 
 HasteNote is a Progressive Web Application for note taking built with React.
