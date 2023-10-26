@@ -24,7 +24,7 @@ const Header = () => {
             <div className="board-header">
                 <div>
                     { activeBoard &&
-                        <span className="board-name txt-faded-white">{ activeBoard.name }</span>
+                        <div className="board-name txt-faded-white">{ activeBoard.name }</div>
                     }
                 </div>
                 <div>

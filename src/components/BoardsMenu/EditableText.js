@@ -24,7 +24,7 @@ const EditableText = ({ className, trueState, onCommit, isEditMode=false }) => {
     }
     if(!isEditMode){
         return(
-            <span className={ classNames }>{ trueState }</span>
+            <div className={ classNames }>{ trueState }</div>
         );
     }
 }
