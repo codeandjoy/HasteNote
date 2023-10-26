@@ -44,10 +44,7 @@
         rotate: -45deg;
     }
     .notes-direction-arrow{
-        bottom: 100px;
-        right: 80px;
-
-        rotate: 45deg;
+        display: none;
     }
 }
 
@@ -56,11 +53,6 @@
         .data-placeholder--text{
             font-size: 6vw;
         }
-
-        .notes-direction-arrow{
-            bottom: 140px;
-            right: 60px;
-        }
     }
 }
 
@@ -68,11 +60,6 @@
     .data-placeholder{
         .data-placeholder--text{
             font-size: 8vw;
-        }
-
-        .notes-direction-arrow{
-            bottom: 220px;
-            right: 60px;
         }
     }
 }

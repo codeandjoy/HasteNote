@@ -34,27 +34,17 @@
   rotate: -45deg;
 }
 .data-placeholder .notes-direction-arrow {
-  bottom: 100px;
-  right: 80px;
-  rotate: 45deg;
+  display: none;
 }
 
 @media (max-width: 1000px) {
   .data-placeholder .data-placeholder--text {
     font-size: 6vw;
   }
-  .data-placeholder .notes-direction-arrow {
-    bottom: 140px;
-    right: 60px;
-  }
 }
 @media (max-width: 800px) {
   .data-placeholder .data-placeholder--text {
     font-size: 8vw;
-  }
-  .data-placeholder .notes-direction-arrow {
-    bottom: 220px;
-    right: 60px;
   }
 }
 @media (max-width: 600px) {
