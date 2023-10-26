@@ -1,5 +1,6 @@
 .board-tags {
   display: flex;
+  overflow-x: scroll;
 }
 .board-tags > *:not(:last-child) {
   margin-right: 10px;

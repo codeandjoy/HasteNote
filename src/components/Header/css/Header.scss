@@ -1,30 +1,35 @@
-.board-header{
-    display: flex;
-    justify-content: space-between;
-
+.board-header-content-container{
     height: 100px;
-
     margin-bottom: 30px;
 
-    .board-name{
-        color: var(--clr-gray);
-
-        font-family: Poppins, sans-serif;
-        font-size: 50px;
-        font-weight: bold;
+    .board-header{
+        display: flex;
+        justify-content: space-between;
+    
+        .board-name{
+            color: var(--clr-gray);
+    
+            font-family: Poppins, sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+        }
+    
+        .btn-menu{
+            margin-top: 30px;
+        }
     }
 
-    .btn-menu{
-        margin-top: 30px;
+    .board-tags{
+        width: 100%;
     }
 }
 
 @media (max-width: 800px) {
-    .board-header{
-        margin-bottom: 20px;
-
-        .btn-menu{
-            margin-top: 24px;
+    .board-header-content-container{
+        .board-header{
+            .btn-menu{
+                margin-top: 24px;
+            }
         }
     }
 }

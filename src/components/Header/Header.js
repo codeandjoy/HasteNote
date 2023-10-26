@@ -20,29 +20,33 @@ const Header = () => {
     const setPageFadeCallback = useSetRecoilState(pageFadeCallbackState);
     
     return (
-        <div className="board-header">
-            <div>
-                { activeBoard &&
-                    <>
+        <div className="board-header-content-container">
+            <div className="board-header">
+                <div>
+                    { activeBoard &&
                         <span className="board-name txt-faded-white">{ activeBoard.name }</span>
-                        <Tags/>
-                    </>
-                }
+                    }
+                </div>
+                <div>
+                    { !boardsMenuOpen &&
+                        <PlainBtn
+                            type="menu"
+                            onClick={() => {
+                                setBoardsMenuOpen(true);
+                                setBoardMenuPageFadeActive(true);
+                                setPageFadeCallback(()=>()=>{
+                                    setBoardsMenuOpen(false);
+                                    setBoardMenuPageFadeActive(false);
+                                });
+                            }}
+                            className="btn-menu"
+                        />
+                    }
+                </div>
             </div>
-            <div>
-                { !boardsMenuOpen &&
-                    <PlainBtn
-                        type="menu"
-                        onClick={() => {
-                            setBoardsMenuOpen(true);
-                            setBoardMenuPageFadeActive(true);
-                            setPageFadeCallback(()=>()=>{
-                                setBoardsMenuOpen(false);
-                                setBoardMenuPageFadeActive(false);
-                            });
-                        }}
-                        className="btn-menu"
-                    />
+            <div className="board-tags">
+                { activeBoard &&
+                    <Tags/>
                 }
             </div>
         </div>
