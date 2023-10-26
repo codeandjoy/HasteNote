@@ -7,6 +7,7 @@
 
     width: 290px;
     height: 180px;
+    max-height: 500px;
     padding: 16px 14px;
 
     font-family: Lato, sans-serif;
@@ -24,7 +25,14 @@
         flex: 1;
         resize: none;
         
+        font-size: 12pt;
         font-family: Lato, sans-serif;
+    
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    textarea::-webkit-scrollbar{
+        display: none;
     }
 
     .note-modal--inp-title{

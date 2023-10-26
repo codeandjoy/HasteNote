@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 290px;
   height: 180px;
+  max-height: 500px;
   padding: 16px 14px;
   font-family: Lato, sans-serif;
   background-color: var(--clr-light-white);
@@ -18,7 +19,13 @@
 .quick-note-modal textarea {
   flex: 1;
   resize: none;
+  font-size: 12pt;
   font-family: Lato, sans-serif;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.quick-note-modal textarea::-webkit-scrollbar {
+  display: none;
 }
 .quick-note-modal .note-modal--inp-title {
   margin: 0;

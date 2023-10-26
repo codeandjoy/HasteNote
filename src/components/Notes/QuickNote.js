@@ -70,10 +70,10 @@ const QuickNote = ({ note }) => {
             }}
         >
             { note.title && 
-                <h3 className="note-title">{ note.title }</h3>
+                <div className="note-title">{ note.title }</div>
             }
             { note.tags &&
-                <span className="note-tags">{ note.tags }</span>
+                <div className="note-tags">{ note.tags }</div>
             }
             { (note.title || note.tags) &&
                 <div className="note-line"></div>
