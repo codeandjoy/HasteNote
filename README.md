@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="notes/icon_transparent.svg" width="80">
+    <img src="notes/LogoTransparent.png" width="80">
 </p>
 
 # HasteNote
