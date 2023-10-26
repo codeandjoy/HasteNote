@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 .md-note .centered-preview-content .preview-art {
   width: 60px;
@@ -29,10 +30,29 @@
   margin-right: 5px;
 }
 .md-note .centered-preview-content .note-title {
+  text-align: center;
   margin: 0;
+  margin-bottom: 10px;
+  width: 60%;
+  max-height: 50px;
+  overflow-y: scroll;
   font-size: 20pt;
   color: var(--clr-light-white);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.md-note .centered-preview-content .note-title::-webkit-scrollbar {
+  display: none;
 }
 .md-note .centered-preview-content .note-tags {
+  text-align: center;
+  width: 50%;
+  max-height: 30px;
+  overflow-y: scroll;
   color: var(--clr-dark-gray);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.md-note .centered-preview-content .note-tags::-webkit-scrollbar {
+  display: none;
 }/*# sourceMappingURL=MDNote.css.map */

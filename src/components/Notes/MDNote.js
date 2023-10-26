@@ -55,8 +55,8 @@ const MDNote = ({ note }) => {
 
             <div className="centered-preview-content">
                 <div className="preview-art"><Icon type="paper"/></div>
-                <h3 className="note-title">{ note.title }</h3>
-                <div className="note-tags"><span>{ note.tags }</span></div>
+                <div className="note-title">{ note.title }</div>
+                <div className="note-tags">{ note.tags }</div>
             </div>
         </motion.div>
     );

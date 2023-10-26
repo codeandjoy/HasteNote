@@ -30,6 +30,8 @@
         flex-direction: column;
         align-items: center;
 
+        width: 100%;
+
         .preview-art{
             width: 60px;
             height: 60px;
@@ -37,15 +39,40 @@
         }
 
         .note-title{
+            text-align: center;
+
             margin: 0;
-    
+            margin-bottom: 10px;
+
+            width: 60%;
+            max-height: 50px;
+            overflow-y: scroll; 
+
             font-size: 20pt;
     
             color: var(--clr-light-white);
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .note-title::-webkit-scrollbar{
+            display: none;
         }
     
         .note-tags{
+            text-align: center;
+
+            width: 50%;
+            max-height: 30px;
+            overflow-y: scroll;
+
             color: var(--clr-dark-gray);
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .note-tags::-webkit-scrollbar{
+            display: none;
         }
     }
 }
