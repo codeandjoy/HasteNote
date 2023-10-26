@@ -17,6 +17,11 @@
 }
 .board-header-content-container .board-tags {
   width: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.board-header-content-container .board-tags::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 800px) {

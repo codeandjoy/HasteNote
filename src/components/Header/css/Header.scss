@@ -21,6 +21,12 @@
 
     .board-tags{
         width: 100%;
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .board-tags::-webkit-scrollbar{
+        display: none;
     }
 }
 
