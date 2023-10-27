@@ -11,6 +11,8 @@ import { boardsMenuOpenState } from './atoms/UIAtoms';
 import { useMediaQuery } from 'react-responsive';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from './db';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Privacy from './components/Privacy/Privacy';
 
 import './App.css';
 
@@ -22,37 +24,46 @@ const App = () => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px)" })
 
   return (
-    <div className="App">
-      <div className='desktop-art desktop-art-left'></div>
-      <div className='desktop-art desktop-art-right'></div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={
 
-      <div className='app-container'>
-        <motion.div
-          className='animated-container'
+          <div className="App">
+            <div className='desktop-art desktop-art-left'></div>
+            <div className='desktop-art desktop-art-right'></div>
 
-          animate={
-            isBoardsMenuOpen
-            ? { marginLeft: isSmallScreen?"-60vw":"-380px", marginRight: isSmallScreen?"60vw":"380px" }
-            : { marginLeft: 0, marginRight: 0 }
-          }
-        >
-          <Header/>
-          { boards && !!boards.length &&
-            <>
-              <NotesGrid/>
-              <ActionsMenu/>
-            </>
-          }
-          { boards && !!!boards.length && !isBoardsMenuOpen &&
-            <DataPlaceholder type="boards"/>
-          }
-        </motion.div>
+            <div className='app-container'>
+              <motion.div
+                className='animated-container'
 
-        <BoardsMenu/>
-        <QuickNoteModal/>
-        <MDNoteModal/>
-      </div>
-    </div>
+                animate={
+                  isBoardsMenuOpen
+                  ? { marginLeft: isSmallScreen?"-60vw":"-380px", marginRight: isSmallScreen?"60vw":"380px" }
+                  : { marginLeft: 0, marginRight: 0 }
+                }
+              >
+                <Header/>
+                { boards && !!boards.length &&
+                  <>
+                    <NotesGrid/>
+                    <ActionsMenu/>
+                  </>
+                }
+                { boards && !!!boards.length && !isBoardsMenuOpen &&
+                  <DataPlaceholder type="boards"/>
+                }
+              </motion.div>
+
+              <BoardsMenu/>
+              <QuickNoteModal/>
+              <MDNoteModal/>
+            </div>
+          </div>
+
+        }/>
+        <Route path='/privacy' Component={ Privacy }/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

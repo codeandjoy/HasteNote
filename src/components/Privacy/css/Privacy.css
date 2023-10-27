@@ -1,0 +1,22 @@
+.privacy-policy-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+}
+.privacy-policy-content h1, .privacy-policy-content h2, .privacy-policy-content p {
+  margin: 0;
+  font-family: Lato, sans-serif;
+}
+.privacy-policy-content h1, .privacy-policy-content h2 {
+  margin-bottom: 6px;
+  color: #fff;
+}
+.privacy-policy-content p:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+.privacy-policy-content p {
+  font-size: 12pt;
+  color: #dbdbdb;
+}/*# sourceMappingURL=Privacy.css.map */
