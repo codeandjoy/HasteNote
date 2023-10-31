@@ -1,0 +1,10 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "hastenote.twa",
+        "sha256_cert_fingerprints":  ["D9:11:F5:65:43:F6:9C:D6:B4:44:DE:7A:ED:58:D4:A1:46:C4:59:9D:FE:DC:51:29:06:EA:E8:47:1C:B6:F8:F8"]
+      }
+    }
+  ]
